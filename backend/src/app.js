@@ -8,7 +8,7 @@ import {options} from './swaggerOptions';
 
 const specs = swaggerJSDoc(options);
 
-import tasksRoutes from './routes/dgp';
+import dgpRoutes from './routes/dgp';
 
 
 
@@ -18,7 +18,7 @@ app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
 
-app.use(tasksRoutes);
+app.use(dgpRoutes);
 
 app.use('/docs', swaggerUI.serve, swaggerUI.setup(specs))
 

@@ -1,7 +1,7 @@
  export const options = {
     definition: {
         info: {
-            title: "task api"
+            title: "dba api"
         }
     },
     apis: ["./src/routes/**/*.js"]

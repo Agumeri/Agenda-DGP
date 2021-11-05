@@ -1,68 +1,68 @@
 import { Router } from 'express';
-import { deleteTask, getTask, getTaskCount, getTasks, saveTask, updateTask } from '../controllers/dgp'
+import { getUsuarios,  getUsuario, getUsuarioCount,  saveUsuario, deleteUsuario, updateUsuario } from '../controllers/dgp'
 
 const router = Router()
 /**
  * @swagger
  * tags:
- *  name: Tasks
- *  description: Tasks endpoint
+ *  name: Usuario
+ *  description: Usuario endpoint
  */
 
 /**
  * @swagger
- * /tasks:
+ * /usuario:
  *  get:
  *      summary: esto obtiene todas las tareas
- *      tags: [Tasks]
+ *      tags: [Usuario]
  * 
  */
-router.get('/tasks',getTasks)
+router.get('/usuario',getUsuarios)
 
 /**
  * @swagger
- * /tasks/count:
+ * /usuario/count:
  *  get:
  *      summary: esto obtiene el contador total de tareas
- *      tags: [Tasks]
+ *      tags: [Usuario]
  * 
  */
-router.get('/tasks/count',getTaskCount)
+router.get('/usuario/count',getUsuarioCount)
 
 /**
  * @swagger
- * /tasks:
+ * /usuario:
  *  get:
  *      summary: esto obtiene la tarea por id
- *      tags: [Tasks]
+ *      tags: [Usuario]
  */
-router.get('/tasks/:id',getTask)
+router.get('/usuario/:id',getUsuario)
 
 /**
  * @swagger
- * /tasks:
+ * /usuario:
  *  post:
  *      summary: añade una nueva tarea
- *      tags: [Tasks]
+ *      tags: [Usuario]
  */
-router.post('/tasks',saveTask)
+router.post('/usuario',saveUsuario)
 
 /**
  * @swagger
- * /tasks:
+ * /usuario:
  *  delete:
  *      summary: elimina una tarea por id
- *      tags: [Tasks]
+ *      tags: [Usuario]
  */
-router.delete('/tasks/:id',deleteTask)
+router.delete('/usuario/:id',deleteUsuario)
 
 /**
  * @swagger
- * /tasks:
+ * /usuario:
  *  put:
  *      summary: actualiza una tarea por id
- *      tags: [Tasks]
+ *      tags: [Usuario]
  */
-router.put('/tasks/:id',updateTask)
+router.put('/usuario/:id',updateUsuario)
 
 export default router;

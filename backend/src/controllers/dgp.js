@@ -1,29 +1,31 @@
 
 import {connect} from '../databases'
 
-export const getTasks = async (req,res) => {
+export const getUsuarios = async (req,res) => {
     const connection = await connect()
-    const [rows] = await connection.query('SELECT * FROM tasks')
+    const [rows] = await connection.query('SELECT * FROM usuario')
     res.json(rows)
 }
 
-export const getTask = async (req,res) => {
+export const getUsuario = async (req,res) => {
     const connection = await connect()
-    const [rows] = await connection.query('SELECT * FROM tasks WHERE id = ?',[req.params.id])
+    const [rows] = await connection.query('SELECT * FROM usuario WHERE id = ?',[req.params.id])
     res.json(rows[0])
 }
 
-export const getTaskCount = async (req,res) => {
+export const getUsuarioCount = async (req,res) => {
     const connection = await connect()
-    const [rows] = await connection.query('SELECT COUNT(*) FROM tasks')
+    const [rows] = await connection.query('SELECT COUNT(*) FROM usuario')
     res.json(rows[0]["COUNT(*)"])
 }
 
-export const saveTask = async (req,res) => {
+export const saveUsuario = async (req,res) => {
     const connection = await connect()
-    const [result] = await connection.query("INSERT INTO tasks(title, description) VALUES (?,?)",[
-        req.body.title,
-        req.body.description,
+    const [result] = await connection.query("INSERT INTO usuario(nombre_usuario, contraseña, permisos, correo_electronico) VALUES (?,?,?,?)",[
+        req.body.nombre_usuario,
+        req.body.contraseña,
+        req.body.permisos,
+        req.body.correo_electronico
     ])
     res.json({
         id:result.insertId,
@@ -31,18 +33,18 @@ export const saveTask = async (req,res) => {
     })
 }
 
-export const deleteTask = async (req,res) => {
+export const deleteUsuario = async (req,res) => {
     const connection = await connect()
-    const result = await connection.query("DELETE FROM tasks WHERE id = ?",[
+    const result = await connection.query("DELETE FROM usuario WHERE id = ?",[
         req.params.id
     ])
     res.sendStatus(204)
 
 }
 
-export const updateTask = async (req,res) => {
+export const updateUsuario = async (req,res) => {
     const connection = await connect()
-    const result = await connection.query("UPDATE tasks SET ? WHERE id = ?",[
+    const result = await connection.query("UPDATE usuario SET ? WHERE id = ?",[
         req.body,
         req.params.id,
     ])

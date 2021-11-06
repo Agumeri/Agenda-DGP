@@ -1,7 +1,7 @@
  export const options = {
     definition: {
         info: {
-            title: "dba api"
+            title: "Agenda PlaneDev Endpoint"
         }
     },
     apis: ["./src/routes/**/*.js"]

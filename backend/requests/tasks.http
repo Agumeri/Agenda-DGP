@@ -1,14 +1,14 @@
-@api =  http://localhost:3000/usuario
+@api =  http://localhost:3000
 
 
 
-GET {{api}}
+GET {{api}}/usuario
 ###
-GET {{api}}/2
+GET {{api}}/usuario/2
 ###
-GET {{api}}/count
+GET {{api}}/usuario/count
 ###
-POST {{api}}
+POST {{api}}/usuario
 Content-Type: application/json
 
 {
@@ -16,9 +16,9 @@ Content-Type: application/json
     "description": "Using React Native"
 }
 ###
-DELETE {{api}}/6
+DELETE {{api}}/usuario/6
 ###
-PUT {{api}}/4
+PUT {{api}}/usuario/4
 Content-Type: application/json
 
 {
@@ -26,3 +26,8 @@ Content-Type: application/json
     "title": "titulo 3"
 
 }
+
+
+
+###
+GET {{api}}/usuario/profesor

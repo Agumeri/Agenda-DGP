@@ -15,21 +15,16 @@ INSERT INTO usuario (nombre_usuario, contraseña, permisos, correo_electronico) 
     ('prueba1', 'prueba1', '0','prueba1'),
      ('prueba2', 'prueba2', '0','prueba2');
 
-CREATE TABLE IF NOT EXISTS profesor( 
-    id INT NOT NULL, 
-    id_profesor INT NOT NULL AUTO_INCREMENT, 
-    PRIMARY KEY (id_profesor), 
-    FOREIGN KEY (id) REFERENCES usuario(id) 
-); 
-
-INSERT INTO profesor (id) VALUES 
-    ('1'),
-     ('2');
-
+CREATE TABLE IF NOT EXISTS profesor(
+    id_usuario INT NOT NULL,
+    id_profesor VARCHAR(100) NOT NULL,
+    PRIMARY KEY (id_usuario,id_profesor),
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id)
+);
 CREATE TABLE IF NOT EXISTS alumno_tutoriza(
     id INT NOT NULL,
     id_alumno INT NOT NULL AUTO_INCREMENT,
-    id_profesor INT NOT NULL,
+    id_profesor VARCHAR(100) NOT NULL,
     PRIMARY KEY (id_alumno),
     FOREIGN KEY (id) REFERENCES usuario(id),
     FOREIGN KEY (id_profesor) REFERENCES profesor(id_profesor)

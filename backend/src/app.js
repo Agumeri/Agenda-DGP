@@ -22,4 +22,6 @@ app.use(dgpRoutes);
 
 app.use('/docs', swaggerUI.serve, swaggerUI.setup(specs))
 
+
+
 export default app;

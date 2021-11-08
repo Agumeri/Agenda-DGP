@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { getUsuarios,  getUsuario, getUsuarioCount,  saveUsuario, deleteUsuario, updateUsuario, 
-        createProfesor, getProfesores, getProfesor, getProfesorCount, updateProfesor, deleteProfesor 
+        createProfesor, getProfesores, getProfesor, getProfesorCount, updateProfesor, deleteProfesor,
+        getAlumnoCount 
        } from '../controllers/dgp'
 
 const router = Router()
@@ -141,6 +142,20 @@ router.get('/profesor/:id',getProfesor)
  *      tags: [Profesor]
  */
 router.delete('/profesor/:id',deleteProfesor)
+
+/////////////////////
+////// ALUMNO /////
+/////////////////////
+
+/**
+ * @swagger
+ * /alumno/count:
+ *  get:
+ *      summary:Obtener el numero de alumnos del sistema
+ *      tags: [Alumno]
+ * 
+ */
+ router.get('/alumno/count',getAlumnoCount)
 
 
 

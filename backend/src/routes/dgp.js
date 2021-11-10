@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { getUsuarios,  getUsuario, getUsuarioCount,  saveUsuario, deleteUsuario, updateUsuario, 
-        createProfesor, getProfesores, getProfesor, getProfesorCount, updateProfesor, deleteProfesor 
+        createProfesor, getProfesores, getProfesor, getProfesorCount, updateProfesor, deleteProfesor,
+        createAdmin, getAdmin, getAdminByID, getAdminCount, updateAdmin, deleteAdmin
        } from '../controllers/dgp'
 
 const router = Router()
@@ -69,7 +70,7 @@ router.post('/usuario',saveUsuario)
  * @swagger
  * /usuario/id_user:
  *  delete:
- *      summary: elimina una tarea por id
+ *      summary: elimina una usuario por id
  *      tags: [Usuario]
  */
 router.delete('/usuario/:id',deleteUsuario)
@@ -128,7 +129,7 @@ router.get('/profesor/:id',getProfesor)
  * @swagger
  * /profesor/id_prof:
  *  put:
- *      summary: obtener un profesor de la lista de profesores
+ *      summary: actualiza un profesor de la lista de profesores
  *      tags: [Profesor]
  */
  router.put('/profesor/:id',updateProfesor)
@@ -142,6 +143,62 @@ router.get('/profesor/:id',getProfesor)
  */
 router.delete('/profesor/:id',deleteProfesor)
 
+/////////////////////
+////// ADMIN /////
+/////////////////////
+ /**
+ * @swagger
+ * /admin:
+ *  post:
+ *      summary: crea un nuevo administrador
+ *      tags: [Admin]
+ */
+router.post('/admin',createAdmin);
+  
+/**
+ * @swagger
+ * /admin:
+ *  get:
+ *      summary: obtiene todos los admins del sistema
+ *      tags: [Admin]
+ * 
+ */
+router.get('/admin',getAdmin)
 
+/**
+ * @swagger
+ * /admin/count:
+ *  post:
+ *      summary: Obtiene el numero de administradores
+ *      tags: [Admin]
+ */
+router.get('/admin/count',getAdminCount)
+
+/**
+ * @swagger
+ * /admin/id_admin:
+ *  get:
+ *      summary: obtener un admin de la lista de administradores
+ *      tags: [Admin]
+ */
+router.get('/admin/:id',getAdminByID)
+
+/**
+ * @swagger
+ * /admin/id_admin:
+ *  put:
+ *      summary: actualiza un administrador de la lista
+ *      tags: [Admin]
+ */
+ router.put('/admin/:id',updateAdmin)
+
+/**
+ * @swagger
+ * /admin/id_admin:
+ *  delete:
+ *      summary: borrar un admin
+ *      tags: [Admin]
+ */
+router.delete('/admin/:id',deleteAdmin)
 
 export default router;

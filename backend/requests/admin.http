@@ -1,0 +1,36 @@
+#######################
+####--ADMIN--##########
+#######################
+@api =  http://localhost:3000/admin
+
+##POST
+###Insertar 1 admin
+POST {{api}}
+Content-Type: application/json
+
+{
+    "nombre_usuario": "adminPOST2",
+    "contraseña": "adminPass2-post",
+    "permisos": "0",
+    "correo_electronico": "adminPost2@prueba"
+}
+
+## GET 
+###1 admin por id
+GET {{api}}/admin2
+
+###COUNT admin
+GET {{api}}/count
+
+###GET all admin
+GET {{api}}
+
+##PUT
+###
+PUT {{api}}/admin01
+Content-Type: application/json 
+
+{
+    "nombre_usuario": "adminPUT",
+    "correo_electronico": "adminPUT_correo"
+}

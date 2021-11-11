@@ -1,0 +1,40 @@
+#######################
+####--ALUMNO--##########
+#######################
+@api =  http://localhost:3000/alumno
+
+##POST
+###Insertar 1 alumno
+POST {{api}}
+Content-Type: application/json
+
+{
+    "nombre_usuario": "alumnoPOST2",
+    "contraseña": "alumnoPass2-post",
+    "permisos": "0",
+    "correo_electronico": "alumnoPost2@prueba"
+}
+
+## GET 
+###1 alumno por id
+GET {{api}}/2
+
+###COUNT alumno
+GET {{api}}/count
+
+###GET all alumno
+GET {{api}}
+
+##PUT
+###
+PUT {{api}}/1
+Content-Type: application/json 
+
+{
+    "nombre_usuario": "alumnoPUT",
+    "correo_electronico": "alumnoPUT_correo"
+}
+
+##DELETE
+###
+DELETE {{api}}/1

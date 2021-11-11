@@ -14,6 +14,7 @@ import profeRoutes from './routes/profesor';
 import inventarioRoutes from './routes/inventario';
 import objetosRoutes from './routes/objetos';
 import tareaRoutes from './routes/tarea';
+import alumnoRoutes from './routes/alumno';
 //import dgpRoutes from './routes/dgp';
 
 
@@ -34,6 +35,7 @@ app.use(profeRoutes);
 app.use(inventarioRoutes);
 app.use(objetosRoutes);
 app.use(tareaRoutes);
+app.use(alumnoRoutes);
 //app.use(dgpRoutes);
 
 app.use('/docs', swaggerUI.serve, swaggerUI.setup(specs))

@@ -24,15 +24,17 @@ CREATE TABLE IF NOT EXISTS profesor(
     FOREIGN KEY (id_usuario) REFERENCES usuario(id)
 );
 ------------------------
--- Alumno_autoriza table --
--- CREATE TABLE IF NOT EXISTS alumno_tutoriza(
---     id_usuario INT NOT NULL,
---     id_alumno INT NOT NULL AUTO_INCREMENT,
---     id_profesor VARCHAR(100) NOT NULL,
---     PRIMARY KEY (id_alumno),
---     FOREIGN KEY (id_usuario) REFERENCES usuario(id),
---     FOREIGN KEY (id_profesor) REFERENCES profesor(id_profesor)
--- );
+-- Alumno_autoriza table
+CREATE TABLE IF NOT EXISTS alumno_tutoriza( 
+    id_usuario INT NOT NULL REFERENCES usuario(id_usuario),
+    id_alumno VARCHAR(100) NOT NULL,
+    id_profesor VARCHAR(100) NOT NULL REFERENCES profesor(id_profesor),
+    PRIMARY KEY (id_usuario, id_alumno)
+); 
+
+INSERT INTO alumno_tutoriza(id_usuario, id_alumno, id_profesor) VALUES 
+    ('1', '1', '1'),
+    ('2', '2', '2');
 
 -- Tabla medio válida --
 CREATE TABLE IF NOT EXISTS alumno_tutoriza( 

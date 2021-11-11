@@ -1,0 +1,37 @@
+@api = http://localhost:3000/gestiona_inventario
+
+## POST
+### Crea un gestiona_inventario
+POST {{api}}
+Content-Type: application/json
+
+{
+    "tareaId": "tarea3",
+    "comandaId": "Comanda11",
+    "inventarioId": "inventario2"
+}
+
+## GET
+### Obtener todos los enlaces entre comandas e inventarios
+GET {{api}}
+
+### Obtener el numero de enlaces entre comandas e inventario
+GET {{api}}/count
+
+### Obtener un enlace entre comanda e inventario dado un id
+GET {{api}}/gestInv2
+
+##UPDATE
+### Modificar los datos del enalce dado un id
+PUT {{api}}/gestInv2
+Content-Type: application/json
+
+{
+    "id_tarea_inGestInv": "tarea99",
+    "id_comanda_inGestInv": "Comanda99",
+    "id_inventario_inGestInv": "inventario1"
+}
+
+###DELETE
+### Elimina un enlace dado un id
+DELETE {{api}}/gestInv2

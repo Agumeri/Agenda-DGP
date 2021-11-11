@@ -1,0 +1,26 @@
+@api =  http://localhost:3000/inventario
+
+## POST
+### Crea un inventario
+POST {{api}}
+
+##GET
+### Obtener todos inventarios
+GET {{api}}
+### Obtener cantidad inventarios
+GET {{api}}/count
+### Obtener inventario por id
+GET {{api}}/inventario3
+
+##UPDATE
+### Cambiar un inventario dado un id
+PUT {{api}}/inventario3
+Content-Type: application/json
+
+{
+    "id_inventario": "idPut"
+}
+
+##DELETE
+### Eliminar un inventario dado un id
+DELETE {{api}}/idPut

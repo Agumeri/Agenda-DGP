@@ -10,7 +10,6 @@ GET {{api}}/usuario/count
 ###
 POST {{api}}/usuario
 Content-Type: application/json
-
 {
     "title": "I must create an app",
     "description": "Using React Native"
@@ -26,8 +25,3 @@ Content-Type: application/json
     "title": "titulo 3"
 
 }
-
-
-
-###
-GET {{api}}/usuario/profesor

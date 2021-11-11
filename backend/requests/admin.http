@@ -34,3 +34,7 @@ Content-Type: application/json
     "nombre_usuario": "adminPUT",
     "correo_electronico": "adminPUT_correo"
 }
+
+##DELETE
+###
+DELETE {{api}}/admin2

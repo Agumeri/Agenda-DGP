@@ -214,7 +214,6 @@ export const getAdmin = async (req,res) => {
 export const getAdminCount = async (req,res) => {
     const connection = await connect()
     const [rows] = await connection.query('SELECT COUNT(*) FROM admin')
-    console.log(rows)
     res.json(rows[0]["COUNT(*)"])
 }
 
@@ -244,7 +243,7 @@ export const deleteAdmin = async (req,res) => {
     const id_user_inAdmin = admin[0].id_usuario;
 
     const [delete_admin_result] = await connection.query('DELETE FROM admin WHERE id_admin = (?)',[id_admin]);
-    const [delete_prof_user] = await connection.query('DELETE FROM admin WHERE id = (?)',[id_user_inAdmin])
+    const [delete_prof_user] = await connection.query('DELETE FROM usuario WHERE id = (?)',[id_user_inAdmin])
 
     res.sendStatus(204)
 }

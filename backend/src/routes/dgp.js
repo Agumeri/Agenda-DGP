@@ -1,14 +1,12 @@
 import { Router } from 'express';
-import { createProfesor, getProfesores, getProfesor, getProfesorCount, updateProfesor, deleteProfesor,
-        createAdmin, getAdmin, getAdminByID, getAdminCount, updateAdmin, deleteAdmin
-       } from '../controllers/dgp'
+import { } from '../controllers/dgp'
 import {createInventario, getAllInventarios, getInventariosCount, getInventarioById, updateInventario, deleteInventario,
         createGestInv, getAllGestInv, getCountGestInv, getByIdGestInv, updateGestInv, deleteGestInv,
         createObjeto, getAllObjetos, getCountObjetos, getByIdObjetos, updateObjetos, deleteObjetos
         } from '../controllers/inventario'
-import {
-        getUsuarios,  getUsuario, getUsuarioCount,  saveUsuario, deleteUsuario, updateUsuario,
-} from '../controllers/usuario'
+import { getUsuarios,  getUsuario, getUsuarioCount,  saveUsuario, deleteUsuario, updateUsuario} from '../controllers/usuario'
+import { createAdmin, getAdmin, getAdminByID, getAdminCount, updateAdmin, deleteAdmin } from '../controllers/administrador'
+import { createProfesor, getProfesores, getProfesor, getProfesorCount, updateProfesor, deleteProfesor } from '../controllers/profesor'
 const router = Router()
 
 

@@ -10,18 +10,24 @@ GET {{api}}/usuario/count
 ###
 POST {{api}}/usuario
 Content-Type: application/json
+
 {
-    "title": "I must create an app",
-    "description": "Using React Native"
+    "nombre_usuario": "prueba7",
+    "contraseña": "prueba7",
+    "permisos": "0",
+    "correo_electronico": "prueba7"
+
 }
+
 ###
-DELETE {{api}}/usuario/6
+DELETE {{api}}/usuario/2
 ###
-PUT {{api}}/usuario/4
+PUT {{api}}/usuario/1
 Content-Type: application/json
 
 {
-    "description": "descripcion 3",
-    "title": "titulo 3"
-
+    "nombre_usuario": "prueba7",
+    "contraseña": "prueba7",
+    "permisos": "0",
+    "correo_electronico": "prueba7"
 }

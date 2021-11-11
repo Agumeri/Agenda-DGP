@@ -1,13 +1,14 @@
 import { Router } from 'express';
-import { getUsuarios,  getUsuario, getUsuarioCount,  saveUsuario, deleteUsuario, updateUsuario, 
-        createProfesor, getProfesores, getProfesor, getProfesorCount, updateProfesor, deleteProfesor,
+import { createProfesor, getProfesores, getProfesor, getProfesorCount, updateProfesor, deleteProfesor,
         createAdmin, getAdmin, getAdminByID, getAdminCount, updateAdmin, deleteAdmin
        } from '../controllers/dgp'
 import {createInventario, getAllInventarios, getInventariosCount, getInventarioById, updateInventario, deleteInventario,
         createGestInv, getAllGestInv, getCountGestInv, getByIdGestInv, updateGestInv, deleteGestInv,
         createObjeto, getAllObjetos, getCountObjetos, getByIdObjetos, updateObjetos, deleteObjetos
         } from '../controllers/inventario'
-
+import {
+        getUsuarios,  getUsuario, getUsuarioCount,  saveUsuario, deleteUsuario, updateUsuario,
+} from '../controllers/usuario'
 const router = Router()
 
 
@@ -46,7 +47,7 @@ router.get('/usuario',getUsuarios)
  * @swagger
  * /usuario/count:
  *  get:
- *      summary:Obtener el numero de usuarios del sistema
+ *      summary: Obtener el numero de usuarios del sistema
  *      tags: [Usuario]
  * 
  */

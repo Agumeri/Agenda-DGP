@@ -58,7 +58,7 @@ const router = Router()
   * @swagger
   * /usuario:
   *  post:
-  *      summary: añade una nueva tarea
+  *      summary: añade un nuevo usuario
   *      tags: [Usuario]
   */
  router.post('/usuario',saveUsuario)
@@ -76,7 +76,7 @@ const router = Router()
   * @swagger
   * /usuario/id_user:
   *  put:
-  *      summary: actualiza una tarea por id
+  *      summary: actualiza un usuario por id
   *      tags: [Usuario]
   */
  router.put('/usuario/:id',updateUsuario)

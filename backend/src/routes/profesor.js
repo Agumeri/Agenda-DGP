@@ -13,7 +13,7 @@ const router = Router()
  * @swagger
  * /profesor:
  *  get:
- *      summary: esto obtiene todas las tareas
+ *      summary: obtiene todos los profesores
  *      tags: [Profesor]
  * 
  */

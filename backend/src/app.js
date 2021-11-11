@@ -8,7 +8,15 @@ import {options} from './swaggerOptions';
 
 const specs = swaggerJSDoc(options);
 
-import dgpRoutes from './routes/dgp';
+import userRoutes from './routes/usuario';
+import adminRoutes from './routes/administrador';
+import profeRoutes from './routes/profesor';
+import inventarioRoutes from './routes/inventario';
+import objetosRoutes from './routes/objetos';
+//import dgpRoutes from './routes/dgp';
+
+
+
 
 
 
@@ -18,7 +26,13 @@ app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
 
-app.use(dgpRoutes);
+// Usamos las rutas de cada tabla
+app.use(userRoutes);
+app.use(adminRoutes);
+app.use(profeRoutes);
+app.use(inventarioRoutes);
+app.use(objetosRoutes);
+//app.use(dgpRoutes);
 
 app.use('/docs', swaggerUI.serve, swaggerUI.setup(specs))
 

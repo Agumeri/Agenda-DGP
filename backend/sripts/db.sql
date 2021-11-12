@@ -19,10 +19,14 @@ INSERT INTO usuario (nombre_usuario, contraseña, permisos, correo_electronico) 
 -- Profesor Table --
 CREATE TABLE IF NOT EXISTS profesor(
     id_usuario INT NOT NULL,
-    id_profesor VARCHAR(100) NOT NULL,
+    id_profesor VARCHAR(100) NOT NULL UNIQUE,
     PRIMARY KEY (id_usuario,id_profesor),
     FOREIGN KEY (id_usuario) REFERENCES usuario(id)
 );
+
+INSERT INTO profesor(id_usuario, id_profesor) VALUES 
+    ('3', '1'),
+    ('2', '2');
 ------------------------
 -- Alumno_autoriza table
 CREATE TABLE IF NOT EXISTS alumno_tutoriza( 

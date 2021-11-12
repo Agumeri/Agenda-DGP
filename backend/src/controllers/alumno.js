@@ -13,11 +13,11 @@ export const createAlumno = async (req, res) => {
         0,
         req.body.correo_electronico
     ])
-    
+
     const[rows] = await connection.query('SELECT COUNT(*) FROM alumno_tutoriza')
 
     const newId = user.insertId;
-    const profId = req.params.id;
+    const profId = req.body.id_profesor;
     const alumId = "alum_" + (rows[0]["COUNT(*)"] + 1)
     
     const [result] = await connection.query("INSERT INTO alumno_tutoriza(id_usuario, id_alumno, id_profesor) VALUES (?,?,?)",[
@@ -42,13 +42,6 @@ export const getAlumnos = async (req,res) => {
     res.json(rows)
 }
 
-// Obtener el numero total de alumnos
-export const getAlumnoCount = async (req, res) => {
-    const connection = await connect()
-    const[rows] = await connection.query('SELECT COUNT(*) FROM alumno_tutoriza')
-    console.log(rows)
-    res.json(rows[0]["COUNT(*)"])
-}
 
 // Obtener un alumno por id
 export const getAlumno = async (req,res) => {
@@ -99,6 +92,14 @@ export const deleteAlumno = async (req, res) => {
     const [delete_alum_user] = await connection.query('DELETE FROM usuario WHERE id = (?)',[alum_id])
 
     res.sendStatus(204)
+}
+
+// Obtener el numero total de alumnos
+export const getAlumnoCount = async (req, res) => {
+    const connection = await connect()
+    const[rows] = await connection.query('SELECT COUNT(*) FROM alumno_tutoriza')
+    console.log(rows)
+    res.json(rows[0]["COUNT(*)"]);
 }
 
 ////////////////////////////////////////////

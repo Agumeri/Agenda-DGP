@@ -12,7 +12,16 @@ const router = Router()
  *      summary: Crea un nuevo alumno
  *      tags: [Alumno]
  */
- router.post('/alumno',createAlumno);
+router.post('/alumno',createAlumno);
+
+/**
+ * @swagger
+ * /alumno/count:
+ *  post:
+ *      summary: Obtiene el numero de alumnos
+ *      tags: [Alumno]
+ */
+router.get('/alumno/count', getAlumnoCount);
 
 /**
  * @swagger
@@ -20,9 +29,8 @@ const router = Router()
  *  get:
  *      summary: Obtiene todos los alumnos
  *      tags: [Alumno]
- * 
  */
- router.get('/alumno',getAlumnos)
+router.get('/alumno',getAlumnos);
 
 /**
  * @swagger
@@ -31,16 +39,8 @@ const router = Router()
  *      summary: Obtener un alumno de la lista de alumnos
  *      tags: [Alumno]
  */
- router.get('/alumno/:id',getAlumno)
+router.get('/alumno/:id',getAlumno);
 
- /**
- * @swagger
- * /alumno/count:
- *  post:
- *      summary: Obtiene el numero de alumnos
- *      tags: [Alumno]
- */
-router.get('/alumno/count',getAlumnoCount)
 
 /**
  * @swagger
@@ -49,7 +49,7 @@ router.get('/alumno/count',getAlumnoCount)
  *      summary: Actualiza un alumno de la lista de alumnos
  *      tags: [Alumno]
  */
- router.put('/alumno/:id',updateAlumno)
+router.put('/alumno/:id',updateAlumno);
 
  /**
  * @swagger
@@ -58,6 +58,6 @@ router.get('/alumno/count',getAlumnoCount)
  *      summary: Borrar un alumno de la base de datos
  *      tags: [Alumno]
  */
-router.delete('/alumno/:id',deleteAlumno)
+router.delete('/alumno/:id',deleteAlumno);
 
 export default router

@@ -12,7 +12,8 @@ Content-Type: application/json
     "nombre_usuario": "alumnoPOST2",
     "contraseña": "alumnoPass2-post",
     "permisos": "0",
-    "correo_electronico": "alumnoPost2@prueba"
+    "correo_electronico": "alumnoPost2@prueba",
+    "id_profesor": "1"
 }
 
 ## GET 
@@ -27,12 +28,12 @@ GET {{api}}
 
 ##PUT
 ###
-PUT {{api}}/1
+PUT {{api}}/2
 Content-Type: application/json 
 
 {
-    "nombre_usuario": "alumnoPUT",
-    "correo_electronico": "alumnoPUT_correo"
+    "nombre_usuario": "amoPUT",
+    "correo_electronico": "alumnoPUT_rreo"
 }
 
 ##DELETE

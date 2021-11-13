@@ -18,7 +18,7 @@ Content-Type: application/json
 
 ## GET 
 ###1 alumno por id
-GET {{api}}/2
+GET {{api}}/alum_1
 
 ###COUNT alumno
 GET {{api}}/count
@@ -28,7 +28,7 @@ GET {{api}}
 
 ##PUT
 ###
-PUT {{api}}/2
+PUT {{api}}/alum_2
 Content-Type: application/json 
 
 {
@@ -38,4 +38,4 @@ Content-Type: application/json
 
 ##DELETE
 ###
-DELETE {{api}}/1
+DELETE {{api}}/alum_2

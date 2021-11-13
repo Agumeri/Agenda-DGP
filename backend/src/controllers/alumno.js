@@ -10,7 +10,7 @@ export const createAlumno = async (req, res) => {
     const [user] = await connection.query("INSERT INTO usuario(nombre_usuario, contraseña, permisos, correo_electronico) VALUES (?,?,?,?)",[
         req.body.nombre_usuario,
         req.body.contraseña,
-        0,
+        2,
         req.body.correo_electronico
     ])
 

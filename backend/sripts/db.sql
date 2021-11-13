@@ -36,18 +36,18 @@ CREATE TABLE IF NOT EXISTS alumno_tutoriza(
     PRIMARY KEY (id_usuario, id_alumno)
 ); 
 
-INSERT INTO alumno_tutoriza(id_usuario, id_alumno, id_profesor) VALUES 
-    ('1', '1', '1'),
-    ('2', '2', '2');
+-- INSERT INTO alumno_tutoriza(id_usuario, id_alumno, id_profesor) VALUES 
+--     ('1', '1', '1'),
+--     ('2', '2', '2');
 
 -- Tabla medio válida --
-CREATE TABLE IF NOT EXISTS alumno_tutoriza( 
-    id_usuario INT NOT NULL, 
-    id_alumno INT NOT NULL, 
-    id_profesor VARCHAR(100) NOT NULL, 
-    CONSTRAINT FK_id_usuario FOREIGN KEY (id_usuario) REFERENCES usuario(id),
-    CONSTRAINT FK_id_profesor FOREIGN KEY (id_profesor) REFERENCES profesor(id_profesor)
-);
+-- CREATE TABLE IF NOT EXISTS alumno_tutoriza( 
+--     id_usuario INT NOT NULL, 
+--     id_alumno INT NOT NULL, 
+--     id_profesor VARCHAR(100) NOT NULL, 
+--     CONSTRAINT FK_id_usuario FOREIGN KEY (id_usuario) REFERENCES usuario(id),
+--     CONSTRAINT FK_id_profesor FOREIGN KEY (id_profesor) REFERENCES profesor(id_profesor)
+-- );
 
 INSERT INTO alumno_tutoriza (id, id_profesor) VALUES 
     ('1', '1'),
@@ -95,23 +95,15 @@ VALUES ('objeto1', 'inventario1', 'boligrafo', '32', 'escritura');
 
 
 -- Objeto tarea --
-CREATE TABLE IF NOT EXISTS tarea(
-    id_tarea varchar(100) NOT NULL,
-    id_alumno varchar(100) NOT NULL,
-    tipo varchar(50) NOT NULL,
-    tiempo_requerido time,
-    fecha date NOT NULL,
-    hora time,
-    PRIMARY KEY (id_tarea,id_alumno),
-    FOREIGN KEY (id_alumno) REFERENCES alumno_tutoriza(id_alumno)
-)
 
 CREATE TABLE IF NOT EXISTS tarea(
     id_tarea varchar(100) NOT NULL,
-    id_alumno varchar(100) NOT NULL REFERENCES alumno_tutoriza(id_alumno),
+    id_alumno varchar(100) REFERENCES alumno_tutoriza(id_alumno),
     tipo varchar(50) NOT NULL,
     tiempo_requerido time,
     fecha date NOT NULL,
     hora time,
-    PRIMARY KEY (id_tarea,id_alumno)
+    estado varchar(50),
+    tipo_multimedia varchar(50),
+    PRIMARY KEY (id_tarea)
 )

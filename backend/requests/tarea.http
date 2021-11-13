@@ -1,0 +1,43 @@
+#######################
+####--Tarea--##########
+#######################
+@api =  http://localhost:3000/tarea
+
+##POST
+###Insertar 1 tarea nueva
+POST {{api}}
+Content-Type: application/json
+
+{
+    "tipo": "tipo_generico",
+    "tiempo_requerido": "01:15:00",
+    "fecha": "2021-12-13",
+    "hora": "23:59:00",
+    "tipo_multimedia": "texto"
+}
+
+## GET 
+###1 Obtener una tarea por id
+GET {{api}}/task_2
+
+###COUNT numero de tareas del sistema
+GET {{api}}/count
+
+###GET obtener lista de todas las tareas
+GET {{api}}
+
+##PUT
+### Actualizar los datos de un profesor
+PUT {{api}}/task_2
+Content-Type: application/json 
+
+{
+    "tipo": "tipo nuevo nuevito",
+    "tipo_multimedia": "video"
+}
+
+
+###PUT
+### Finalizar una tarea (cambiar estado a finalizado)
+PUT {{api}}/state/task_2
+Content-Type: application/json 

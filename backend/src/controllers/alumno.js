@@ -1,7 +1,7 @@
 import { json } from 'express'
 import {connect} from '../databases'
 
-// Profesor //
+// Alumno //
 ////////////////////////////////////////////
 
 // Crear un alumno nuevo

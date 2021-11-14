@@ -15,3 +15,10 @@ Content-Type: application/json
     "hora": "10:30:02"
 }
 
+## GET 
+###1 autorizacion por id
+GET {{api}}/autorizacion_1
+
+
+###GET all autorizacion
+GET {{api}}

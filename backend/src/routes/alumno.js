@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { createAlumno, getAlumnos, getAlumno, getAlumnoCount, updateAlumno, deleteAlumno } from '../controllers/alumno'
+import { createAlumno, getAlumnos, getAlumno, getAlumnoCount, updateAlumno, deleteAlumno, asignarTareaAlumno } from '../controllers/alumno'
 const router = Router()
 
 /////////////////////
@@ -16,12 +16,22 @@ router.post('/alumno',createAlumno);
 
 /**
  * @swagger
+ * /alumno:
+ *  post:
+ *      summary: Asignar tarea a alumno
+ *      tags: [Alumno]
+ */
+ router.post('/alumno/asignar_tarea',asignarTareaAlumno);
+
+/**
+ * @swagger
  * /alumno/count:
  *  post:
  *      summary: Obtiene el numero de alumnos
  *      tags: [Alumno]
  */
 router.get('/alumno/count', getAlumnoCount);
+
 
 /**
  * @swagger
@@ -59,5 +69,6 @@ router.put('/alumno/:id',updateAlumno);
  *      tags: [Alumno]
  */
 router.delete('/alumno/:id',deleteAlumno);
+
 
 export default router

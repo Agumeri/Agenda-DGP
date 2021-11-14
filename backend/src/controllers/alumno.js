@@ -4,6 +4,25 @@ import {connect} from '../databases'
 // Alumno //
 ////////////////////////////////////////////
 
+// Asignar tarea a alumno
+export const asignarTareaAlumno = async (req, res) => {
+    const connection = await connect()
+    
+    const [result] = await connection.query("INSERT INTO realiza(id_alumno, id_tarea, fecha, hora) VALUES (?,?,?,?)",[
+        req.body.id_alumno,
+        req.body.id_tarea,
+        req.body.fecha,
+        req.body.hora
+    ])        
+
+    res.json({
+        "id_alumno": req.body.id_alumno,
+        "id_tarea": req.body.id_tarea,
+        "fecha": req.body.fecha,
+        "hora": req.body.hora
+    })
+}
+
 // Crear un alumno nuevo
 export const createAlumno = async (req, res) => {
     const connection = await connect()

@@ -39,3 +39,15 @@ Content-Type: application/json
 ##DELETE
 ###
 DELETE {{api}}/alum_2
+
+##POST
+###Asignar tarea a alumno
+POST {{api}}/asignar_tarea
+Content-Type: application/json
+
+{
+    "id_alumno": "1",
+    "id_tarea": "1",
+    "fecha": "22-12-2009",
+    "hora": "22:12:20"
+}

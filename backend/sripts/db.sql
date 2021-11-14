@@ -106,7 +106,7 @@ CREATE TABLE IF NOT EXISTS tarea(
     estado varchar(50),
     tipo_multimedia varchar(50),
     PRIMARY KEY (id_tarea)
-)
+);
 
 -- autorizacion Table --
 CREATE TABLE IF NOT EXISTS autorizacion(
@@ -121,3 +121,14 @@ CREATE TABLE IF NOT EXISTS autorizacion(
 
 INSERT INTO autorizacion(id_usuario, id_alumno, id_autorizacion, titulo, fecha, hora)
 VALUES ('2', '2', '1', 'titulo1', '02-02-2002','02:02:02');
+
+CREATE TABLE IF NOT EXISTS realiza(
+    id_alumno VARCHAR(100) NOT NULL REFERENCES alumno_tutoriza(id_alumno),
+    id_tarea VARCHAR(100) NOT NULL REFERENCES tarea(id_tarea),
+    fecha date NOT NULL,
+    hora time,
+    PRIMARY KEY (id_alumno, id_tarea)
+);
+
+INSERT INTO realiza(id_alumno, id_tarea, fecha, hora)
+VALUES ('2', '2', '02-02-2002','02:02:02');

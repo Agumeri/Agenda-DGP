@@ -33,6 +33,33 @@ export const createAutorizacion = async (req, res) => {
     })
 }
 
+// Obtener lista autorizaciones
+export const getAutorizaciones = async (req,res) => {
+    const connection = await connect()
+    const [rows]  = await connection.query('SELECT * FROM autorizacion')
+    res.json(rows)
+}
+
+
+// Obtener un autorizacion por id
+export const getAutorizacion = async (req,res) => {
+    const connection = await connect()
+
+    const id_autorizacion = req.params.id
+
+    const [autorizacion] = await connection.query('SELECT * FROM autorizacion WHERE id_autorizacion = (?)',[id_autorizacion])
+    console.log(autorizacion);
+    const autorizacion_id = autorizacion[0].id_autorizacion;
+
+    const [rows] = await connection.query('SELECT * FROM autorizacion WHERE id_autorizacion = (?)',[autorizacion_id])
+
+    res.json({
+        "id_autorizacion": id_autorizacion,
+        ...rows[0]
+    });
+
+}
+
 
 
 ////////////////////////////////////////////

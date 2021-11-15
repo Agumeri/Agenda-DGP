@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { getUsuarios,  getUsuario, getUsuarioCount,  saveUsuario, deleteUsuario, updateUsuario} from '../controllers/usuario'
+import { getUsuarios,  getUsuario, getUsuarioCount,  saveUsuario, deleteUsuario, updateUsuario, checkUser} from '../controllers/usuario'
 
 const router = Router()
 
@@ -81,8 +81,14 @@ const router = Router()
   */
  router.put('/usuario/:id',updateUsuario)
 
-
-
+ /**
+  * @swagger
+  * /usuario/check:
+  *  get:
+  *      summary: confirmar si un usuario existe
+  *      tags: [Usuario]
+  */
+ router.post('/usuario/check/:email',checkUser);
 
 
 export default router

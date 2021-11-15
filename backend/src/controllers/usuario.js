@@ -4,6 +4,25 @@ import {connect} from '../databases'
 
 // Usuarios //
 ////////////////////////////////////////////
+export const checkUser = async (req, res) => {
+    const connection= await connect()
+
+    const email = req.params.email;
+    const password = req.body.contraseña;
+
+    const rows = await connection.query('SELECT * FROM usuario WHERE correo_electronico=(?) and contraseña=(?)',[
+        email, 
+        password
+    ])
+
+    if(rows[0].length > 0){
+        res.sendStatus(200);
+    } else {
+        res.sendStatus(404);
+    }
+
+}
+
 export const getUsuarios = async (req,res) => {
     const connection = await connect()
     const [rows] = await connection.query('SELECT * FROM usuario')

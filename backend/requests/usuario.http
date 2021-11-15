@@ -1,7 +1,16 @@
 @api =  http://localhost:3000
 
 
+### Check si el usuario existe
+POST {{api}}/usuario/check/prueba1
+Content-Type: application/json
 
+{
+    "contraseña": "prueba1"
+}
+
+
+###
 GET {{api}}/usuario
 ###
 GET {{api}}/usuario/2

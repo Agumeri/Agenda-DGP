@@ -49,9 +49,9 @@ CREATE TABLE IF NOT EXISTS alumno_tutoriza(
 --     CONSTRAINT FK_id_profesor FOREIGN KEY (id_profesor) REFERENCES profesor(id_profesor)
 -- );
 
-INSERT INTO alumno_tutoriza (id, id_profesor) VALUES 
-    ('1', '1'),
-    ('2', '2');
+INSERT INTO alumno_tutoriza (id_usuario, id_alumno, id_profesor) VALUES 
+    ('1', '1', '1'),
+    ('2', '2', '2');
 --------------
 --Admin Table --
 CREATE TABLE IF NOT EXISTS admin(
@@ -123,12 +123,13 @@ INSERT INTO autorizacion(id_usuario, id_alumno, id_autorizacion, titulo, fecha, 
 VALUES ('2', '2', '1', 'titulo1', '02-02-2002','02:02:02');
 
 CREATE TABLE IF NOT EXISTS realiza(
+    id_usuario INT NOT NULL REFERENCES alumno_tutoriza(id_usuario),
     id_alumno VARCHAR(100) NOT NULL REFERENCES alumno_tutoriza(id_alumno),
     id_tarea VARCHAR(100) NOT NULL REFERENCES tarea(id_tarea),
     fecha date NOT NULL,
     hora time,
-    PRIMARY KEY (id_alumno, id_tarea)
+    PRIMARY KEY (id_usuario, id_alumno, id_tarea)
 );
 
-INSERT INTO realiza(id_alumno, id_tarea, fecha, hora)
-VALUES ('2', '2', '02-02-2002','02:02:02');
+INSERT INTO realiza(id_usuario, id_alumno, id_tarea, fecha, hora)
+VALUES ('2', '2', '2', '02-02-2002','02:02:02');

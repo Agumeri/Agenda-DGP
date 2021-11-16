@@ -33,34 +33,7 @@ const LoginScreen = () => {
         })
     }
 
-    return (
-        <View style={styles.container}>
-            {/* Today Task*/}
-            <View style={styles.tasksWrapper}>
-                <Text style={styles.sectionTitle}>Tareas de Hoy</Text>
-                <View style={styles.item}>
-                    {/**Aqui es donde van las tareas */}
-                </View>
-            </View>
-
-        </View> 
-    )
+    
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#E8EAED',
-    },
-    tasksWrapper:{
-        paddingTop:80,
-        paddingHorizontal: 20,
-    },
-    sectionTitle:{
-        fontSize: 24,
-        fontWeight:'bold'
-    },
-    item:{}
-})
 
 export default LoginScreen

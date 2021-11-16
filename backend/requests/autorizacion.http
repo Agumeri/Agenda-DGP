@@ -1,0 +1,24 @@
+#######################
+####--AUTORIZACIÓN--##########
+#######################
+@api =  http://localhost:3000/autorizacion
+
+##POST
+###Insertar 1 autorización
+POST {{api}}
+Content-Type: application/json
+
+{
+    "id_alumno": "2",
+    "titulo": "autorizacion3",
+    "fecha": "21-02-2022",
+    "hora": "10:30:02"
+}
+
+## GET 
+###1 autorizacion por id
+GET {{api}}/autorizacion_1
+
+
+###GET all autorizacion
+GET {{api}}

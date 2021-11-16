@@ -1,0 +1,53 @@
+#######################
+####--ALUMNO--##########
+#######################
+@api =  http://localhost:3000/alumno
+
+##POST
+###Insertar 1 alumno
+POST {{api}}
+Content-Type: application/json
+
+{
+    "nombre_usuario": "alumnoPOST2",
+    "contraseña": "alumnoPass2-post",
+    "permisos": "0",
+    "correo_electronico": "alumnoPost2@prueba",
+    "id_profesor": "1"
+}
+
+## GET 
+###1 alumno por id
+GET {{api}}/alum_1
+
+###COUNT alumno
+GET {{api}}/count
+
+###GET all alumno
+GET {{api}}
+
+##PUT
+###
+PUT {{api}}/alum_2
+Content-Type: application/json 
+
+{
+    "nombre_usuario": "amoPUT",
+    "correo_electronico": "alumnoPUT_rreo"
+}
+
+##DELETE
+###
+DELETE {{api}}/alum_2
+
+##POST
+###Asignar tarea a alumno
+POST {{api}}/asignar_tarea
+Content-Type: application/json
+
+{
+    "id_alumno": "1",
+    "id_tarea": "1",
+    "fecha": "22-12-2009",
+    "hora": "22:12:20"
+}

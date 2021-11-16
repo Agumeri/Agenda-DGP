@@ -1,0 +1,42 @@
+@api =  http://localhost:3000
+
+
+### Check si el usuario existe
+POST {{api}}/usuario/check/prueba1
+Content-Type: application/json
+
+{
+    "contraseña": "prueba1"
+}
+
+
+###
+GET {{api}}/usuario
+###
+GET {{api}}/usuario/2
+###
+GET {{api}}/usuario/count
+###
+POST {{api}}/usuario
+Content-Type: application/json
+
+{
+    "nombre_usuario": "prueba7",
+    "contraseña": "prueba7",
+    "permisos": "0",
+    "correo_electronico": "prueba7"
+
+}
+
+###
+DELETE {{api}}/usuario/2
+###
+PUT {{api}}/usuario/1
+Content-Type: application/json
+
+{
+    "nombre_usuario": "prueba7",
+    "contraseña": "prueba7",
+    "permisos": "0",
+    "correo_electronico": "prueba7"
+}

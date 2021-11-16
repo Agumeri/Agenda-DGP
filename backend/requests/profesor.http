@@ -1,0 +1,40 @@
+#######################
+####--Profesor--##########
+#######################
+@api =  http://localhost:3000/profesor
+
+##POST
+###Insertar 1 admin
+POST {{api}}
+Content-Type: application/json
+
+{
+    "nombre_usuario": "profesor marvado",
+    "contraseña": "jvnfuytesoiryxcf89",
+    "permisos": "1",
+    "correo_electronico": "jajasi@soyyo.com"
+}
+
+## GET 
+###1 Obtener un profesor por id
+GET {{api}}/prof_1
+
+###COUNT numero de profesores
+GET {{api}}/count
+
+###GET obtener lista de todos los profesores
+GET {{api}}
+
+##PUT
+### Actualizar los datos de un profesor
+PUT {{api}}/prof_1
+Content-Type: application/json 
+
+{
+    "nombre_usuario": "profesor manzanillo",
+    "correo_electronico": "test1@test.es"
+}
+
+##DELETE
+###
+DELETE {{api}}/prof_1

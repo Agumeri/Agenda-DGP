@@ -1,79 +1,66 @@
-import React, {useEffect, useState} from "react";
-import {Button, TextInput, View, Text, Alert} from "react-native"
+import React, {useEffect, useState, createRef} from "react";
+import {Button, TextInput, View, Text, Alert, StyleSheet} from "react-native"
 import { useNavigation } from "@react-navigation/core";
 import { checkLogin } from "../api";
 
 const LoginScreen = () => {
+    // Variables to control data value
+    const [userEmail, setUserEmail] = useState('') // Email Data
+    const [userPass, setUserPass] = useState('') // Pass Data
+    const [loading, setLoading] = useState(false) //Load data
+    const navigation = useNavigation() //Navigate option
+    var result = "Failure"
+    const passwordInputRef = createRef()
+
     const checkUser = async (loginData) => {
-        console.log(loginData);
-        // usuario y contraseña se obtendrían de userdata entiendo, pero no se acceder a el
-        const data = checkLogin("email","contraseña"); 
-        data.then( (result) => {
-            console.log(result);
-            if(result.ok === true){
-                navigation.navigate("MenuInicio")
-            } else {
-                // Poner un alert diciendo que falla user o passwd
-            }
-        });
-    }
 
-    const navigation = useNavigation();
-
-    const [data, setData] = React.useState({
-        usuario: '',
-        clave: '',
-        check_textInputChange: false,
-        secureTextEntry: true,
-        isValidUser: true,
-        isValidPassword: true,
-    });
-    
-    const textInputChange = (val) => {
-        if( val.trim().length >= 4 ) {
-            setData({
-                ...data,
-                username: val,
-                check_textInputChange: true,
-                isValidUser: true
-            });
-        } else {
-            setData({
-                ...data,
-                username: val,
-                check_textInputChange: false,
-                isValidUser: false
-            });
+        if(!userEmail || !userPass) {
+            alert("Se ha dejado un campo vacio")
+            return
         }
-    }
-    
 
+        setLoading(true)
+        let dataToSend = {usuario: userEmail, contraseña: userPass}
+        result = checkLogin(dataToSend['usuario'], dataToSend['contraseña'])
+        setLoading(false)
+        result.then( (succes) => {
+            if(succes.ok === true) {
+                navigation.navigate("MenuTareas")
+            }
+            else {
+                alert("Se ha equivocado introduciendo algun campo")
+            }
+        })
+    }
 
     return (
-        <View>
-            <Text>Usuario: </Text>
-          <TextInput 
-                    placeholder="Usuario"
-                    onChangeText={(val) => textInputChange(val)}
-                />
-            <Text style={[{
-                marginTop: 35
-            }]}>Clave:</Text>
-            <TextInput 
-                    placeholder="Clave"
-                    onChangeText={(val) => textInputChange(val)}
-                />
-            <Button 
-              title="Acceder" 
-              onPress={() => 
-                checkUser("usuario y contraseña")
-              }
-            />
-        </View>
-        
+        <View style={styles.container}>
+            {/* Today Task*/}
+            <View style={styles.tasksWrapper}>
+                <Text style={styles.sectionTitle}>Tareas de Hoy</Text>
+                <View style={styles.item}>
+                    {/**Aqui es donde van las tareas */}
+                </View>
+            </View>
+
+        </View> 
     )
 }
 
-
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#E8EAED',
+    },
+    tasksWrapper:{
+        paddingTop:80,
+        paddingHorizontal: 20,
+    },
+    sectionTitle:{
+        fontSize: 24,
+        fontWeight:'bold'
+    },
+    item:{}
+})
 
 export default LoginScreen

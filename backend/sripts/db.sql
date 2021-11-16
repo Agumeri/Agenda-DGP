@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS usuario(
 INSERT INTO usuario (nombre_usuario, contraseña, permisos, correo_electronico) VALUES 
     ('prueba1', 'prueba1', '0','prueba1'),
     ('pruebaAdmin','admin1234','0','pruebaAdmin@prueba'),
-     ('prueba2', 'prueba2', '0','prueba2');
+    ('prueba2', 'prueba2', '0','prueba2');
 ------------------
 -- Profesor Table --
 CREATE TABLE IF NOT EXISTS profesor(
@@ -36,31 +36,18 @@ CREATE TABLE IF NOT EXISTS alumno_tutoriza(
     PRIMARY KEY (id_usuario, id_alumno)
 ); 
 
--- INSERT INTO alumno_tutoriza(id_usuario, id_alumno, id_profesor) VALUES 
---     ('1', '1', '1'),
---     ('2', '2', '2');
-
--- Tabla medio válida --
--- CREATE TABLE IF NOT EXISTS alumno_tutoriza( 
---     id_usuario INT NOT NULL, 
---     id_alumno INT NOT NULL, 
---     id_profesor VARCHAR(100) NOT NULL, 
---     CONSTRAINT FK_id_usuario FOREIGN KEY (id_usuario) REFERENCES usuario(id),
---     CONSTRAINT FK_id_profesor FOREIGN KEY (id_profesor) REFERENCES profesor(id_profesor)
--- );
-
 INSERT INTO alumno_tutoriza (id_usuario, id_alumno, id_profesor) VALUES 
     ('1', '1', '1'),
     ('2', '2', '2');
 --------------
 --Admin Table --
-CREATE TABLE IF NOT EXISTS admin(
+CREATE TABLE IF NOT EXISTS administrador(
     id_admin VARCHAR(100) NOT NULL,
     id_usuario_inAdmin INT NOT NULL,
     PRIMARY KEY (id_usuario_inAdmin, id_admin),
     FOREIGN KEY (id_usuario_inAdmin) REFERENCES usuario(id)
 );
-INSERT INTO admin (id_admin, id_usuario_inAdmin) VALUES ('admin01','2');
+INSERT INTO administrador(id_admin, id_usuario_inAdmin) VALUES ('admin01','2');
 ----------------
 --inventario Table --
 CREATE TABLE IF NOT EXISTS inventario(
@@ -103,7 +90,6 @@ CREATE TABLE IF NOT EXISTS tarea(
     tiempo_requerido time,
     fecha date NOT NULL,
     hora time,
-    estado varchar(50),
     tipo_multimedia varchar(50),
     PRIMARY KEY (id_tarea)
 );
@@ -126,10 +112,10 @@ CREATE TABLE IF NOT EXISTS realiza(
     id_usuario INT NOT NULL REFERENCES alumno_tutoriza(id_usuario),
     id_alumno VARCHAR(100) NOT NULL REFERENCES alumno_tutoriza(id_alumno),
     id_tarea VARCHAR(100) NOT NULL REFERENCES tarea(id_tarea),
-    fecha date NOT NULL,
-    hora time,
+    fecha_completada date,
+    completada BOOLEAN,
     PRIMARY KEY (id_usuario, id_alumno, id_tarea)
 );
 
-INSERT INTO realiza(id_usuario, id_alumno, id_tarea, fecha, hora)
-VALUES ('2', '2', '2', '02-02-2002','02:02:02');
+INSERT INTO realiza(id_usuario, id_alumno, id_tarea, completada)
+VALUES ('2', '2', '2', '0');

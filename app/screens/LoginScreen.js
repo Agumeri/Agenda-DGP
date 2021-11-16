@@ -1,5 +1,5 @@
 import React, {useEffect, useState, createRef} from "react";
-import {Button, TextInput, View, Text, Alert, StyleSheet} from "react-native"
+import {Button, TextInput, View, Text, Alert} from "react-native"
 import { useNavigation } from "@react-navigation/core";
 import { checkLogin } from "../api";
 
@@ -33,7 +33,30 @@ const LoginScreen = () => {
         })
     }
 
-    
+    return (
+        <View>
+            <Text>Usuario: </Text>
+            <TextInput 
+                placeholder="Usuario"
+                onChangeText={(userEmail) => setUserEmail(userEmail)}
+            />
+            <Text style={[{
+                marginTop: 35
+            }]}>Clave:</Text>
+            <TextInput 
+                placeholder="Clave"
+                onChangeText={(userPass) => setUserPass(userPass)}
+            />
+            <Button 
+              title="Acceder" 
+              onPress={() => 
+                checkUser("usuario y contraseña")
+              }
+            />
+        </View> 
+    )
 }
+
+
 
 export default LoginScreen

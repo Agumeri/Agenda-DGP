@@ -1,44 +1,55 @@
 import React,{useEffect, useState, createRef} from "react";
-import {View, Text, StyleSheet} from "react-native";
+import {Button, View, Text, StyleSheet} from "react-native";
 import { useNavigation } from "@react-navigation/core";
 import { getInfoTask } from "../api";
 import Task from '../components/Task';
 
-const MenuTareas = ({navigation}) => {
+const  MenuTareas = ({ route, navigation }) => {
     // Variable for data
-    const userName = navigation.getParam('user')
-    const [task, setTask] = useState('') // Task
-    const [userPass, setUserPass] = useState('') // Pass Data
-    const [loading, setLoading] = useState(false) //Load data
+    const nombreUser = route.params['nombreUser']   //User Name
+    const [listaTareas, setListaTareas] = useState([])
 
-    const result = getInfoTask("alum_3")
-    let tareas = "Vacio", estado = "Vacio"
+    const handleGetTareas = async () =>{
+        console.log("Entro a hacer cositis")
+        const result = getInfoTask(nombreUser)        
 
-    result.then( response => 
-        response.json().then( data => ({
-            data: data,
-            status: response.status
+        result.then( response =>  response.json().then( data => ({
+                data: data,
+                status: response.status
+        })))
+        .then( res => {
+            console.log(res)
+            if(res.status == 200) {
+                setListaTareas(res.data)
+            } else {
+                console.log("No hay tareas")
+                //setListaTareas({tipo: "Ninguno"})
+            }
         })
-        )
-    ).then( res => {
-        console.log(res.data)
-    })
+    }
 
     return (
         <View style={styles.container}>
             {/* Tareas de Hoy*/}
             <View style={styles.taskWrapper}>
                 <Text style={styles.sectionTitle}> Tareas de Hoy </Text>
+                {/* Aqui es donde va cada Tarea */}
                 <View style={styles.item}>
-                    {/* Aqui es donde va cada Tarea */}
-                    <Task text={'Tarea 1'}/>
-                    <Task text={'Tarea 2'}/>
-                    <Task text={'Tarea 3'}/>
+                    {
+                        listaTareas.map((item, index) => {
+                            return <Task key={index} text={item.tipo}/>
+                        })
+                    }
                 </View>
+                <Button 
+                    title="Refrescar tareas" 
+                    onPress={() => handleGetTareas()}
+                />
             </View>
         </View>
     )
 }
+
 
 const styles = StyleSheet.create({
     container: {
@@ -59,3 +70,6 @@ const styles = StyleSheet.create({
 })
 
 export default MenuTareas
+
+
+

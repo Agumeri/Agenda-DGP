@@ -5,7 +5,7 @@ import { checkLogin } from "../api";
 
 const LoginScreen = () => {
     // Variables to control data value
-    const [userEmail, setUserEmail] = useState('') // Email Data
+    const [user, setUser] = useState('') // Email Data
     const [userPass, setUserPass] = useState('') // Pass Data
     const [loading, setLoading] = useState(false) //Load data
     const navigation = useNavigation() //Navigate option
@@ -14,18 +14,20 @@ const LoginScreen = () => {
 
     const checkUser = async (loginData) => {
 
-        if(!userEmail || !userPass) {
+        if(!user || !userPass) {
             alert("Se ha dejado un campo vacio")
             return
         }
 
         setLoading(true)
-        let dataToSend = {usuario: userEmail, contraseña: userPass}
+        let dataToSend = {usuario: user, contraseña: userPass}
         result = checkLogin(dataToSend['usuario'], dataToSend['contraseña'])
         setLoading(false)
         result.then( (succes) => {
             if(succes.ok === true) {
-                navigation.navigate("MenuInicio")
+                navigation.navigate("MenuTareas", {
+                    nombreUser: user
+                })
             }
             else {
                 alert("Se ha equivocado introduciendo algun campo")
@@ -40,14 +42,14 @@ const LoginScreen = () => {
             paddingTop: 20,
 
         }]}>
-            <Text><b>Correo electrónico: </b></Text>
+            <Text>Correo electrónico:</Text>
             <TextInput style={[{backgroundColor: "#ffff"}]}
                 placeholder="Introduzca su correo electronico"
-                onChangeText={(userEmail) => setUserEmail(userEmail)}
+                onChangeText={(user) => setUser(user)}
             />
             <Text style={[{
                 marginTop: 35
-            }]}><b>Contraseña: </b></Text>
+            }]}>Contraseña: </Text>
             <TextInput 
                 style={[{ marginBottom: 35, backgroundColor: "#ffff"}]}
                 placeholder="Introduzca su contraseña"

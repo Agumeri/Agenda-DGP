@@ -28,7 +28,7 @@ GET {{api}}/count
 GET {{api}}
 
 ###GET obtener lista de tareas dadas un alumno
-GET {{api}}/list/alum_3
+GET {{api}}/list/developer
 ##PUT
 ### Actualizar los datos de un profesor
 PUT {{api}}/task_2

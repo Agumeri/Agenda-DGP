@@ -10,7 +10,7 @@ export const checkUser = async (req, res) => {
     const email = req.params.email;
     const password = req.body.contraseña;
 
-    const rows = await connection.query('SELECT * FROM usuario WHERE correo_electronico=(?) and contraseña=(?)',[
+    const rows = await connection.query('SELECT * FROM usuario WHERE nombre_usuario=(?) and contraseña=(?)',[
         email, 
         password
     ])

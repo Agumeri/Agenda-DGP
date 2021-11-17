@@ -25,7 +25,7 @@ const LoginScreen = () => {
         setLoading(false)
         result.then( (succes) => {
             if(succes.ok === true) {
-                navigation.navigate("MenuTareas")
+                navigation.navigate("MenuInicio")
             }
             else {
                 alert("Se ha equivocado introduciendo algun campo")
@@ -34,17 +34,23 @@ const LoginScreen = () => {
     }
 
     return (
-        <View>
-            <Text>Usuario: </Text>
-            <TextInput 
-                placeholder="Usuario"
+        <View style={[{
+            paddingLeft: 20,
+            paddingRight: 20,
+            paddingTop: 20,
+
+        }]}>
+            <Text><b>Correo electrónico: </b></Text>
+            <TextInput style={[{backgroundColor: "#ffff"}]}
+                placeholder="Introduzca su correo electronico"
                 onChangeText={(userEmail) => setUserEmail(userEmail)}
             />
             <Text style={[{
                 marginTop: 35
-            }]}>Clave:</Text>
+            }]}><b>Contraseña: </b></Text>
             <TextInput 
-                placeholder="Clave"
+                style={[{ marginBottom: 35, backgroundColor: "#ffff"}]}
+                placeholder="Introduzca su contraseña"
                 onChangeText={(userPass) => setUserPass(userPass)}
             />
             <Button 

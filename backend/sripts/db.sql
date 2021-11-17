@@ -90,6 +90,7 @@ CREATE TABLE IF NOT EXISTS tarea(
     tiempo_requerido time,
     fecha date NOT NULL,
     hora time,
+    estado varchar(100),
     tipo_multimedia varchar(50),
     PRIMARY KEY (id_tarea)
 );

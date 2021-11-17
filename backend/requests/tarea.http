@@ -9,11 +9,12 @@ POST {{api}}
 Content-Type: application/json
 
 {
-    "tipo": "tipo_generico",
+    "id_alumno": "alum_3",
+    "tipo": "Poner Microondas",
     "tiempo_requerido": "01:15:00",
     "fecha": "2021-12-13",
     "hora": "23:59:00",
-    "tipo_multimedia": "texto"
+    "tipo_multimedia": "Pictogramas"
 }
 
 ## GET 
@@ -26,6 +27,8 @@ GET {{api}}/count
 ###GET obtener lista de todas las tareas
 GET {{api}}
 
+###GET obtener lista de tareas dadas un alumno
+GET {{api}}/list/alum_3
 ##PUT
 ### Actualizar los datos de un profesor
 PUT {{api}}/task_2

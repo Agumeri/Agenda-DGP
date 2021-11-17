@@ -71,3 +71,14 @@ export const updateTaskState = async (req, res) => {
     ])
     res.send("Estado de la tarea actualizado");
 }
+
+// Obetener una tarea dada un id de alumno
+export const getTareaByAlum = async (req, res) => {
+    const connection = await connect()
+
+    const idAlum = req.params.id_alum
+
+    const [result] = await connection.query("SELECT tipo, tiempo_requerido, fecha, hora, tipo_multimedia, estado FROM tarea WHERE id_alumno = ?", idAlum)
+
+    res.json(result)
+}

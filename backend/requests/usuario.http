@@ -42,4 +42,4 @@ Content-Type: application/json
 }
 
 ###
-GET {{api}}/usuario/32/permisos
+GET {{api}}/usuario/paco/permisos

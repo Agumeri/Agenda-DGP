@@ -24,8 +24,8 @@ export const getInfoTask = async (user) => {
     })
 }
 
-export const getPermisosUsuario = async (id) => {
-  const url = API+'/usuario/' + id + '/permisos'
+export const getPermisosUsuario = async (correo_electronico) => {
+  const url = API+'/usuario/' + correo_electronico + '/permisos'
   return fetch(url,{
       method: 'GET',
       headers: {

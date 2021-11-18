@@ -25,11 +25,13 @@ export const checkUser = async (req, res) => {
 
 export const getUsuarioPermisos = async (req,res) => {
     const connection = await connect()
-    const [permisos] = await connection.query('SELECT permisos FROM usuario WHERE id = ?',[req.params.id])
+    const [user] = await connection.query('SELECT * FROM usuario WHERE correo_electronico = (?)',[req.params.correo_electronico])
+    const permisos = user[0].permisos;
     res.json({
         "permisos": permisos
     })
 }
+
 
 export const getUsuarios = async (req,res) => {
     const connection = await connect()

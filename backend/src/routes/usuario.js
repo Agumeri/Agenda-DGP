@@ -93,12 +93,12 @@ const router = Router()
 
  /**
   * @swagger
-  * /usuario/id_user/permisos:
+  * /usuario/correo_electronico/permisos:
   *  get:
-  *      summary: Obtener los permisos de un usuario mediante su id
+  *      summary: Obtener los permisos de un usuario mediante su correo_electronico
   *      tags: [Usuario]
   */
-router.get('/usuario/:id/permisos', getUsuarioPermisos)
+router.get('/usuario/:correo_electronico/permisos', getUsuarioPermisos)
 
 
 export default router

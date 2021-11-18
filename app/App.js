@@ -7,6 +7,7 @@ import MenuTareas from './screens/MenuTareas'
 import MenuInicio from './screens/MenuInicio'
 import MenuAdmin from './screens/MenuAdmin'
 import NuevoAlumno from './screens/NuevoAlumno'
+import NuevoProfesor from './screens/NuevoProfesor';
 
 const Stack = createStackNavigator();
 
@@ -36,6 +37,11 @@ const App = () => {
 
         <Stack.Screen name="NuevoAlumno" component={NuevoAlumno} options={{
           title: 'Crear Alumno'
+        }}
+        />
+
+        <Stack.Screen name="NuevoProfesor" component={NuevoProfesor} options={{
+          title: 'Crear Profesor'
         }}
         />
 

@@ -30,6 +30,9 @@ const MenuAdmin = ({ route, navigation }) => {
 
             <Button
                 title="Nuevo profesor"
+                onPress={() =>
+                    navigation.navigate("NuevoProfesor")
+                }
             />
 
             <Button

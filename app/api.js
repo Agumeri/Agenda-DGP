@@ -34,6 +34,21 @@ export const getPermisosUsuario = async (correo_electronico) => {
   })
 }
 
+
+export const createProfesor = async (username,passwd,email) => {
+  return fetch(API + '/profesor', {
+      method: 'POST',
+      headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        nombre_usuario: username,
+        contraseña: passwd,
+        correo_electronico: email
+      })
+  });
+}
 /*
   Map<String, dynamic> toJson() => {
     'nombre': nombre,

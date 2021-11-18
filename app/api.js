@@ -24,6 +24,16 @@ export const getInfoTask = async (user) => {
     })
 }
 
+export const getPermisosUsuario = async (id) => {
+  const url = API+'/usuario/' + id + '/permisos'
+  return fetch(url,{
+      method: 'GET',
+      headers: {
+          'Content-Type': 'application/json'
+      }
+  })
+}
+
 /*
   Map<String, dynamic> toJson() => {
     'nombre': nombre,

@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { getUsuarios,  getUsuario, getUsuarioCount,  saveUsuario, deleteUsuario, updateUsuario, checkUser} from '../controllers/usuario'
+import { getUsuarios,  getUsuario, getUsuarioCount,  saveUsuario, deleteUsuario, updateUsuario, checkUser, getUsuarioPermisos} from '../controllers/usuario'
 
 const router = Router()
 
@@ -89,6 +89,16 @@ const router = Router()
   *      tags: [Usuario]
   */
  router.post('/usuario/check/:email',checkUser);
+
+
+ /**
+  * @swagger
+  * /usuario/id_user/permisos:
+  *  get:
+  *      summary: Obtener los permisos de un usuario mediante su id
+  *      tags: [Usuario]
+  */
+router.get('/usuario/:id/permisos', getUsuarioPermisos)
 
 
 export default router

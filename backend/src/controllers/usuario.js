@@ -23,6 +23,14 @@ export const checkUser = async (req, res) => {
 
 }
 
+export const getUsuarioPermisos = async (req,res) => {
+    const connection = await connect()
+    const [permisos] = await connection.query('SELECT permisos FROM usuario WHERE id = ?',[req.params.id])
+    res.json({
+        "permisos": permisos
+    })
+}
+
 export const getUsuarios = async (req,res) => {
     const connection = await connect()
     const [rows] = await connection.query('SELECT * FROM usuario')

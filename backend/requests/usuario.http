@@ -21,9 +21,9 @@ POST {{api}}/usuario
 Content-Type: application/json
 
 {
-    "nombre_usuario": "prueba7",
+    "nombre_usuario": "prueba111",
     "contraseña": "prueba7",
-    "permisos": "0",
+    "permisos": "2",
     "correo_electronico": "prueba7"
 
 }
@@ -40,3 +40,6 @@ Content-Type: application/json
     "permisos": "0",
     "correo_electronico": "prueba7"
 }
+
+###
+GET {{api}}/usuario/32/permisos

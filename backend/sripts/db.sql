@@ -8,13 +8,13 @@ CREATE TABLE IF NOT EXISTS usuario(
     nombre_usuario VARCHAR(100) NOT NULL,
     contraseña CHAR(60) NOT NULL,
     permisos INT NOT NULL,
-    correo_electronico VARCHAR(100) NOT NULL,
+    correo_electronico VARCHAR(100) NOT NULL UNIQUE,
     PRIMARY KEY (id)
 );
 INSERT INTO usuario (nombre_usuario, contraseña, permisos, correo_electronico) VALUES 
-    ('prueba1', 'prueba1', '0','prueba1'),
-    ('pruebaAdmin','admin1234','0','pruebaAdmin@prueba'),
-    ('prueba2', 'prueba2', '0','prueba2');
+    ('prueba_admin', 'prueba_admin', '0','admin@gmail.com'),
+    ('prueba_prof','prueba_prof','1','prof@gmail.com'),
+    ('prueba_alumno', 'prueba_alumno', '2','alumno@gmail.com');
 ------------------
 -- Profesor Table --
 CREATE TABLE IF NOT EXISTS profesor(
@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS profesor(
 
 INSERT INTO profesor(id_usuario, id_profesor) VALUES 
     ('3', '1'),
-    ('2', '2');
+    ('4', '1');
 ------------------------
 -- Alumno_autoriza table
 CREATE TABLE IF NOT EXISTS alumno_tutoriza( 

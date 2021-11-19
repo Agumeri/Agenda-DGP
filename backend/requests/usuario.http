@@ -2,11 +2,11 @@
 
 
 ### Check si el usuario existe
-POST {{api}}/usuario/check/prueba1
+POST {{api}}/usuario/check/prueba2
 Content-Type: application/json
 
 {
-    "contraseña": "prueba1"
+    "contraseña": "prueba2"
 }
 
 

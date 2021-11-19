@@ -53,6 +53,7 @@ const LoginScreen = () => {
                             console.log("Permiso erroneo")
                         }
                     })
+                    /*
                 if (perm == 0) {
                     navigation.navigate("MenuAdmin", {
                         nombreUser: user
@@ -67,7 +68,7 @@ const LoginScreen = () => {
                     navigation.navigate("MenuTareas", {
                         nombreUser: user
                     })
-                }
+                }*/
 
             }
             else {

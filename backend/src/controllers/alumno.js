@@ -42,7 +42,11 @@ export const createAlumno = async (req, res) => {
     const[rows] = await connection.query('SELECT COUNT(*) FROM alumno_tutoriza')
 
     const newId = user.insertId;
-    const profId = req.body.id_profesor;
+
+    const [userE] = await connection.query('SELECT * FROM usuario WHERE correo_electronico = ? AND permisos = ?',[req.body.correo_electronico_profesor, 1])
+    const userId = userE[0].id;
+    const [prof] = await connection.query('SELECT * FROM profesor WHERE id_usuario = ?',[userId])
+    const profId = prof[0].id_profesor;
     const alumId = "alum_" + (rows[0]["COUNT(*)"] + 1)
     
     const [result] = await connection.query("INSERT INTO alumno_tutoriza(id_usuario, id_alumno, id_profesor) VALUES (?,?,?)",[

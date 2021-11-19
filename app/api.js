@@ -49,6 +49,23 @@ export const createProfesor = async (username,passwd,email) => {
       })
   });
 }
+
+export const createAlumno = async (username,passwd,email, email_teacher) => {
+  return fetch(API + '/alumno', {
+      method: 'POST',
+      headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        nombre_usuario: username,
+        contraseña: passwd,
+        correo_electronico: email,
+        correo_electronico_profesor: email_teacher
+      })
+  });
+}
+
 /*
   Map<String, dynamic> toJson() => {
     'nombre': nombre,

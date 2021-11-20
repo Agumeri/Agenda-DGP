@@ -25,8 +25,8 @@ CREATE TABLE IF NOT EXISTS profesor(
 );
 
 INSERT INTO profesor(id_usuario, id_profesor) VALUES 
-    ('3', '1'),
-    ('4', '1');
+    ('1', '1'),
+    ('2', '1');
 ------------------------
 -- Alumno_autoriza table
 CREATE TABLE IF NOT EXISTS alumno_tutoriza( 

@@ -13,7 +13,7 @@ Content-Type: application/json
     "contraseña": "alumnoPass2-post",
     "permisos": "2",
     "correo_electronico": "alumnoPost2@prueba",
-    "correo_electronico_profesor": "paco"
+    "correo_electronico_profesor": "prof@gmail.com"
 }
 
 ## GET 

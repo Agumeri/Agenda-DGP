@@ -9,16 +9,16 @@ POST {{api}}
 Content-Type: application/json
 
 {
-    "nombre_usuario": "alumnoPOST2",
-    "contraseña": "alumnoPass2-post",
+    "nombre_usuario": "alumnoPrueba",
+    "contraseña": "1234",
     "permisos": "2",
-    "correo_electronico": "alumnoPost2@prueba",
-    "correo_electronico_profesor": "prof@gmail.com"
+    "correo_electronico": "test@test.com",
+    "correo_electronico_profesor": "nuevesito@hotmail.es"
 }
 
 ## GET 
 ###1 alumno por id
-GET {{api}}/alum_1
+GET {{api}}/alum_3
 
 ###COUNT alumno
 GET {{api}}/count
@@ -46,8 +46,8 @@ POST {{api}}/asignar_tarea
 Content-Type: application/json
 
 {
-    "id_alumno": "1",
-    "id_tarea": "1",
+    "id_alumno": "3",
+    "id_tarea": "task_1",
     "fecha": "22-12-2009",
     "hora": "22:12:20"
 }

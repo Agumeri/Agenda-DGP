@@ -80,7 +80,7 @@ export const getAlumno = async (req,res) => {
 
     const [alum] = await connection.query('SELECT * FROM alumno_tutoriza WHERE id_alumno = (?)',[id_alum])
     console.log(alum);
-    const alum_id = alum[0].id_alumno;
+    const alum_id = alum[0].id_usuario;
 
     const [rows] = await connection.query('SELECT * FROM usuario WHERE id = (?)',[alum_id])
 

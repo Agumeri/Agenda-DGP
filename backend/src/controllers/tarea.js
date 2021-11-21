@@ -78,13 +78,13 @@ export const getTareaByAlum = async (req, res) => {
 
     const nombreAlum = req.params.id_alum
 
-    const [usuario] = await connection.query("SELECT id from usuario WHERE nombre_usuario = ?",nombreAlum)
+    const [usuario] = await connection.query("SELECT id from usuario WHERE correo_electronico = ?",nombreAlum)
     const idUsuario = usuario[0]['id']
 
     const [alumno] = await connection.query("SELECT id_alumno FROM alumno_tutoriza WHERE id_usuario = ?", idUsuario)
     const idAlumno = alumno[0]['id_alumno']
 
-    const [result] = await connection.query("SELECT tipo, tiempo_requerido, fecha, hora, tipo_multimedia, estado FROM tarea WHERE id_alumno = ?", idAlumno)
+    const [result] = await connection.query("SELECT id_tarea, tipo, tiempo_requerido, fecha, hora, tipo_multimedia, estado FROM tarea WHERE id_alumno = ?", idAlumno)
 
     res.json(result)
 }

@@ -10,16 +10,16 @@ Content-Type: application/json
 
 {
     "id_alumno": "alum_3",
-    "tipo": "Poner Microondas",
-    "tiempo_requerido": "01:15:00",
-    "fecha": "2021-12-13",
+    "tipo": "Ir al ayuntamiento de Granada",
+    "tiempo_requerido": "02:00:00",
+    "fecha": "2021-11-30",
     "hora": "23:59:00",
-    "tipo_multimedia": "Pictogramas"
+    "tipo_multimedia": "Imagen"
 }
 
 ## GET 
 ###1 Obtener una tarea por id
-GET {{api}}/task_2
+GET {{api}}/task_1
 
 ###COUNT numero de tareas del sistema
 GET {{api}}/count

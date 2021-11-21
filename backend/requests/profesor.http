@@ -17,7 +17,7 @@ Content-Type: application/json
 
 ## GET 
 ###1 Obtener un profesor por id
-GET {{api}}/prof_1
+GET {{api}}/prof_4
 
 ###COUNT numero de profesores
 GET {{api}}/count

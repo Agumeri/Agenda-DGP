@@ -3,11 +3,18 @@ import {Button, View, Text, StyleSheet} from "react-native";
 import { useNavigation } from "@react-navigation/core";
 import { getInfoTask } from "../api";
 import Task from '../components/Task';
+import { BottomSheet } from "react-native-elements";
 
 const  MenuTareas = ({ route, navigation }) => {
     // Variable for data
     const nombreUser = route.params['nombreUser']   //User Name
     const [listaTareas, setListaTareas] = useState([])
+
+    const goToTask = async (id_task) => {
+        navigation.navigate("InfoTarea", {
+            idTask: id_task
+        })
+    }
 
     const handleGetTareas = async () =>{
         console.log("Entro a hacer cositis")
@@ -37,11 +44,12 @@ const  MenuTareas = ({ route, navigation }) => {
                 <View style={styles.item}>
                     {
                         listaTareas.map((item, index) => {
-                            return <Task key={index} text={item.tipo}/>
+                            return <Button key={index} title={item.tipo} onPress={() => goToTask(item.id_tarea)} />
                         })
                     }
                 </View>
                 <Button 
+                    style={refreshButton.container}
                     title="Refrescar tareas" 
                     onPress={() => handleGetTareas()}
                 />
@@ -66,6 +74,13 @@ const styles = StyleSheet.create({
     },
     item: {
         marginTop: 30,
+    }
+})
+
+const refreshButton = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#AC33FF'
     }
 })
 

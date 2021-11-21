@@ -66,6 +66,16 @@ export const createAlumno = async (username,passwd,email, email_teacher) => {
   });
 }
 
+export const getDetailsTask = async (id_task) => {
+  const url = API+'/tarea/' + id_task
+  return fetch(url,{
+      method: 'GET',
+      headers: {
+          'Content-Type': 'application/json'
+      }
+  })
+}
+
 /*
   Map<String, dynamic> toJson() => {
     'nombre': nombre,

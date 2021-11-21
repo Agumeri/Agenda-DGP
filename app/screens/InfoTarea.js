@@ -1,4 +1,4 @@
-import React,{useEffect, useState, createRef} from "react";
+import React,{useEffect, useState, ListItem, createRef} from "react";
 import {Button, View, Text, StyleSheet} from "react-native";
 import Header from '../components/Header'
 import { getDetailsTask } from "../api";
@@ -50,7 +50,17 @@ const InfoTarea = ({route}) => {
                 {/* Aqui es donde va cada Tarea */}
                 <View style={styles.item}>
                     {
-                        infoTask.map((item, index) => {
+                        infoTask.map((info) => {
+                            return <ul key="a">
+                                        <li>id_tarea --- {info.id_tarea}</li>
+                                        <li>id_alumno --- {info.id_alumno}</li>
+                                        <li>tipo --- {info.tipo}</li>
+                                        <li>tiempo_requerido --- {info.tiempo_requerido}</li>
+                                        <li>fecha --- {info.fecha}</li>
+                                        <li>hora --- {info.hora}</li>
+                                        <li>estado --- {info.estado}</li>
+                                        <li>tipo_multimedia --- {info.tipo_multimedia}</li>
+                                    </ul>
                         })
                     }
                 </View>

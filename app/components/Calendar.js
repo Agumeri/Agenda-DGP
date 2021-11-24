@@ -29,7 +29,7 @@ const Calendar = props => (
 		<View style={styles.container}>
 			<TouchableWithoutFeedback>
 				<View style={styles.miercoles}>
-					<Text style={styles.dias}>Miercoles</Text>
+					<Text style={styles.dias}>Miércoles</Text>
 				</View>
 			</TouchableWithoutFeedback>
 
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		borderRadius: 10
 	},
-	miércoles : {
+	miercoles : {
 		width: '49%',
 		height: '90%',
 		backgroundColor: '#a0c4ff',

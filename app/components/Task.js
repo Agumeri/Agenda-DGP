@@ -39,6 +39,9 @@ const styles = StyleSheet.create({
     },
     itemText: {
         maxWidth: '80%',
+        textTransform: 'uppercase',
+        fontFamily: 'Escolar2', 
+        fontSize: 24,
     },
     circular: {
         width: 12,

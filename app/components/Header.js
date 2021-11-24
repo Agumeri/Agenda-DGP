@@ -14,17 +14,15 @@ import {
 
 
 
-const Header = props => {
+const Header = (props) => {
 	
 	const navigation = useNavigation()
 
 	return(
 	<View style={styles.container}>
 		<TouchableWithoutFeedback onPress={() =>
-                    navigation.navigate("MenuInicio", {
-                                    nombreUser: "jesus"
-                                })
-                }>
+                    navigation.navigate("MenuInicio", {nombreUser: props.nombreUser})
+        }>
 		<Icon
 			name="home"
 			color = "black"

@@ -4,6 +4,7 @@ import { useNavigation } from "@react-navigation/core";
 import { getInfoTask } from "../api";
 import Task from '../components/Task';
 import { BottomSheet } from "react-native-elements";
+import Header from '../components/Header';
 
 const  MenuTareas = ({ route, navigation }) => {
     // Variable for data
@@ -37,6 +38,7 @@ const  MenuTareas = ({ route, navigation }) => {
 
     return (
         <View style={styles.container}>
+            <Header nombreUser = {nombreUser}></Header>
             {/* Tareas de Hoy*/}
             <View style={styles.taskWrapper}>
                 <Text style={styles.sectionTitle}> Tareas de Hoy </Text>
@@ -50,7 +52,7 @@ const  MenuTareas = ({ route, navigation }) => {
                 </View>
                 <Button 
                     style={refreshButton.container}
-                    title="Refrescar tareas" 
+                    title={<Text style={styles.text}>Refrescar tareas</Text>}
                     onPress={() => handleGetTareas()}
                 />
             </View>
@@ -67,20 +69,28 @@ const styles = StyleSheet.create({
     taskWrapper:{
         paddingTop: 80,
         paddingHorizontal: 20,
+        textAlign: 'center',
     },
     sectionTitle:{
+        fontSize: 30,
+        fontWeight: 'bold',
+        fontFamily: 'Escolar2',
+        textTransform: 'uppercase',
+    },
+    text: {
         fontSize: 24,
-        fontWeight: 'bold'
+        fontFamily: 'Escolar2',
+        textTransform: 'uppercase',
     },
     item: {
         marginTop: 30,
-    }
+    },
 })
 
 const refreshButton = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#AC33FF'
+        backgroundColor: '#AC33FF',
     }
 })
 

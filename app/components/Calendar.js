@@ -11,7 +11,7 @@ import {
 } from 'react-native'
 
 
-const Calendar = props => (
+const Calendar = (props) => (
 	<View>
 		<View style={styles.container}>
 			<TouchableWithoutFeedback>
@@ -29,7 +29,7 @@ const Calendar = props => (
 		<View style={styles.container}>
 			<TouchableWithoutFeedback>
 				<View style={styles.miercoles}>
-					<Text style={styles.dias}>Miercoles</Text>
+					<Text style={styles.dias}>Miércoles</Text>
 				</View>
 			</TouchableWithoutFeedback>
 
@@ -94,7 +94,9 @@ const styles = StyleSheet.create({
 		borderRadius: 10
 	},
 	dias : {
-		fontSize: 30
+		fontSize: 30,
+		textTransform: 'uppercase',
+        fontFamily: 'Escolar2', 
 	}
 })
 

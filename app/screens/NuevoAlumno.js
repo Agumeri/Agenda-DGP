@@ -1,5 +1,5 @@
 import React, {useEffect, useState, createRef} from "react";
-import {Button, TextInput, View, Text, Alert} from "react-native"
+import {Button, TextInput, View, Text, Alert, StyleSheet} from "react-native"
 import { useNavigation } from "@react-navigation/core";
 import { createAlumno, getPermisosUsuario } from "../api";
 
@@ -30,61 +30,48 @@ const NuevoAlumno = () => {
     }
 
     return (
-        <View style={[{
-            paddingLeft: 20,
-            paddingRight: 20,
-            paddingTop: 20,
-
-        }]}>
-            <Text><b>Nombre de usuario: </b></Text>
-            <TextInput style={[{backgroundColor: "#ffff"}]}
-                placeholder="Introduzca nombre de usuario "
+        <View style={styles.view}>
+            <Text style={styles.text}>Nombre de usuario:</Text>
+            <TextInput style={styles.input}
+                placeholder="INTRODUZCA NOMBRE DE USUARIO "
                 onChangeText={(userName) => setUsername(userName)}
             />
-            <Text style={[{
-                marginTop: 35
-            }]}><b>Correo electrónico: </b></Text>
+            <Text style={styles.text}>Correo electrónico:</Text>
 
             <TextInput 
-                style={[{ marginBottom: 35, backgroundColor: "#ffff"}]}
-                placeholder="Introduzca el correo electrónico"
+                style={styles.input}
+                placeholder="INTRODUZCA EL CORREO ELECTRÓNICO"
                 onChangeText={(userEmail) => setUserEmail(userEmail)}
             />
 
-            <Text style={[{
-                marginTop: 35
-            }]}><b>Correo electrónico del profesor: </b></Text>
+            <Text style={styles.text}>Correo electrónico del profesor:</Text>
 
             <TextInput 
-                style={[{ marginBottom: 35, backgroundColor: "#ffff"}]}
-                placeholder="Introduzca el correo electrónico del profesor"
+                style={styles.input}
+                placeholder="INTRODUZCA EL CORREO ELECTRÓNICO DEL PROFESOR"
                 onChangeText={(teacherEmail) => setTeacherEmail(teacherEmail)}
             />
 
-            <Text style={[{
-                marginTop: 35
-            }]}><b>Contraseña: </b></Text>
+            <Text style={styles.text}>Contraseña:</Text>
 
             <TextInput 
-                style={[{ marginBottom: 35, backgroundColor: "#ffff"}]}
-                placeholder="Introduzca la contraseña"
+                style={styles.input}
+                placeholder="INTRODUZCA LA CONTRASEÑA"
                 onChangeText={(userPass) => setUserPass(userPass)}
             />
 
-            <Text style={[{
-                marginTop: 35
-            }]}><b>Repita Contraseña: </b></Text>
+            <Text style={styles.text}>Repita Contraseña:</Text>
 
             <TextInput 
-                style={[{ marginBottom: 35, backgroundColor: "#ffff"}]}
-                placeholder="Repita la contraseña"
+                style={styles.input}
+                placeholder="REPITA LA CONTRASEÑA"
                 onChangeText={(userPass2) => setUserPass2(userPass2)}
             />
 
 
 
             <Button 
-              title="Registrar" 
+              title={<Text styles={styles.text}>Registrar </Text>}
               onPress={() =>
                 createAlum()
             }
@@ -93,6 +80,24 @@ const NuevoAlumno = () => {
     )
 }
 
-
+const styles = StyleSheet.create({
+    input: {
+        backgroundColor: "#ffff",
+        marginBottom: 35,
+        fontFamily: 'Escolar2', 
+        fontSize: 24
+    },
+    text: {
+        textTransform: 'uppercase',
+        fontFamily: 'Escolar2', 
+        fontSize: 24,
+        
+    },
+    view: {
+        paddingLeft: 20,
+        paddingRight: 20,
+        paddingTop: 20
+    }
+  });
 
 export default NuevoAlumno

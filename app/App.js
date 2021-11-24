@@ -106,7 +106,11 @@ const App = () => {
         />
 
         <Stack.Screen name="AsignarTarea" component={AsignarTarea} options={{
-          title: 'Asignar la tarea a alumno'
+          title: 'Asignar la tarea a alumno',
+          headerTitleStyle: {
+            fontFamily: 'Escolar2',
+            textTransform: 'uppercase'
+          }
         }}
         />
 

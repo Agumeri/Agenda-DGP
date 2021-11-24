@@ -38,7 +38,7 @@ const  MenuTareas = ({ route, navigation }) => {
 
     return (
         <View style={styles.container}>
-            <Header></Header>
+            <Header nombreUser = {nombreUser}></Header>
             {/* Tareas de Hoy*/}
             <View style={styles.taskWrapper}>
                 <Text style={styles.sectionTitle}> Tareas de Hoy </Text>

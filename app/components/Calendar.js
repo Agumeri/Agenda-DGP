@@ -11,7 +11,7 @@ import {
 } from 'react-native'
 
 
-const Calendar = props => (
+const Calendar = (props) => (
 	<View>
 		<View style={styles.container}>
 			<TouchableWithoutFeedback>

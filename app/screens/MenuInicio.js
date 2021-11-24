@@ -3,10 +3,12 @@ import {View, Text} from "react-native"
 import Header from '../components/Header'
 import Calendar from '../components/Calendar'
 
-const MenuInicio = () => {
+const MenuInicio = ({route}) => {
+    const nombreUser = route.params['nombreUser']   //User Name
+
     return (
         <View>
-            <Header></Header>
+            <Header nombreUser= {nombreUser}></Header>
             <Calendar></Calendar>
         </View>
     )

@@ -37,6 +37,7 @@ const MenuAdmin = ({ route, navigation }) => {
 
             <Button
                 title="Asignar Tarea"
+                onPress={() => navigation.navigate("AsignarTarea")}
             />
 
 

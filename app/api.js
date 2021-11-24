@@ -14,14 +14,38 @@ export const checkLogin = async (email,passwd) => {
     });
 }
 
-export const getInfoTask = async (user) => {
-    const url = API+'/tarea/list/' + user
+export const getInfoTask = async () => {
+    const url = API+'/tarea/list/'
     return fetch(url,{
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
         }
     })
+}
+
+export const getTask = async () => {
+  const url = API+'/tarea/distinct'
+  return fetch(url,{
+      method: 'GET',
+      headers: {
+          'Content-Type': 'application/json'
+      }
+  })
+}
+
+export const asignTaskAlum = async (tipo_tarea, nombre_usuario) => {
+  const url = API+'/tarea/asignar'
+  return fetch(url,{
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        nombreUsuario: nombre_usuario,
+        tipoTarea: tipo_tarea
+      })
+  })
 }
 
 export const getPermisosUsuario = async (correo_electronico) => {
@@ -66,6 +90,16 @@ export const createAlumno = async (username,passwd,email, email_teacher) => {
   });
 }
 
+export const getInfoAlumno = async () => {
+  const url = API+'/alumno'
+  return fetch(url,{
+      method: 'GET',
+      headers: {
+          'Content-Type': 'application/json'
+      }
+  })
+}
+
 export const getDetailsTask = async (id_task) => {
   const url = API+'/tarea/' + id_task
   return fetch(url,{
@@ -75,34 +109,3 @@ export const getDetailsTask = async (id_task) => {
       }
   })
 }
-
-/*
-  Map<String, dynamic> toJson() => {
-    'nombre': nombre,
-    'valueEstadistica': valueEstadistica,
-    'tipoObjeto': tipoObjeto,
-  };
-
-  Objeto.fromJson(Map<String, dynamic> json): 
-        nombre = json['nombre'],
-        valueEstadistica = json['valueEstadistica'],
-        tipoObjeto = json['tipoObjeto'];
-
-  static Future<Objeto> getObjeto(String nombre) async {
-    final response = await http.get(Uri.https(_baseAddress, _applicationName),
-        headers: <String, String>{
-          'Content-Type': 'application/json; charset=UTF-8',
-        });
-
-    if (response.statusCode == 200)
-      return Objeto.fromJson(jsonDecode(response.body));
-    else
-      throw Exception('Fallo al obtener el objeto');
-  }
-  */
-
-  /*Objeto(String n, double val, bool tipo) {
-    nombre = n;
-    valueEstadistica = val;
-    tipoObjeto = tipo;
-  }*/

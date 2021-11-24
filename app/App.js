@@ -9,6 +9,7 @@ import MenuAdmin from './screens/MenuAdmin'
 import NuevoAlumno from './screens/NuevoAlumno'
 import NuevoProfesor from './screens/NuevoProfesor';
 import InfoTarea from './screens/InfoTarea'
+import AsignarTarea from './screens/AsignarTarea';
 
 const Stack = createStackNavigator();
 
@@ -19,8 +20,6 @@ const App = () => {
         <Stack.Screen name="LoginScreen" component={LoginScreen} options={{
           title: 'Iniciar Sesión'
         }}
-
-
         />
         <Stack.Screen name="MenuInicio" component={MenuInicio} options={{
           title: 'Agenda'
@@ -48,6 +47,11 @@ const App = () => {
 
         <Stack.Screen name="InfoTarea" component={InfoTarea} options={{
           title: 'Informacion sobre la tarea'
+        }}
+        />
+
+        <Stack.Screen name="AsignarTarea" component={AsignarTarea} options={{
+          title: 'Asignar la tarea a alumno'
         }}
         />
 

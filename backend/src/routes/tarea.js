@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { createTarea, updateTaskState, getTareas, getTarea, getTareaCount, updateTask, getTareaByAlum} from '../controllers/tarea'
+import { createTarea, updateTaskState, getTareas, getTarea, getTareaCount, updateTask, getTareaByAlum, getTareasPlantilla, asignarTareaAlumno} from '../controllers/tarea'
 
 const router = Router();
 
@@ -41,6 +41,16 @@ router.get('/tarea',getTareas)
 
 /**
  * @swagger
+ * /tarea:
+ *  get:
+ *      summary: obtiene todas las tareas pero para la asignación
+ *      tags: [Tarea]
+ * 
+ */
+ router.get('/tarea/distinct',getTareasPlantilla)
+
+/**
+ * @swagger
  * /tarea/:id:
  *  get:
  *      summary: obtiene una tarea segun el id
@@ -78,6 +88,16 @@ router.get('/tarea',getTareas)
  * 
  */
 router.put('/tarea/state/:id',updateTaskState)
+
+/**
+ * @swagger
+ * /tarea/state/id:
+ *  post:
+ *      summary: crear una tarea nueva con un alumno asignado
+ *      tags: [Tarea]
+ * 
+ */
+ router.post('/tarea/asignar',asignarTareaAlumno)
  
 
 export default router

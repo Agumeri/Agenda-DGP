@@ -47,6 +47,14 @@ export const getTarea = async (req, res) => {
     res.json(rows)
 }
 
+export const getTareasPlantilla = async (req, res) => {
+    const connection = await connect()
+    const [rows]  = await connection.query(
+        'SELECT DISTINCT tipo FROM tarea'
+        )
+        res.json(rows)
+}
+
 // Actualizar parametros de una tarea
 export const updateTask = async (req, res) => {
     const connection = await connect()
@@ -87,4 +95,40 @@ export const getTareaByAlum = async (req, res) => {
     const [result] = await connection.query("SELECT id_tarea, tipo, tiempo_requerido, fecha, hora, tipo_multimedia, estado FROM tarea WHERE id_alumno = ?", idAlumno)
 
     res.json(result)
+}
+
+//
+export const asignarTareaAlumno = async (req, res) => {
+    // Se debe coger de cada alumno el tipo de multimedia
+    const connection = await connect()
+    
+    const [rows] = await connection.query('SELECT COUNT(*) FROM tarea')
+    const taskId = "task_" + (rows[0]["COUNT(*)"] + 1)
+
+    const [dataTask] = await connection.query('SELECT DISTINCT * FROM tarea WHERE tipo=?', [
+        req.body.tipoTarea
+    ])
+
+    const [usuario] = await connection.query('SELECT id FROM usuario WHERE nombre_usuario = ?', [
+        req.body.nombreUsuario
+    ])
+
+    const [nombreAlumno] = await connection.query('SELECT id_alumno FROM alumno_tutoriza WHERE id_usuario = ?', [
+        usuario[0]["id"]
+    ])
+
+    const [task] = await connection.query("INSERT INTO tarea(id_tarea, id_alumno, tipo, tiempo_requerido, fecha, hora, estado, tipo_multimedia) VALUES (?,?,?,?,?,?,?,?)",[
+        taskId,
+        nombreAlumno[0]["id_alumno"],
+        dataTask[0]["tipo"],
+        dataTask[0]["tiempo_requerido"],
+        dataTask[0]["fecha"],
+        dataTask[0]["hora"],
+        "En proceso",
+        dataTask[0]["tipo_multimedia"]
+    ])
+
+    res.json({
+        "id_tarea": taskId,
+    })
 }

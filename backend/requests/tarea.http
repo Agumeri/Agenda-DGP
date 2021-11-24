@@ -10,11 +10,20 @@ Content-Type: application/json
 
 {
     "id_alumno": "alum_3",
-    "tipo": "Ir al ayuntamiento de Granada",
+    "tipo": "Poner Microondas",
     "tiempo_requerido": "02:00:00",
     "fecha": "2021-11-30",
     "hora": "23:59:00",
     "tipo_multimedia": "Imagen"
+}
+
+### Asignar tarea
+POST {{api}}/asignar
+Content-Type: application/json
+
+{
+    "nombreUsuario": "alumnoPOST2",
+    "tipoTarea": "Poner Microondas"
 }
 
 ## GET 
@@ -26,6 +35,9 @@ GET {{api}}/count
 
 ###GET obtener lista de todas las tareas
 GET {{api}}
+
+###GET obtener lista de todas las tareas
+GET {{api}}/distinct
 
 ###GET obtener lista de tareas dadas un alumno
 GET {{api}}/list/developer

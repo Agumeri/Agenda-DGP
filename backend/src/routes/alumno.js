@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { createAlumno, getAlumnos, getAlumno, getAlumnoCount, updateAlumno, deleteAlumno, asignarTareaAlumno } from '../controllers/alumno'
+import { createAlumno, getAlumnos, getAlumno, getAlumnoCount, updateAlumno, deleteAlumno} from '../controllers/alumno'
 const router = Router()
 
 /////////////////////
@@ -13,15 +13,6 @@ const router = Router()
  *      tags: [Alumno]
  */
 router.post('/alumno',createAlumno);
-
-/**
- * @swagger
- * /alumno:
- *  post:
- *      summary: Asignar tarea a alumno
- *      tags: [Alumno]
- */
- router.post('/alumno/asignar_tarea',asignarTareaAlumno);
 
 /**
  * @swagger

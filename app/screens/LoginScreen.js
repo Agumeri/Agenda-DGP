@@ -1,5 +1,5 @@
 import React, { useEffect, useState, createRef } from "react";
-import { Button, TextInput, View, Text, Alert } from "react-native"
+import { Button, TextInput, View, Text, StyleSheet, Alert } from "react-native"
 import { useNavigation } from "@react-navigation/core";
 import { checkLogin, getPermisosUsuario } from "../api";
 
@@ -78,27 +78,20 @@ const LoginScreen = () => {
     }
 
     return (
-        <View style={[{
-            paddingLeft: 20,
-            paddingRight: 20,
-            paddingTop: 20,
-
-        }]}>
-            <Text>Correo electrónico:</Text>
-            <TextInput style={[{ backgroundColor: "#ffff" }]}
-                placeholder="Introduzca su correo electronico"
+        <View style={styles.view}>
+            <Text style={styles.text}>Correo electrónico:</Text>
+            <TextInput style={styles.input}
+                placeholder="INTRODUZCA SU CORREO ELECTRÓNICO"
                 onChangeText={(user) => setUser(user)}
             />
-            <Text style={[{
-                marginTop: 35
-            }]}>Contraseña: </Text>
+            <Text style={styles.text}>Contraseña: </Text>
             <TextInput
-                style={[{ marginBottom: 35, backgroundColor: "#ffff" }]}
-                placeholder="Introduzca su contraseña"
+                style={styles.input}
+                placeholder= 'INTRODUZCA SU CONTRASEÑA'
                 onChangeText={(userPass) => setUserPass(userPass)}
             />
             <Button
-                title="Acceder"
+                title={<Text style={styles.text}>Acceder</Text>}
                 onPress={() =>
                     checkUser("usuario y contraseña")
                 }
@@ -107,6 +100,25 @@ const LoginScreen = () => {
     )
 }
 
+const styles = StyleSheet.create({
+    input: {
+        backgroundColor: "#ffff",
+        marginBottom: 35,
+        fontFamily: 'Escolar2', 
+        fontSize: 24
+    },
+    text: {
+        textTransform: 'uppercase',
+        fontFamily: 'Escolar2', 
+        fontSize: 24,
+        
+    },
+    view: {
+        paddingLeft: 20,
+        paddingRight: 20,
+        paddingTop: 20
+    }
+  });
 
 
 export default LoginScreen

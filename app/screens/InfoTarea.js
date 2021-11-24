@@ -76,18 +76,25 @@ const InfoTarea = ({route}) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#E8EAED'
+        backgroundColor: '#E8EAED',
+        textAlign: 'center',
     },
     taskWrapper:{
         paddingTop: 80,
         paddingHorizontal: 20,
     },
     sectionTitle:{
-        fontSize: 24,
-        fontWeight: 'bold'
+        fontSize: 30,
+        fontWeight: 'bold',
+        fontFamily: 'Escolar2',
+        textTransform: 'uppercase',
     },
     item: {
         marginTop: 30,
+        fontSize: 24,
+        fontFamily: 'Escolar2',
+        textTransform: 'uppercase',
+
     }
 })
 

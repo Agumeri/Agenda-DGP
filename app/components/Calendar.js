@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		borderRadius: 10
 	},
-	miercoles : {
+	miércoles : {
 		width: '49%',
 		height: '90%',
 		backgroundColor: '#a0c4ff',
@@ -94,7 +94,9 @@ const styles = StyleSheet.create({
 		borderRadius: 10
 	},
 	dias : {
-		fontSize: 30
+		fontSize: 30,
+		textTransform: 'uppercase',
+        fontFamily: 'Escolar2', 
 	}
 })
 

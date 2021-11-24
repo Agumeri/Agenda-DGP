@@ -33,15 +33,11 @@ const MenuAdmin = ({ route, navigation }) => {
                 }
             />
 
-<<<<<<< HEAD
-            <Button
-                title="Asignar Tarea"
-                onPress={() => navigation.navigate("AsignarTarea")}
-=======
+
             <Button style={styles.button}
                 title={<Text style={styles.text}>Asignar Tarea</Text>}
                 accessibilityLabel = 'Asignar una tarea existente a un alumno'
->>>>>>> 245d2188121f9a6e369b6ad84f6c13269ac0342e
+                onPress={() => navigation.navigate("AsignarTarea")}
             />
 
 
@@ -64,8 +60,11 @@ const styles = StyleSheet.create({
         paddingLeft: 20,
         paddingRight: 20,
         paddingTop: 20,
+        paddingBottom : 20,
+        marginVertical: '15%',
         flex: 1,
         flexDirection: 'column',
+        justifyContent: 'space-between',
     }
   });
 

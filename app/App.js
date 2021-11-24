@@ -10,11 +10,9 @@ import MenuAdmin from './screens/MenuAdmin'
 import NuevoAlumno from './screens/NuevoAlumno'
 import NuevoProfesor from './screens/NuevoProfesor';
 import InfoTarea from './screens/InfoTarea'
-<<<<<<< HEAD
 import AsignarTarea from './screens/AsignarTarea';
-=======
 import { View } from 'react-native';
->>>>>>> 245d2188121f9a6e369b6ad84f6c13269ac0342e
+
 
 const Stack = createStackNavigator();
 

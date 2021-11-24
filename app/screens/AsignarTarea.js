@@ -57,7 +57,7 @@ const AsignarTarea = ({ route, navigation}) => {
                 <View style={styles.item}>
                     <Button 
                             style={refreshButton.container}
-                            title="Refrescar Tarea" 
+                            title={<Text style={styles.text}>Refrescar Tarea</Text>}
                             onPress={() => handleGetTareas()}
                         />
                     {
@@ -70,7 +70,7 @@ const AsignarTarea = ({ route, navigation}) => {
                 <View style={styles.item}>
                     <Button 
                         style={refreshButton.container}
-                        title="Refrescar Alumnos"   
+                        title={<Text style={styles.text}>Refrescar Alumnos</Text>}   
                         onPress={() => handleGetAlumnos()}
                     />
                     {
@@ -81,7 +81,7 @@ const AsignarTarea = ({ route, navigation}) => {
                 </View>
                 <Button 
                         style={refreshButton.container}
-                        title="Asignar Tarea" 
+                        title={<Text style={styles.text}>Asignar Tarea</Text>}
                         onPress={() => asignTaskAlum(tareaSeleccionada, alumnoSeleccionado)}
                     />     
             </View>
@@ -105,6 +105,12 @@ const styles = StyleSheet.create({
     },
     item: {
         marginTop: 30,
+    },
+    text: {
+        textTransform: 'uppercase',
+        fontFamily: 'Escolar2', 
+        fontSize: 24,
+        
     }
 })
 

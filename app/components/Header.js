@@ -1,6 +1,8 @@
 import React from 'react'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import Icon1 from 'react-native-vector-icons/MaterialIcons'
+import { Button } from "react-native"
+import { useNavigation } from "@react-navigation/core";
 
 import {
 	Text,
@@ -11,9 +13,18 @@ import {
 } from 'react-native'
 
 
-const Header = props => (
+
+const Header = props => {
+	
+	const navigation = useNavigation()
+
+	return(
 	<View style={styles.container}>
-		<TouchableWithoutFeedback>
+		<TouchableWithoutFeedback onPress={() =>
+                    navigation.navigate("MenuInicio", {
+                                    nombreUser: "jesus"
+                                })
+                }>
 		<Icon
 			name="home"
 			color = "black"
@@ -29,7 +40,8 @@ const Header = props => (
 		/>
 		</TouchableWithoutFeedback>
 	</View>
-)
+	)
+}
 
 const styles = StyleSheet.create({
 	container : {

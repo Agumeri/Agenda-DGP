@@ -14,8 +14,8 @@ export const checkLogin = async (email,passwd) => {
     });
 }
 
-export const getInfoTask = async () => {
-    const url = API+'/tarea/list/'
+export const getInfoTask = async (email) => {
+    const url = API+'/tarea/list/'+email;
     return fetch(url,{
         method: 'GET',
         headers: {

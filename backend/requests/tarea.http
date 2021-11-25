@@ -40,7 +40,7 @@ GET {{api}}
 GET {{api}}/distinct
 
 ###GET obtener lista de tareas dadas un alumno
-GET {{api}}/list/developer
+GET {{api}}/list/test@test.com
 ##PUT
 ### Actualizar los datos de un profesor
 PUT {{api}}/task_2

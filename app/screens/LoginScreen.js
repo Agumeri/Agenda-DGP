@@ -86,6 +86,7 @@ const LoginScreen = () => {
             />
             <Text style={styles.text}>Contraseña: </Text>
             <TextInput
+                secureTextEntry={true}
                 style={styles.input}
                 placeholder= 'INTRODUZCA SU CONTRASEÑA'
                 onChangeText={(userPass) => setUserPass(userPass)}

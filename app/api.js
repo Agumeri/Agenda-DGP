@@ -109,3 +109,26 @@ export const getDetailsTask = async (id_task) => {
       }
   })
 }
+
+export const getMultimediaTarea = async (id_task, pasoMultimedia) => {
+    const url = API+'/multimedia/' + id_task 
+    return fetch(url,{
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            paso: pasoMultimedia,
+        })
+    })
+}
+
+export const getPasosTarea = async(id_task) => {
+    const url = API+'/multimedia/pasos' + id_task
+    return fetch(url,{
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+}

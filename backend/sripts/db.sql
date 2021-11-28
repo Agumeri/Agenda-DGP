@@ -95,6 +95,20 @@ CREATE TABLE IF NOT EXISTS tarea(
     PRIMARY KEY (id_tarea)
 );
 
+-- Objeto Multimedia --
+
+CREATE TABLE IF NOT EXISTS Multimedia(
+    id_multimedia VARCHAR(100) NOT NULL,
+    paso INT,
+    id_tarea VARCHAR(100),
+    url_foto VARCHAR(100),
+    descripcion VARCHAR(100),
+    PRIMARY KEY (id_multimedia),
+    FOREIGN KEY (id_tarea) REFERENCES tarea(id_tarea)
+)
+
+INSERT INTO Multimedia(id_multimedia
+
 -- autorizacion Table --
 CREATE TABLE IF NOT EXISTS autorizacion(
     id_usuario INT NOT NULL REFERENCES alumno_tutoriza(id_usuario),

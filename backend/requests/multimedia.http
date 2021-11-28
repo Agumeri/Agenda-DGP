@@ -1,0 +1,29 @@
+@api =  http://localhost:3000/multimedia
+
+## POST
+### Crea un inventario
+POST {{api}}
+Content-Type: application/json
+
+{
+    "tareaId": "task_4",
+    "paso": "6",
+    "descripcion": "Sacar la comida y llevarla",
+    "urlFoto": "../images/coger.png"
+
+}
+
+### Obtener cantidad multimedia
+GET {{api}}/count
+
+### Obtener url de multimedia por id de tarea
+POST  {{api}}/task_4
+Content-Type: application/json
+
+{
+    "paso": "6"
+}
+
+
+### Obtener cantidad multimedia
+GET {{api}}/pasos/task_4

@@ -1,16 +1,19 @@
 import React,{useEffect, useState, ListItem, createRef} from "react";
-import {Button, View, Text, StyleSheet} from "react-native";
+import {Button, View, Text, StyleSheet, Image} from "react-native";
 import Header from '../components/Header'
-import { getDetailsTask } from "../api";
+import { getDetailsTask, getMultimediaTarea, getPasosTarea} from "../api";
 
 const InfoTarea = ({route}) => {
     const idTask = route.params['idTask']   //User Name
 
-    const result = getDetailsTask(idTask); 
-    const [infoTask, setInfoTask] = useState([]) 
+    const result = getDetailsTask(idTask);
+    var pasoActual = 1;
+
+    const [infoTask, setInfoTask] = useState([])
+    const [multimediaTask, setMultimediaTask] = useState([])
+    const [pasosMax, setPasosMax] = useState([])
     
     const handleInfo = async () =>{
-        console.log("Entro a hacer cositis")
         const result = getDetailsTask(idTask)        
 
         result.then( response =>  response.json().then( data => ({
@@ -18,55 +21,96 @@ const InfoTarea = ({route}) => {
                 status: response.status
         })))
         .then( res => {
-            console.log(res)
+            //console.log(res)
             if(res.status == 200) {
+                console.log(res.data)
                 setInfoTask(res.data)
+            } else {
+                console.log("No hay información")
+            }
+        })
+
+        handleMultimedia()
+        handleMaxPasos()
+    }
+
+    const handleMultimedia = async () =>{
+        const result = getMultimediaTarea(idTask, pasoActual)
+
+        result.then( response =>  response.json().then( data => ({
+            data: data,
+            status: response.status
+        })))
+        .then( res => {
+            //console.log(res)
+            if(res.status == 200) {
+                console.log(res.data)
+                setMultimediaTask(res.data)
             } else {
                 console.log("No hay información")
             }
         })
     }
 
-    // result.then( response =>  response.json().then( data => ({
-    //         data: data,
-    //         status: response.status
-    // })))
-    // .then( res => {
-    //     if(res.status == 200) {
-    //         setInfoTask(res.data)
-    //         log.info(infoTask)
-    //     } else {
-    //         console.log("No hay tareas")
-    //         //setListaTareas({tipo: "Ninguno"})
-    //     }
-    // })
+    const handleMaxPasos = () => {
+        const result = getPasosTarea(idTask)
 
+        result.then( response =>  response.json().then( data => ({
+            data: data,
+            status: response.status
+        })))
+        .then( res => {
+            //console.log(res)
+            if(res.status == 200) {
+                console.log(res.data)
+                setPasosMax(res.data)
+            } else {
+                console.log("No hay información")
+            }
+        })
+    }    
+
+    const cambiarPaso = () => {
+        pasosMax.map((maximo) => { 
+            if (pasoActual < maximo)
+                pasoActual ++;
+            else
+                pasoActual = 0; 
+        })
+        handleMultimedia()
+    }
 
     return (
         <View style={styles.container}>
             {/* Tareas de Hoy*/}
             <View style={styles.taskWrapper}>
-                <Text style={styles.sectionTitle}> Información tarea </Text>
-                {/* Aqui es donde va cada Tarea */}
                 <View style={styles.item}>
-                    {
-                        infoTask.map((info) => {
-                            return <ul key="a">
-                                        <li>id_tarea --- {info.id_tarea}</li>
-                                        <li>id_alumno --- {info.id_alumno}</li>
-                                        <li>tipo --- {info.tipo}</li>
-                                        <li>tiempo_requerido --- {info.tiempo_requerido}</li>
-                                        <li>fecha --- {info.fecha}</li>
-                                        <li>hora --- {info.hora}</li>
-                                        <li>estado --- {info.estado}</li>
-                                        <li>tipo_multimedia --- {info.tipo_multimedia}</li>
-                                    </ul>
-                        })
-                    }
                 </View>
+                <View style={styles.item}>
+                {
+                    multimediaTask.map((multimedia) => {
+                        return( 
+                            <View>
+                                <Text style={styles.item}> Paso {pasoActual} </Text>
+                                <View stles={styles.container}>
+                                
+                                </View>
+                                <Text style={styles.item}> {multimedia.descripcion} </Text>
+                            </View>
+                        )})
+                }
+                </View>     
+                <Button 
+                    title="<-" 
+                    onPress={() => handleInfo()}
+                />  
                 <Button 
                     title="Refrescar tareas" 
                     onPress={() => handleInfo()}
+                />
+                <Button 
+                    title="->" 
+                    onPress={() => cambiarPaso()}
                 />
             </View>
         </View>
@@ -95,7 +139,16 @@ const styles = StyleSheet.create({
         fontFamily: 'Escolar2',
         textTransform: 'uppercase',
 
-    }
+    },
+    pictograma : {
+		width: 300,
+		height: 300
+	}
 })
 
+
 export default InfoTarea
+
+/**
+ * <Image style={styles.pictograma} source={{uri: multimedia.url_foto}}/>
+ */

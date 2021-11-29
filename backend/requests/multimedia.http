@@ -6,10 +6,10 @@ POST {{api}}
 Content-Type: application/json
 
 {
-    "tareaId": "task_4",
-    "paso": "6",
-    "descripcion": "Sacar la comida y llevarla",
-    "urlFoto": "../images/coger.png"
+    "tareaId": "task_1",
+    "paso": "1",
+    "descripcion": "Ir a la cocina",
+    "urlFoto": "../images/ir.png"
 
 }
 
@@ -17,13 +17,13 @@ Content-Type: application/json
 GET {{api}}/count
 
 ### Obtener url de multimedia por id de tarea
-POST  {{api}}/task_4
+POST  {{api}}/task_1
 Content-Type: application/json
 
 {
-    "paso": "6"
+    "paso": "1"
 }
 
 
 ### Obtener cantidad multimedia
-GET {{api}}/pasos/task_4
+GET {{api}}/pasos/task_1

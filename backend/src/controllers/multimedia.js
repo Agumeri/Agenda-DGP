@@ -26,7 +26,7 @@ export const getMultimedia = async (req,res) =>{
     console.log(req.body.paso)
 
     const idTarea = req.params.id_tarea
-    const [rowsMultimedia] = await connection.query("SELECT url_foto, descripcion FROM Multimedia WHERE id_tarea = (?) AND paso = (?) ORDER BY paso ASC",[
+    const [rowsMultimedia] = await connection.query("SELECT url_foto, descripcion FROM multimedia WHERE id_tarea = (?) AND paso = (?) ORDER BY paso ASC",[
         idTarea,
         req.body.paso
     ])
@@ -37,7 +37,7 @@ export const getMultimedia = async (req,res) =>{
 export const getMultimediaCount = async (req,res) =>{
     const connection = await connect()
 
-    const [rowsMultimedia] = await connection.query("SELECT COUNT(*) FROM Multimedia")
+    const [rowsMultimedia] = await connection.query("SELECT COUNT(*) FROM multimedia")
 
     res.json(rowsMultimedia[0]["COUNT(*)"])
 }
@@ -45,7 +45,7 @@ export const getMultimediaCount = async (req,res) =>{
 export const getMultimediaPasosMax = async (req,res) =>{
     const connection = await connect()
 
-    const [rowsMultimedia] = await connection.query("SELECT COUNT(*) FROM Multimedia WHERE id_tarea = ?", req.params.id_tarea)
+    const [rowsMultimedia] = await connection.query("SELECT COUNT(*) FROM multimedia WHERE id_tarea = ?", req.params.id_tarea)
 
     res.json(rowsMultimedia[0]["COUNT(*)"])
 }

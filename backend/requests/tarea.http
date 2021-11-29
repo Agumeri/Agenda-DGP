@@ -9,7 +9,7 @@ POST {{api}}
 Content-Type: application/json
 
 {
-    "id_alumno": "alum_3",
+    "id_alumno": "alum_1",
     "tipo": "Poner Microondas",
     "tiempo_requerido": "02:00:00",
     "fecha": "2021-11-30",
@@ -40,7 +40,7 @@ GET {{api}}
 GET {{api}}/distinct
 
 ###GET obtener lista de tareas dadas un alumno
-GET {{api}}/list/test@test.com
+GET {{api}}/list/alumno@gmail.com
 ##PUT
 ### Actualizar los datos de un profesor
 PUT {{api}}/task_2

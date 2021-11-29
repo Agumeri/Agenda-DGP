@@ -7,11 +7,11 @@ const InfoTarea = ({route}) => {
     const idTask = route.params['idTask']   //User Name
 
     const result = getDetailsTask(idTask);
-    var pasoActual = 1;
 
     const [infoTask, setInfoTask] = useState([])
     const [multimediaTask, setMultimediaTask] = useState([])
-    const [pasosMax, setPasosMax] = useState([])
+    const [pasosMax, setPasosMax] = useState(0)
+    const [pasoActual, setPasoActual] = useState(0)
     
     const handleInfo = async () =>{
         const result = getDetailsTask(idTask)        
@@ -44,7 +44,7 @@ const InfoTarea = ({route}) => {
         .then( res => {
             //console.log(res)
             if(res.status == 200) {
-                console.log(res.data)
+                //console.log(res.data)
                 setMultimediaTask(res.data)
             } else {
                 console.log("No hay información")
@@ -53,6 +53,7 @@ const InfoTarea = ({route}) => {
     }
 
     const handleMaxPasos = () => {
+        console.log("Entro a ver los pasos max")
         const result = getPasosTarea(idTask)
 
         result.then( response =>  response.json().then( data => ({
@@ -62,7 +63,7 @@ const InfoTarea = ({route}) => {
         .then( res => {
             //console.log(res)
             if(res.status == 200) {
-                console.log(res.data)
+                //console.log(res.data)
                 setPasosMax(res.data)
             } else {
                 console.log("No hay información")
@@ -70,13 +71,22 @@ const InfoTarea = ({route}) => {
         })
     }    
 
-    const cambiarPaso = () => {
-        pasosMax.map((maximo) => { 
-            if (pasoActual < maximo)
-                pasoActual ++;
-            else
-                pasoActual = 0; 
-        })
+    const pasoSiguiente = () => {
+        if (pasoActual < pasosMax) {
+            setPasoActual(pasoActual+1)
+        } else {
+            setPasoActual(1)
+        }
+            
+        handleMultimedia()
+    }
+
+    const pasoAnterior = () => {
+        if (pasoActual > 1) {
+            setPasoActual(pasoActual-1)
+        } else {
+            setPasoActual(1)
+        }
         handleMultimedia()
     }
 
@@ -102,7 +112,7 @@ const InfoTarea = ({route}) => {
                 </View>     
                 <Button 
                     title="<-" 
-                    onPress={() => handleInfo()}
+                    onPress={() => pasoAnterior()}
                 />  
                 <Button 
                     title="Refrescar tareas" 
@@ -110,7 +120,7 @@ const InfoTarea = ({route}) => {
                 />
                 <Button 
                     title="->" 
-                    onPress={() => cambiarPaso()}
+                    onPress={() => pasoSiguiente()}
                 />
             </View>
         </View>

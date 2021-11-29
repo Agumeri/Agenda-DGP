@@ -97,7 +97,7 @@ CREATE TABLE IF NOT EXISTS tarea(
 
 -- Objeto Multimedia --
 
-CREATE TABLE IF NOT EXISTS Multimedia(
+CREATE TABLE IF NOT EXISTS multimedia(
     id_multimedia VARCHAR(100) NOT NULL,
     paso INT,
     id_tarea VARCHAR(100),
@@ -105,9 +105,22 @@ CREATE TABLE IF NOT EXISTS Multimedia(
     descripcion VARCHAR(100),
     PRIMARY KEY (id_multimedia),
     FOREIGN KEY (id_tarea) REFERENCES tarea(id_tarea)
-)
+);
 
-INSERT INTO Multimedia(id_multimedia
+INSERT INTO multimedia(id_multimedia, paso, id_tarea, url_foto, descripcion)
+VALUES ('multimedia_1','1','task_1','../images/ir.png','ir a la cocina');
+
+INSERT INTO multimedia(id_multimedia, paso, id_tarea, url_foto, descripcion)
+VALUES ('multimedia_2','2','task_1','../images/lavar.png','lavarse las manos');
+
+INSERT INTO multimedia(id_multimedia, paso, id_tarea, url_foto, descripcion)
+VALUES ('multimedia_3','3','task_1','../images/coger.png','Coger el plato con comida');
+
+INSERT INTO multimedia(id_multimedia, paso, id_tarea, url_foto, descripcion)
+VALUES ('multimedia_4','4','task_1','../images/microondas.png','Ponerlo dentro del microondas');
+
+INSERT INTO multimedia(id_multimedia, paso, id_tarea, url_foto, descripcion)
+VALUES ('multimedia_5','5','task_1','../images/llevar.png','Sacarlo y llevarselo a la mesa');
 
 -- autorizacion Table --
 CREATE TABLE IF NOT EXISTS autorizacion(

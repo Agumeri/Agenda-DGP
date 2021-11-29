@@ -1,6 +1,7 @@
 import React from 'react'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import Icon1 from 'react-native-vector-icons/MaterialIcons'
+import { useNavigation } from "@react-navigation/core";
 
 import {
 	Text,
@@ -11,44 +12,54 @@ import {
 } from 'react-native'
 
 
-const Calendar = (props) => (
-	<View>
-		<View style={styles.container}>
-			<TouchableWithoutFeedback>
-				<View style={styles.lunes}>
-					<Text style={styles.dias}>Lunes</Text>
-				</View>
-			</TouchableWithoutFeedback>
+const Calendar = (props) => {
+	const navigation = useNavigation()
 
-			<TouchableWithoutFeedback>
-				<View style={styles.martes}>
-					<Text style={styles.dias}>Martes</Text>
-				</View>
-			</TouchableWithoutFeedback>
-		</View>
-		<View style={styles.container}>
-			<TouchableWithoutFeedback>
-				<View style={styles.miercoles}>
-					<Text style={styles.dias}>Miércoles</Text>
-				</View>
-			</TouchableWithoutFeedback>
+	return(
+		<View>
+			<View style={styles.container}>
+				<TouchableWithoutFeedback onPress={() =>
+						navigation.navigate("MenuTareas", {nombreUser: props.nombreUser})
+				}>
+					<View style={styles.lunes}>
+						<Text style={styles.dias}>Lunes</Text>
+					</View>
+				</TouchableWithoutFeedback>
 
-			<TouchableWithoutFeedback>
-				<View style={styles.jueves}>
-					<Text style={styles.dias}>Jueves</Text>
-				</View>
-			</TouchableWithoutFeedback>
-		</View>
-		<View style={styles.container}>
-			<TouchableWithoutFeedback>
-				<View style={styles.viernes}>
-					<Text style={styles.dias}>Viernes</Text>
-				</View>
-			</TouchableWithoutFeedback>
-		</View>
-	</View>
+				<TouchableWithoutFeedback onPress={() =>
+						navigation.navigate("MenuTareas", {nombreUser: props.nombreUser})}>
+					<View style={styles.martes}>
+						<Text style={styles.dias}>Martes</Text>
+					</View>
+				</TouchableWithoutFeedback>
+			</View>
+			<View style={styles.container}>
+				<TouchableWithoutFeedback onPress={() =>
+						navigation.navigate("MenuTareas", {nombreUser: props.nombreUser})}>
+					<View style={styles.miercoles}>
+						<Text style={styles.dias}>Miércoles</Text>
+					</View>
+				</TouchableWithoutFeedback>
 
-)
+				<TouchableWithoutFeedback onPress={() =>
+						navigation.navigate("MenuTareas", {nombreUser: props.nombreUser})}>
+					<View style={styles.jueves}>
+						<Text style={styles.dias}>Jueves</Text>
+					</View>
+				</TouchableWithoutFeedback>
+			</View>
+			<View style={styles.container}>
+				<TouchableWithoutFeedback onPress={() =>
+						navigation.navigate("MenuTareas", {nombreUser: props.nombreUser})}>
+					<View style={styles.viernes}>
+						<Text style={styles.dias}>Viernes</Text>
+					</View>
+				</TouchableWithoutFeedback>
+			</View>
+		</View>
+	)
+
+}
 
 const styles = StyleSheet.create({
 	container : {

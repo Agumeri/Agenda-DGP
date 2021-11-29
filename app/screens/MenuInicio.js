@@ -9,7 +9,7 @@ const MenuInicio = ({route}) => {
     return (
         <View>
             <Header nombreUser= {nombreUser}></Header>
-            <Calendar></Calendar>
+            <Calendar nombreUser = {nombreUser}></Calendar>
         </View>
     )
 }

@@ -2,6 +2,7 @@ import React, { useEffect, useState, createRef } from "react";
 import { Button, TextInput, View, Text, StyleSheet, Alert } from "react-native"
 import { useNavigation } from "@react-navigation/core";
 import { checkLogin, getPermisosUsuario } from "../api";
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const LoginScreen = () => {
     // Variables to control data value
@@ -79,12 +80,27 @@ const LoginScreen = () => {
 
     return (
         <View style={styles.view}>
-            <Text style={styles.text}>Correo electrónico:</Text>
+            <View style={styles.usrpsswd}>
+                <Icon
+			    name="user"
+			    color = "black"
+			    size={30}
+		        />
+                <Text style={styles.text}>Correo electrónico:</Text>
+            </View>
             <TextInput style={styles.input}
                 placeholder="INTRODUZCA SU CORREO ELECTRÓNICO"
                 onChangeText={(user) => setUser(user)}
             />
-            <Text style={styles.text}>Contraseña: </Text>
+
+            <View style={styles.usrpsswd}>
+                <Icon
+			    name="lock"
+			    color = "black"
+			    size={30}
+		        />
+                <Text style={styles.text}>Contraseña: </Text>
+            </View>
             <TextInput
                 secureTextEntry={true}
                 style={styles.input}
@@ -106,18 +122,22 @@ const styles = StyleSheet.create({
         backgroundColor: "#ffff",
         marginBottom: 35,
         fontFamily: 'Escolar2', 
-        fontSize: 24
+        fontSize: 24,
     },
     text: {
         textTransform: 'uppercase',
         fontFamily: 'Escolar2', 
         fontSize: 24,
-        
+        paddingLeft: 10,
     },
     view: {
         paddingLeft: 20,
         paddingRight: 20,
-        paddingTop: 20
+        paddingTop: 20,
+    },
+    usrpsswd: {
+        flexDirection: 'row',
+        paddingLeft: 20,
     }
   });
 

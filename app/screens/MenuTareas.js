@@ -1,10 +1,12 @@
 import React,{useEffect, useState, createRef} from "react";
-import {Button, View, Text, StyleSheet} from "react-native";
+import { View, Text, StyleSheet} from "react-native";
 import { useNavigation } from "@react-navigation/core";
 import { getInfoTask } from "../api";
 import Task from '../components/Task';
 import { BottomSheet } from "react-native-elements";
 import Header from '../components/Header';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import {Button} from "react-native-elements";
 
 const  MenuTareas = ({ route, navigation }) => {
     // Variable for data
@@ -52,7 +54,12 @@ const  MenuTareas = ({ route, navigation }) => {
                 </View>
                 <Button 
                     style={refreshButton.container}
-                    title={<Text style={styles.text}>Refrescar tareas</Text>}
+                    icon = {<Icon
+			                name="refresh"
+			                color = "white"
+			                size={30}
+		                />}
+                    title={<Text style={styles.text}> Refrescar tareas</Text>}
                     onPress={() => handleGetTareas()}
                 />
             </View>

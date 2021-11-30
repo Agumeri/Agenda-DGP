@@ -26,7 +26,7 @@ const Header = (props) => {
 		<Icon
 			name="home"
 			color = "black"
-			size={100}
+			size={80}
 		/>
 		</TouchableWithoutFeedback>
 		<Image style={styles.botonResumen} source={require('../images/resumen.png')}/>
@@ -34,7 +34,7 @@ const Header = (props) => {
 		<Icon1
 			name="help-outline"
 			color = "black"
-			size={100}
+			size={80}
 		/>
 		</TouchableWithoutFeedback>
 	</View>
@@ -50,8 +50,8 @@ const styles = StyleSheet.create({
 		marginHorizontal: 15
 	},
 	botonResumen : {
-		width: 100,
-		height: 100
+		width: 80,
+		height: 80
 	}
 })
 

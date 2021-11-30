@@ -114,7 +114,7 @@ const LoginScreen = () => {
                 icon = {<Icon1
 			                name="door-open"
 			                color = "white"
-			                size={40}
+			                size={30}
 		                />}
                 onPress={() =>
                     checkUser("usuario y contraseña")

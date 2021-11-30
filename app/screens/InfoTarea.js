@@ -1,5 +1,5 @@
 import React,{useEffect, useState, ListItem, createRef} from "react";
-import {View, Text, StyleSheet} from "react-native";
+import {View, Text, StyleSheet, Image} from "react-native";
 import Header from '../components/Header'
 import { getDetailsTask, getMultimediaTarea, getPasosTarea} from "../api";
 import Imagen from '../components/Imagen';
@@ -107,7 +107,11 @@ const InfoTarea = ({route}) => {
                             <View style={styles.taskContainer}>
                                 <Text style={styles.item}> Paso {pasoActual} </Text>
                                 <View>
-                                    <Imagen style={styles.pictograma} name = {multimedia.url_foto}/>
+                                <Image 
+                                            style={styles.pictograma} 
+                                            source = {require("../images/tareas/" + multimedia.url_foto)}
+                                            
+                                        />
                                 </View>
                                 <Text style={styles.item}> {multimedia.descripcion} </Text>
                             </View>

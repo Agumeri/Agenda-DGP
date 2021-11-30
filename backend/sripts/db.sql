@@ -9,13 +9,12 @@ CREATE TABLE IF NOT EXISTS usuario(
     contraseña CHAR(60) NOT NULL,
     permisos INT NOT NULL,
     correo_electronico VARCHAR(100) NOT NULL UNIQUE,
-    imagen VARCHAR(100),
     PRIMARY KEY (id)
 );
-INSERT INTO usuario (nombre_usuario, contraseña, permisos, correo_electronico, imagen) VALUES 
-    ('prueba_admin', 'prueba_admin', '0','admin@gmail.com', 'default.jpg'),
-    ('prueba_prof','prueba_prof','1','prof@gmail.com', 'default.jpg'),
-    ('prueba_alumno', 'prueba_alumno', '2','alumno@gmail.com', 'default.jpg');
+INSERT INTO usuario (nombre_usuario, contraseña, permisos, correo_electronico) VALUES 
+    ('prueba_admin', 'prueba_admin', '0','admin@gmail.com'),
+    ('prueba_prof','prueba_prof','1','prof@gmail.com'),
+    ('prueba_alumno', 'prueba_alumno', '2','alumno@gmail.com');
 ------------------
 -- Profesor Table --
 CREATE TABLE IF NOT EXISTS profesor(
@@ -26,9 +25,10 @@ CREATE TABLE IF NOT EXISTS profesor(
 );
 
 INSERT INTO profesor(id_usuario, id_profesor) VALUES 
-    ('2', 'prof_1');
+    ('1', '1'),
+    ('2', '2');
 ------------------------
--- Alumno_autoriza table
+-- Alumno_autoriza table --
 CREATE TABLE IF NOT EXISTS alumno_tutoriza( 
     id_usuario INT NOT NULL REFERENCES usuario(id_usuario),
     id_alumno VARCHAR(100) NOT NULL,
@@ -37,7 +37,8 @@ CREATE TABLE IF NOT EXISTS alumno_tutoriza(
 ); 
 
 INSERT INTO alumno_tutoriza (id_usuario, id_alumno, id_profesor) VALUES 
-    ('1', 'alum_1', 'prof_1')
+    ('1', '1', '1'),
+    ('2', '2', '2');
 --------------
 --Admin Table --
 CREATE TABLE IF NOT EXISTS administrador(
@@ -46,7 +47,7 @@ CREATE TABLE IF NOT EXISTS administrador(
     PRIMARY KEY (id_usuario_inAdmin, id_admin),
     FOREIGN KEY (id_usuario_inAdmin) REFERENCES usuario(id)
 );
-INSERT INTO administrador(id_admin, id_usuario_inAdmin) VALUES ('admin01','1');
+INSERT INTO administrador(id_admin, id_usuario_inAdmin) VALUES ('admin01','2');
 ----------------
 --inventario Table --
 CREATE TABLE IF NOT EXISTS inventario(
@@ -66,7 +67,7 @@ CREATE TABLE IF NOT EXISTS gestiona_inventario(
 INSERT INTO gestiona_inventario(id_gestiona_inventario, id_tarea_inGestInv, id_comanda_inGestInv, id_inventario_inGestInv) 
 VALUES ('gestiona_desdeSQL', 'tarea1','comanda1','inventario1');
 ----------------
---objeto Table --
+-- objeto Table --
 CREATE TABLE IF NOT EXISTS objetos(
     id_objeto varchar(100) NOT NULL,
     id_inventario_inObjeto varchar(100) NOT NULL,
@@ -76,6 +77,7 @@ CREATE TABLE IF NOT EXISTS objetos(
     PRIMARY KEY (id_objeto, id_inventario_inObjeto),
     FOREIGN KEY (id_inventario_inObjeto) REFERENCES inventario(id_inventario)
 );
+
 INSERT INTO objetos(id_objeto, id_inventario_inObjeto, nombre_objeto, cantidad_objetos, categoria)
 VALUES ('objeto1', 'inventario1', 'boligrafo', '32', 'escritura');
 
@@ -93,6 +95,9 @@ CREATE TABLE IF NOT EXISTS tarea(
     tipo_multimedia varchar(50),
     PRIMARY KEY (id_tarea)
 );
+
+INSERT INTO tarea(id_tarea, id_alumno, tipo, tiempo_requerido, fecha, hora, estado, tipo_multimedia)
+VALUES ('task_1','1','imagen','02:02:02','02-02-2002', '02:02:02', 'no iniciada', 'imagen');
 
 -- Objeto Multimedia --
 

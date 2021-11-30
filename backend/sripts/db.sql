@@ -108,19 +108,19 @@ CREATE TABLE IF NOT EXISTS multimedia(
 );
 
 INSERT INTO multimedia(id_multimedia, paso, id_tarea, url_foto, descripcion)
-VALUES ('multimedia_1','1','task_1','../images/ir.png','ir a la cocina');
+VALUES ('multimedia_1','1','task_1','ir','ir a la cocina');
 
 INSERT INTO multimedia(id_multimedia, paso, id_tarea, url_foto, descripcion)
-VALUES ('multimedia_2','2','task_1','../images/lavar.png','lavarse las manos');
+VALUES ('multimedia_2','2','task_1','lavar','lavarse las manos');
 
 INSERT INTO multimedia(id_multimedia, paso, id_tarea, url_foto, descripcion)
-VALUES ('multimedia_3','3','task_1','../images/coger.png','Coger el plato con comida');
+VALUES ('multimedia_3','3','task_1','coger','Coger el plato con comida');
 
 INSERT INTO multimedia(id_multimedia, paso, id_tarea, url_foto, descripcion)
-VALUES ('multimedia_4','4','task_1','../images/microondas.png','Ponerlo dentro del microondas');
+VALUES ('multimedia_4','4','task_1','microondas','Ponerlo dentro del microondas');
 
 INSERT INTO multimedia(id_multimedia, paso, id_tarea, url_foto, descripcion)
-VALUES ('multimedia_5','5','task_1','../images/llevar.png','Sacarlo y llevarselo a la mesa');
+VALUES ('multimedia_5','5','task_1','llevar','Sacarlo y llevarselo a la mesa');
 
 -- autorizacion Table --
 CREATE TABLE IF NOT EXISTS autorizacion(

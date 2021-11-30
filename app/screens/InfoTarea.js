@@ -1,7 +1,8 @@
 import React,{useEffect, useState, ListItem, createRef} from "react";
-import {Button, View, Text, StyleSheet, Image} from "react-native";
+import {Button, View, Text, StyleSheet} from "react-native";
 import Header from '../components/Header'
 import { getDetailsTask, getMultimediaTarea, getPasosTarea} from "../api";
+import Imagen from '../components/Imagen'
 
 const InfoTarea = ({route}) => {
     const idTask = route.params['idTask']   //User Name
@@ -12,6 +13,7 @@ const InfoTarea = ({route}) => {
     const [multimediaTask, setMultimediaTask] = useState([])
     const [pasosMax, setPasosMax] = useState(0)
     const [pasoActual, setPasoActual] = useState(0)
+    
     
     const handleInfo = async () =>{
         const result = getDetailsTask(idTask)        
@@ -100,10 +102,10 @@ const InfoTarea = ({route}) => {
                 {
                     multimediaTask.map((multimedia) => {
                         return( 
-                            <View>
+                            <View style={styles.taskContainer}>
                                 <Text style={styles.item}> Paso {pasoActual} </Text>
-                                <View stles={styles.container}>
-                                
+                                <View>
+                                <Imagen style={styles.pictograma} name = {multimedia.url_foto}/>
                                 </View>
                                 <Text style={styles.item}> {multimedia.descripcion} </Text>
                             </View>
@@ -152,8 +154,18 @@ const styles = StyleSheet.create({
     },
     pictograma : {
 		width: 300,
-		height: 300
-	}
+		height: 300,
+        backgroundColor :'#FFFFFF',
+        marginTop: 30,
+        marginBottom: 30,
+
+	},
+    taskContainer : {
+        flex: 1,
+        backgroundColor: '#E8EAED',
+        textAlign: 'center',
+        alignItems: 'center'
+    }
 })
 
 

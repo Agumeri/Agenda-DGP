@@ -1,8 +1,10 @@
 import React,{useEffect, useState, ListItem, createRef} from "react";
-import {Button, View, Text, StyleSheet} from "react-native";
+import {View, Text, StyleSheet} from "react-native";
 import Header from '../components/Header'
 import { getDetailsTask, getMultimediaTarea, getPasosTarea} from "../api";
-import Imagen from '../components/Imagen'
+import Imagen from '../components/Imagen';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import {Button} from "react-native-elements";
 
 const InfoTarea = ({route}) => {
     const idTask = route.params['idTask']   //User Name
@@ -111,19 +113,34 @@ const InfoTarea = ({route}) => {
                             </View>
                         )})
                 }
-                </View>     
-                <Button 
-                    title="<-" 
-                    onPress={() => pasoAnterior()}
-                />  
-                <Button 
-                    title="Refrescar tareas" 
-                    onPress={() => handleInfo()}
-                />
-                <Button 
-                    title="->" 
-                    onPress={() => pasoSiguiente()}
-                />
+                </View> 
+                <View style={styles.cambiarPaso}>
+                    <Button 
+                        onPress={() => pasoAnterior()}
+                        icon = {<Icon
+			                name="arrow-left"
+			                color = "white"
+			                size={40}
+		                />}
+                    />
+                    <Button 
+                        icon = {<Icon
+			                name="hourglass-end"
+			                color = "white"
+			                size={30}
+		                />}
+                        title=" Refrescar tareas" 
+                        onPress={() => handleInfo()}
+                    />
+                    <Button 
+                        onPress={() => pasoSiguiente()}
+                        icon = {<Icon
+			                name="arrow-right"
+			                color = "white"
+			                size={40}
+		                />}
+                    />
+                </View>
             </View>
         </View>
     )
@@ -134,6 +151,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#E8EAED',
         textAlign: 'center',
+        alignItems: 'center',
     },
     taskWrapper:{
         paddingTop: 80,
@@ -165,6 +183,13 @@ const styles = StyleSheet.create({
         backgroundColor: '#E8EAED',
         textAlign: 'center',
         alignItems: 'center'
+    },
+    cambiarPaso : {
+        flexDirection: 'row',
+        width: '100%',
+        alignItems: 'center',
+		justifyContent: 'space-between',
+		marginHorizontal: 40
     }
 })
 

@@ -105,7 +105,7 @@ const InfoTarea = ({route}) => {
                             <View style={styles.taskContainer}>
                                 <Text style={styles.item}> Paso {pasoActual} </Text>
                                 <View>
-                                <Imagen style={styles.pictograma} name = {multimedia.url_foto}/>
+                                    <Imagen style={styles.pictograma} name = {multimedia.url_foto}/>
                                 </View>
                                 <Text style={styles.item}> {multimedia.descripcion} </Text>
                             </View>

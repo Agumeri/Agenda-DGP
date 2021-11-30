@@ -4,17 +4,17 @@ import { Image } from 'react-native';
 const Imagen = (props) => {
     switch (props.name) {
         case "ir":
-            return <Image style={props.style} source={require('../images/ir.png')} />;
+            return <Image style={props.style} source={require('../images/tareas/ir.png')} />;
         case "coger":
-            return <Image style={props.style} source={require('../images/coger.png')} />;
+            return <Image style={props.style} source={require('../images/tareas/coger.png')} />;
         case "lavar":
-            return <Image style={props.style} source={require('../images/lavar.png')} />;
+            return <Image style={props.style} source={require('../images/tareas/lavar.png')} />;
         case "llevar":
-            return <Image style={props.style} source={require('../images/llevar.png')} />;
+            return <Image style={props.style} source={require('../images/tareas/llevar.png')} />;
         case "microondas":
-            return <Image style={props.style} source={require('../images/microondas.png')} />;
+            return <Image style={props.style} source={require('../images/tareas/microondas.png')} />;
         case "traer":
-            return <Image style={props.style} source={require('../images/traer.png')} />;
+            return <Image style={props.style} source={require('../images/tareas/traer.png')} />;
 
     }
 }

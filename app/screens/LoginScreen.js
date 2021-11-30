@@ -1,8 +1,10 @@
 import React, { useEffect, useState, createRef } from "react";
-import { Button, TextInput, View, Text, StyleSheet, Alert } from "react-native"
+import { TextInput, View, Text, StyleSheet, Alert } from "react-native"
 import { useNavigation } from "@react-navigation/core";
 import { checkLogin, getPermisosUsuario } from "../api";
 import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon1 from 'react-native-vector-icons/FontAwesome5';
+import {Button} from "react-native-elements";
 
 const LoginScreen = () => {
     // Variables to control data value
@@ -109,6 +111,11 @@ const LoginScreen = () => {
             />
             <Button
                 title={<Text style={styles.text}>Acceder</Text>}
+                icon = {<Icon1
+			                name="door-open"
+			                color = "white"
+			                size={40}
+		                />}
                 onPress={() =>
                     checkUser("usuario y contraseña")
                 }

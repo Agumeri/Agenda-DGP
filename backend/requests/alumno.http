@@ -9,10 +9,10 @@ POST {{api}}
 Content-Type: application/json
 
 {
-    "nombre_usuario": "alumnoPrueba",
+    "nombre_usuario": "alumno buenardo",
     "contraseña": "1234",
     "permisos": "2",
-    "correo_electronico": "test@test.com",
+    "correo_electronico": "alumno2",
     "correo_electronico_profesor": "nuevesito@hotmail.es",
     "imagen": "default.jpg"
 }

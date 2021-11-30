@@ -41,7 +41,7 @@ export const createAlumno = async (req, res) => {
 export const getAlumnos = async (req,res) => {
     const connection = await connect()
     const [rows]  = await connection.query(
-        'SELECT id_usuario, id_alumno, id_profesor, nombre_usuario, contraseña, correo_electronico, permisos FROM usuario, alumno_tutoriza WHERE usuario.id = alumno_tutoriza.id_usuario'
+        'SELECT id_usuario, id_alumno, id_profesor, nombre_usuario, contraseña, correo_electronico, permisos, imagen FROM usuario, alumno_tutoriza WHERE usuario.id = alumno_tutoriza.id_usuario'
         )
     res.json(rows)
 }

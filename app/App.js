@@ -11,6 +11,7 @@ import NuevoAlumno from './screens/NuevoAlumno'
 import NuevoProfesor from './screens/NuevoProfesor';
 import InfoTarea from './screens/InfoTarea'
 import AsignarTarea from './screens/AsignarTarea';
+import AlumLoginScreen from './screens/AlumLoginScreen';
 import { View } from 'react-native';
 
 
@@ -44,6 +45,15 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        <Stack.Screen name="AlumLoginScreen" component={AlumLoginScreen} options={{
+          title:'Iniciar Sesión',
+          headerTitleStyle: {
+            fontFamily: 'Escolar2',
+            textTransform: 'uppercase'
+          }
+        }}
+        />
+
         <Stack.Screen name="LoginScreen" component={LoginScreen} options={{
           title:'Iniciar Sesión',
           headerTitleStyle: {

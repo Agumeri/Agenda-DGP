@@ -132,3 +132,14 @@ export const getPasosTarea = async(id_task) => {
         }
     })
 }
+
+
+export const getListaAlumnos = async() => {
+    const url = API+'/alumno'
+    return fetch(url,{
+        method: 'GET', 
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+}

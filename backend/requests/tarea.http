@@ -10,7 +10,7 @@ Content-Type: application/json
 
 {
     "id_alumno": "alum_1",
-    "tipo": "Poner Microondas",
+    "tipo": "Ir al ayuntamiento de Granada",
     "tiempo_requerido": "02:00:00",
     "fecha": "2021-11-30",
     "hora": "23:59:00",

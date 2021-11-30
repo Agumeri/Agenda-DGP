@@ -12,10 +12,10 @@ CREATE TABLE IF NOT EXISTS usuario(
     imagen VARCHAR(100),
     PRIMARY KEY (id)
 );
-INSERT INTO usuario (nombre_usuario, contraseña, permisos, correo_electronico) VALUES 
-    ('prueba_admin', 'prueba_admin', '0','admin@gmail.com'),
-    ('prueba_prof','prueba_prof','1','prof@gmail.com'),
-    ('prueba_alumno', 'prueba_alumno', '2','alumno@gmail.com');
+INSERT INTO usuario (nombre_usuario, contraseña, permisos, correo_electronico, imagen) VALUES 
+    ('prueba_admin', 'prueba_admin', '0','admin@gmail.com', 'default.jpg'),
+    ('prueba_prof','prueba_prof','1','prof@gmail.com', 'default.jpg'),
+    ('prueba_alumno', 'prueba_alumno', '2','alumno@gmail.com', 'default.jpg');
 ------------------
 -- Profesor Table --
 CREATE TABLE IF NOT EXISTS profesor(
@@ -26,8 +26,7 @@ CREATE TABLE IF NOT EXISTS profesor(
 );
 
 INSERT INTO profesor(id_usuario, id_profesor) VALUES 
-    ('1', '1'),
-    ('2', '1');
+    ('2', 'prof_1');
 ------------------------
 -- Alumno_autoriza table
 CREATE TABLE IF NOT EXISTS alumno_tutoriza( 
@@ -38,8 +37,7 @@ CREATE TABLE IF NOT EXISTS alumno_tutoriza(
 ); 
 
 INSERT INTO alumno_tutoriza (id_usuario, id_alumno, id_profesor) VALUES 
-    ('1', '1', '1'),
-    ('2', '2', '2');
+    ('1', 'alum_1', 'prof_1')
 --------------
 --Admin Table --
 CREATE TABLE IF NOT EXISTS administrador(
@@ -48,7 +46,7 @@ CREATE TABLE IF NOT EXISTS administrador(
     PRIMARY KEY (id_usuario_inAdmin, id_admin),
     FOREIGN KEY (id_usuario_inAdmin) REFERENCES usuario(id)
 );
-INSERT INTO administrador(id_admin, id_usuario_inAdmin) VALUES ('admin01','2');
+INSERT INTO administrador(id_admin, id_usuario_inAdmin) VALUES ('admin01','1');
 ----------------
 --inventario Table --
 CREATE TABLE IF NOT EXISTS inventario(

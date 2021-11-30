@@ -13,7 +13,8 @@ Content-Type: application/json
     "contraseña": "1234",
     "permisos": "2",
     "correo_electronico": "test@test.com",
-    "correo_electronico_profesor": "nuevesito@hotmail.es"
+    "correo_electronico_profesor": "nuevesito@hotmail.es",
+    "imagen": "default.jpg"
 }
 
 ## GET 

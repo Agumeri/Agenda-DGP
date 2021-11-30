@@ -9,6 +9,7 @@ CREATE TABLE IF NOT EXISTS usuario(
     contraseña CHAR(60) NOT NULL,
     permisos INT NOT NULL,
     correo_electronico VARCHAR(100) NOT NULL UNIQUE,
+    imagen VARCHAR(100),
     PRIMARY KEY (id)
 );
 INSERT INTO usuario (nombre_usuario, contraseña, permisos, correo_electronico) VALUES 

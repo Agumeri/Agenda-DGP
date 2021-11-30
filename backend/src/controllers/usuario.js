@@ -53,11 +53,12 @@ export const getUsuarioCount = async (req,res) => {
 
 export const saveUsuario = async (req,res) => {
     const connection = await connect()
-    const [result] = await connection.query("INSERT INTO usuario(nombre_usuario, contraseña, permisos, correo_electronico) VALUES (?,?,?,?)",[
+    const [result] = await connection.query("INSERT INTO usuario(nombre_usuario, contraseña, permisos, correo_electronico, imagen) VALUES (?,?,?,?,?)",[
         req.body.nombre_usuario,
         req.body.contraseña,
         req.body.permisos,
-        req.body.correo_electronico
+        req.body.correo_electronico,
+        req.body.imagen
     ])
     res.json({
         id:result.insertId,

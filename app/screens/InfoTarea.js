@@ -125,7 +125,7 @@ const InfoTarea = ({route}) => {
                     />
                     <Button 
                         icon = {<Icon
-			                name="hourglass-end"
+			                name="refresh"
 			                color = "white"
 			                size={30}
 		                />}

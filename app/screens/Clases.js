@@ -1,8 +1,7 @@
 import React,{useEffect, useState, ListItem, createRef} from "react";
 import {View, Text, StyleSheet, Image} from "react-native";
 import Header from '../components/Header'
-import { getDetailsTask, getMultimediaTarea, getPasosTarea} from "../api";
-import Imagen from '../components/Imagen';
+import { getClasses} from "../api";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {Button} from "react-native-elements";
 

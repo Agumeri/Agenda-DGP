@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS usuario(
 INSERT INTO usuario (nombre_usuario, contraseña, permisos, correo_electronico, imagen) VALUES 
     ('prueba_admin', 'prueba_admin', '0','admin@gmail.com', 'default.jpg'),
     ('prueba_prof','prueba_prof','1','prof@gmail.com', 'juanjavier.png'),
-    ('prueba_alumno', 'prueba_alumno', '2','alumno@gmail.com','maripili.jpg');
+    ('prueba_alumno', 'prueba_alumno', '2','alumno@gmail.com','maripili.png');
 ------------------
 -- Profesor Table --
 CREATE TABLE IF NOT EXISTS profesor(
@@ -126,7 +126,7 @@ CREATE TABLE IF NOT EXISTS inventario(
     nombre VARCHAR(100) NOT NULL,
     cantidad INT DEFAULT 0,
     imagen VARCHAR(100) NOT NULL,
-    PRIMARY KEY (id_objeto),
+    PRIMARY KEY (id_objeto)
 );
 
 INSERT INTO inventario(nombre, imagen)
@@ -140,7 +140,7 @@ CREATE TABLE IF NOT EXISTS clase(
     id_clase INT NOT NULL AUTO_INCREMENT,
     nombre VARCHAR(100) NOT NULL,
     imagen VARCHAR(100) NOT NULL,
-    PRIMARY KEY (id_clase),
+    PRIMARY KEY (id_clase)
 );
 
 INSERT INTO clase(nombre,imagen)
@@ -152,7 +152,7 @@ CREATE TABLE IF NOT EXISTS menus(
     id_menu INT NOT NULL AUTO_INCREMENT,
     nombre VARCHAR(100) NOT NULL,
     imagen VARCHAR(100) NOT NULL,
-    PRIMARY KEY (id_menu),
+    PRIMARY KEY (id_menu)
 );
 
 INSERT INTO menus(nombre, imagen)

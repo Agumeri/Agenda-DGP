@@ -1,4 +1,4 @@
-import React, { useEffect, useState }from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import * as Font from 'expo-font';
@@ -12,6 +12,9 @@ import NuevoProfesor from './screens/NuevoProfesor';
 import InfoTarea from './screens/InfoTarea'
 import AsignarTarea from './screens/AsignarTarea';
 import AlumLoginScreen from './screens/AlumLoginScreen';
+import Clases from './screens/Clases';
+import Menus from './screens/Menus';
+import Inventario from './screens/Inventario';
 import { View } from 'react-native';
 
 
@@ -25,28 +28,28 @@ const App = () => {
       loadFonts();
     }
   });
-    
+
 
   const loadFonts = async () => {
     await Font.loadAsync({
-      'Escolar1': require('./assets/fonts/Escolar1.TTF'),  
+      'Escolar1': require('./assets/fonts/Escolar1.TTF'),
       'Escolar2': require('./assets/fonts/Escolar2Negra.TTF'),
     });
 
     setFontsLoaded(true);
   }
 
-  if(!fontsLoaded) {
-    return(<View/>);
+  if (!fontsLoaded) {
+    return (<View />);
   }
 
-  
+
 
   return (
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="AlumLoginScreen" component={AlumLoginScreen} options={{
-          title:'Iniciar Sesión',
+          title: 'Iniciar Sesión',
           headerTitleStyle: {
             fontFamily: 'Escolar2',
             textTransform: 'uppercase'
@@ -55,7 +58,7 @@ const App = () => {
         />
 
         <Stack.Screen name="LoginScreen" component={LoginScreen} options={{
-          title:'Iniciar Sesión',
+          title: 'Iniciar Sesión',
           headerTitleStyle: {
             fontFamily: 'Escolar2',
             textTransform: 'uppercase'
@@ -117,6 +120,33 @@ const App = () => {
 
         <Stack.Screen name="AsignarTarea" component={AsignarTarea} options={{
           title: 'Asignar la tarea a alumno',
+          headerTitleStyle: {
+            fontFamily: 'Escolar2',
+            textTransform: 'uppercase'
+          }
+        }}
+        />
+
+        <Stack.Screen name="Clases" component={Clases} options={{
+          title: 'Clases del colegio',
+          headerTitleStyle: {
+            fontFamily: 'Escolar2',
+            textTransform: 'uppercase'
+          }
+        }}
+        />
+
+        <Stack.Screen name="Menus" component={Menus} options={{
+          title: 'Recuento de menús',
+          headerTitleStyle: {
+            fontFamily: 'Escolar2',
+            textTransform: 'uppercase'
+          }
+        }}
+        />
+
+        <Stack.Screen name="Inventario" component={Inventario} options={{
+          title: 'Recuento del inventario',
           headerTitleStyle: {
             fontFamily: 'Escolar2',
             textTransform: 'uppercase'

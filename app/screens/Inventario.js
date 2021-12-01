@@ -11,10 +11,20 @@ const Inventario = ({ route }) => {
     const [inventario, setInventario] = useState([])
     const [objetosMax, setObjetosMax] = useState(0)
     const [objetoActual, setObjetoActual] = useState(0)
+    const [firstTime, setFirstTime] = useState(true);
 
 
     useEffect(() => {
-        console.log("Acabo de entrar al inventario")
+        console.log("useEffect")
+        if(firstTime){
+            update()
+            console.log("Entro al update")
+        }
+        setFirstTime(false);
+
+    })
+
+    const update = () => {
         // Cogemos todo el inventario
         handleInventario()
 
@@ -22,8 +32,13 @@ const Inventario = ({ route }) => {
         setObjetosMax(inventario.length)
 
         // Ponemos la Cantidad que vamos a mostrar como la cantidad del objeto actual
-        setCantidad(inventario[objetoActual].cantidad)
-    })
+        inventario.map((objeto) => {
+            if (objeto.id_objeto == objetoActual + 1) {
+                setCantidad(objeto.cantidad)
+            }
+
+        })
+    }
 
     const handleInventario = async () => {
         const result = getInventario()
@@ -73,19 +88,28 @@ const Inventario = ({ route }) => {
 
     return (
         <View style={styles.container}>
-            <View style={styles.item}>          
-                <View style={styles.taskContainer}>
-                    <Text style={styles.text}> inventario[objetoActual].nombre </Text>
-                    <View>
-                        <Image
-                            style={styles.pictograma}
-                            source={require("../images/inventario/" + inventario[objetoActual].imagen)}
-                        />
-                    </View>
-                    <Text style={styles.item}> {multimedia.descripcion} </Text>
-                </View>
-                
-                        
+            <View style={styles.item}>
+                {
+                    inventario.map((objeto) => {
+                        if (objeto.id_objeto == objetoActual + 1) {
+                            return (
+                                <View style={styles.taskContainer}>
+                                    <Text style={styles.text}> {objeto.nombre} </Text>
+                                    <View>
+
+                                        <Image
+                                            style={styles.pictograma}
+                                            source={require("../images/inventario/" + objeto.imagen)}
+                                        />
+                                    </View>
+                                </View>
+                            )
+                        }
+
+                    })
+
+                }
+
             </View>
             <View style={styles.cambiarCantidad}>
                 <Button
@@ -96,7 +120,7 @@ const Inventario = ({ route }) => {
                         size={40}
                     />}
                 />
-                <Text>cantidad</Text>
+                <Text>{cantidad}</Text>
                 <Button
                     onPress={() => setCantidad(cantidad + 1)}
                     icon={<Icon
@@ -108,7 +132,10 @@ const Inventario = ({ route }) => {
             </View>
             <View>
                 <Button
-                    onPress={() => handleCantidad(inventario[objetoActual].id_objeto, cantidad)}
+                    onPress={() => {
+                        handleCantidad(objetoActual+1, cantidad)
+                        //update()
+                    }}
                     icon={<Icon
                         name="check"
                         color="white"
@@ -119,7 +146,10 @@ const Inventario = ({ route }) => {
 
             <View style={styles.cambiarPaso}>
                 <Button
-                    onPress={() => setObjetoActual((objetoActual+1)%objetosMax)}
+                    onPress={() => {
+                        setObjetoActual((objetoActual + 1) % objetosMax)}
+                        //update()
+                    }
                     icon={<Icon
                         name="arrow-left"
                         color="white"
@@ -133,10 +163,13 @@ const Inventario = ({ route }) => {
                         size={30}
                     />}
                     title=" Refrescar tareas"
-                    onPress={() => useEffect()}
+                    onPress={() => update()}
                 />
                 <Button
-                    onPress={() => setObjetoActual((objetoActual+1)%objetosMax)}
+                    onPress={() => {
+                        setObjetoActual((objetoActual + 1) % objetosMax)
+                        //update()
+                    }}
                     icon={<Icon
                         name="arrow-right"
                         color="white"

@@ -110,7 +110,7 @@ const App = () => {
         />
 
         <Stack.Screen name="InfoTarea" component={InfoTarea} options={{
-          title: 'Informacion sobre la tarea',
+          title: 'Información sobre la tarea',
           headerTitleStyle: {
             fontFamily: 'Escolar2',
             textTransform: 'uppercase'

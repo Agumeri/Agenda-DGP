@@ -24,7 +24,7 @@ const Inventario = ({ route }) => {
 
     })
 
-    const update = () => {
+    const update = async() => {
         // Cogemos todo el inventario
         handleInventario()
 
@@ -134,7 +134,7 @@ const Inventario = ({ route }) => {
                 <Button
                     onPress={() => {
                         handleCantidad(objetoActual+1, cantidad)
-                        //update()
+                        update()
                     }}
                     icon={<Icon
                         name="check"
@@ -147,9 +147,9 @@ const Inventario = ({ route }) => {
             <View style={styles.cambiarPaso}>
                 <Button
                     onPress={() => {
-                        setObjetoActual((objetoActual + 1) % objetosMax)}
-                        //update()
-                    }
+                        setObjetoActual((objetoActual + 1) % objetosMax)
+                        update()
+                    }}
                     icon={<Icon
                         name="arrow-left"
                         color="white"
@@ -168,7 +168,7 @@ const Inventario = ({ route }) => {
                 <Button
                     onPress={() => {
                         setObjetoActual((objetoActual + 1) % objetosMax)
-                        //update()
+                        update()
                     }}
                     icon={<Icon
                         name="arrow-right"

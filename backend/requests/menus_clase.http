@@ -1,0 +1,16 @@
+@api =  http://localhost:3000/menus_clase
+
+
+##GET
+### Obtener todas los menus de una clase
+GET {{api}}
+
+##UPDATE
+### Cambiar un inventario dado un id
+PUT {{api}}/1
+Content-Type: application/json
+
+{
+    "cantidad": "3",
+    "id_menu": "1"
+}

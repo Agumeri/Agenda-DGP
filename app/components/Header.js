@@ -1,7 +1,7 @@
 import React from 'react'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import Icon1 from 'react-native-vector-icons/MaterialIcons'
-import { Button } from "react-native"
+import { Button, TouchableOpacity } from "react-native"
 import { useNavigation } from "@react-navigation/core";
 
 import {
@@ -20,7 +20,7 @@ const Header = (props) => {
 
 	return(
 	<View style={styles.container}>
-		<TouchableWithoutFeedback onPress={() =>
+		<TouchableOpacity onPress={() =>
                     navigation.navigate("MenuInicio", {nombreUser: props.nombreUser})
         }>
 		<Icon
@@ -28,15 +28,15 @@ const Header = (props) => {
 			color = "black"
 			size={80}
 		/>
-		</TouchableWithoutFeedback>
+		</TouchableOpacity>
 		<Image style={styles.botonResumen} source={require('../images/resumen.png')}/>
-		<TouchableWithoutFeedback>
+		<TouchableOpacity>
 		<Icon1
 			name="help-outline"
 			color = "black"
 			size={80}
 		/>
-		</TouchableWithoutFeedback>
+		</TouchableOpacity>
 	</View>
 	)
 }

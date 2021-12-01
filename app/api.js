@@ -189,7 +189,7 @@ export const getMenus = async() => {
 }
 
 export const setCantidadMenuClase = async (id_clase, id_menu, cantidad) => {
-    return fetch( API + '/menu_clase/' + id_clase , {
+    return fetch( API + '/menus_clase/' + id_clase , {
         method: 'PUT',
         headers: {
             Accept: 'application/json',

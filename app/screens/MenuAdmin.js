@@ -46,6 +46,12 @@ const MenuAdmin = ({ route, navigation }) => {
                 onPress={() => navigation.navigate("Inventario")}
             />
 
+            <Button style={styles.button}
+                title={<Text style={styles.text}>Menu</Text>}
+                accessibilityLabel='Seleccionar la clase para recuento de menú'
+                onPress={() => navigation.navigate("Clases")}
+            />
+
 
         </View>
     )

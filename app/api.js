@@ -143,3 +143,28 @@ export const getListaAlumnos = async() => {
         }
     })
 }
+
+export const getInventario= async () => {
+    const url = API+'/inventario'
+    return fetch(url,{
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+  }
+
+
+  export const setCantidadObjeto = async (id_objeto, cantidad) => {
+    return fetch( API + '/inventario/' + id_objeto , {
+        method: 'PUT',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            cantidad: cantidad
+        })
+    });
+}
+

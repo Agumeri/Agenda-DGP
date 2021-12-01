@@ -76,7 +76,7 @@ const router = Router()
  *      summary: crea un nuevo enlace entre comanda e inventario
  *      tags: [gestiona_inventario] 
  */
- router.post('/gestiona_inventario', createGestInv)
+//router.post('/gestiona_inventario', createGestInv)
 
 /**
  * @swagger
@@ -85,7 +85,7 @@ const router = Router()
  *      summary: Obtiene todos los enlaces entre comandas e inventarios
  *      tags: [gestiona_inventario] 
  */
-router.get('/gestiona_inventario', getAllGestInv)
+//router.get('/gestiona_inventario', getAllGestInv)
 
 /**
  * @swagger
@@ -94,7 +94,7 @@ router.get('/gestiona_inventario', getAllGestInv)
  *      summary: Obtiene todos los enlaces entre comandas e inventarios
  *      tags: [gestiona_inventario] 
  */
- router.get('/gestiona_inventario/count', getCountGestInv)
+//router.get('/gestiona_inventario/count', getCountGestInv)
 
 /**
  * @swagger
@@ -103,7 +103,7 @@ router.get('/gestiona_inventario', getAllGestInv)
  *      summary: Obtiene todos los enlaces entre comandas e inventarios
  *      tags: [gestiona_inventario] 
  */
- router.get('/gestiona_inventario/:id', getByIdGestInv)
+//router.get('/gestiona_inventario/:id', getByIdGestInv)
 
 /**
  * @swagger
@@ -112,7 +112,7 @@ router.get('/gestiona_inventario', getAllGestInv)
  *      summary: Cambia un enlace dado un id
  *      tags: [gestiona_inventario] 
  */
- router.put('/gestiona_inventario/:id', updateGestInv)
+//router.put('/gestiona_inventario/:id', updateGestInv)
 
 /**
  * @swagger
@@ -121,7 +121,7 @@ router.get('/gestiona_inventario', getAllGestInv)
  *      summary: Cambia un enlace dado un id
  *      tags: [gestiona_inventario] 
  */
- router.put('/gestiona_inventario/:id', updateGestInv)
+//router.put('/gestiona_inventario/:id', updateGestInv)
  
 /**
  * @swagger
@@ -130,7 +130,7 @@ router.get('/gestiona_inventario', getAllGestInv)
  *      summary: Elimina un enlace dado un id
  *      tags: [gestiona_inventario] 
  */
- router.delete('/gestiona_inventario/:id', deleteGestInv)
+//router.delete('/gestiona_inventario/:id', deleteGestInv)
 
  
 export default router

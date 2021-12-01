@@ -87,6 +87,12 @@ const AlumLoginScreen = () => {
 
     return (
         <View style={styles.container}>
+
+            <Button style={styles.button}
+                title={<Text style={styles.text}>Inventario</Text>}
+                onPress={() => navigation.navigate("Inventario")}
+            />
+
             {/* Tareas de Hoy*/}
             <View style={styles.taskWrapper}>
                 <View style={styles.item}>

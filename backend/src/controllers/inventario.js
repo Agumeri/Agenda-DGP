@@ -8,10 +8,10 @@ export const createInventario = async (req, res) =>{
     const [rowsInventario] = await connection.query("SELECT COUNT(*) FROM inventario");
     const inventarioId = "inventario" + (rowsInventario[0]["COUNT(*)"] + 1)
 
-    const [result] = await connection.query(" INSERT INTO inventario(id_inventario) VALUES (?)", [inventarioId])                                  
+    const [result] = await connection.query(" INSERT INTO inventario(id_objeto) VALUES (?)", [inventarioId])                                  
 
     res.json({
-        "Inventario id": inventarioId
+        "id_objeto": inventarioId
     })
 }
 
@@ -35,7 +35,7 @@ export const getInventarioById = async (req,res) =>{
     const connection = await connect()
 
     const idInventario = req.params.id
-    const [rowsInventario] = await connection.query("SELECT * FROM inventario WHERE id_inventario = ?",[idInventario])
+    const [rowsInventario] = await connection.query("SELECT * FROM inventario WHERE id_objeto = ?",[idInventario])
 
     res.json(rowsInventario[0])
 }
@@ -44,7 +44,7 @@ export const updateInventario = async (req,res) =>{
     const connection = await connect()
 
     const idInventario = req.params.id
-    const [result] = await connection.query("UPDATE inventario SET ? WHERE id_inventario = ?", [
+    const [result] = await connection.query("UPDATE inventario SET ? WHERE id_objeto = ?", [
         req.body,
         idInventario  
     ])
@@ -56,7 +56,7 @@ export const deleteInventario = async (req,res) =>{
     const connection = await connect()
 
     const idInventario = req.params.id
-    const [result] = await connection.query("DELETE FROM inventario WHERE id_inventario = ?",[
+    const [result] = await connection.query("DELETE FROM inventario WHERE id_objeto = ?",[
         idInventario
     ])
 
@@ -65,6 +65,7 @@ export const deleteInventario = async (req,res) =>{
 
 //-------------------------------------------------------//
 // gestiona Inventario //
+/*
 export const createGestInv = async (req,res) =>{
     const connection = await connect()
 
@@ -124,4 +125,4 @@ export const deleteGestInv = async(req,res) =>{
     ])
 
     res.sendStatus(204)
-}
+}*/

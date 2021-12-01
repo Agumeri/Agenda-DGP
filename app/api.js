@@ -168,3 +168,13 @@ export const getInventario= async () => {
     });
 }
 
+export const getClases = async() => {
+    const url = API+'/clase'
+    return fetch(url,{
+        method: 'GET', 
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+}
+

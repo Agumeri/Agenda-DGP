@@ -17,6 +17,7 @@ import tareaRoutes from './routes/tarea';
 import alumnoRoutes from './routes/alumno';
 import autorizacionRoutes from './routes/autorizacion';
 import multimediaRoutes from './routes/multimedia';
+import claseRoutes from './routes/clase';
 //import dgpRoutes from './routes/dgp';
 
 
@@ -40,6 +41,7 @@ app.use(tareaRoutes);
 app.use(alumnoRoutes);
 app.use(autorizacionRoutes);
 app.use(multimediaRoutes);
+app.use(claseRoutes);
 //app.use(dgpRoutes);
 
 app.use('/docs', swaggerUI.serve, swaggerUI.setup(specs))

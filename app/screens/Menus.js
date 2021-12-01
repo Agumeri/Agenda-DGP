@@ -1,11 +1,11 @@
 import React,{useEffect, useState, ListItem, createRef} from "react";
 import {View, Text, StyleSheet, Image} from "react-native";
 import Header from '../components/Header'
-import { getDetailsTask, getMultimediaTarea, getPasosTarea} from "../api";
+import {getDetailsTask, getMultimediaTarea, getPasosTarea} from "../api";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {Button} from "react-native-elements";
 
-const InfoTarea = ({route}) => {
+const Menus = ({route}) => {
     const idTask = route.params['idTask']   //User Name
 
     const result = getDetailsTask(idTask);
@@ -197,8 +197,4 @@ const styles = StyleSheet.create({
 })
 
 
-export default InfoTarea
-
-/**
- * <Image style={styles.pictograma} source={{uri: multimedia.url_foto}}/>
- */
+export default Menus

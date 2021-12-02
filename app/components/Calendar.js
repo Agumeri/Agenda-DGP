@@ -16,7 +16,7 @@ const Calendar = (props) => {
 	const navigation = useNavigation()
 
 	return(
-		<View>
+		<View style={styles.pantalla}>
 			<View style={styles.container}>
 				<TouchableWithoutFeedback onPress={() =>
 						navigation.navigate("MenuTareas", {nombreUser: props.nombreUser})
@@ -62,9 +62,13 @@ const Calendar = (props) => {
 }
 
 const styles = StyleSheet.create({
+	pantalla : {
+		flexDirection: 'column',
+		height: '50%'
+	},
 	container : {
 		flexDirection: 'row',
-		height: 200,
+		height: '100%',
 		alignItems: 'center',
 		justifyContent: 'space-between',
 		marginHorizontal: 20

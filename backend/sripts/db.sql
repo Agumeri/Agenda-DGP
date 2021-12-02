@@ -159,7 +159,7 @@ INSERT INTO menus(nombre, imagen)
 VALUES ('Menú bajo en colesterol', 'colesterol.png'),
 ('Menú basal', 'basal.png'),
 ('Menú diabético', 'diabetes.png'),
-('Menú régimn', 'regimen.png'),
+('Menú régimen', 'regimen.png'),
 ('Menú sin carne', 'nocarne.png'),
 ('Menú sin cerdo', 'nocerdo.png'),
 ('Menú triturado sin proteína de leche de vaca', 'triturado.png');

@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import { createMultimedia, getMultimedia, getMultimediaCount, getMultimediaPasosMax} from '../controllers/multimedia'
+import { createMultimedia, getMultimedia, getMultimediaByTarea, getMultimediaCount, getMultimediaPasosMax} from '../controllers/multimedia'
 
 const router = Router()
 
@@ -35,6 +35,15 @@ const router = Router()
   *     tags: [Multimedia]
   */
  router.post('/multimedia/:id_tarea',getMultimedia);
+
+ /**
+  * @swagger
+  * /multimedia:
+  * get:
+  *     summary: obtener multimedia en función de una tarea
+  *     tags: [Multimedia]
+  */
+  router.post('/multimedia/:id_tarea',getMultimediaByTarea);
 
  /**
  * @swagger

@@ -34,6 +34,19 @@ export const getMultimedia = async (req,res) =>{
     res.json(rowsMultimedia)
 }
 
+export const getMultimediaByTarea = async (req,res) =>{
+    const connection = await connect()
+
+    console.log(req.body.paso)
+
+    const idTarea = req.params.id_tarea
+    const [rowsMultimedia] = await connection.query("SELECT * FROM multimedia WHERE id_tarea = (?)",[
+        idTarea
+    ])
+
+    res.json(rowsMultimedia)
+}
+
 export const getMultimediaCount = async (req,res) =>{
     const connection = await connect()
 

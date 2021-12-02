@@ -12,12 +12,14 @@ const MenuAdmin = ({ route, navigation }) => {
 
             <Button style={styles.button}
                 title={<Text style={styles.text}>Crear Tarea</Text>}
+                color= '#ffadad'
                 accessibilityLabel='Crear una nueva tarea'
 
             />
 
             <Button style={styles.button}
                 title={<Text style={styles.text}>Nuevo Alumno</Text>}
+                color= '#ffd6a5'
                 accessibilityLabel='Crear un nuevo usuario alumno'
                 onPress={() =>
                     navigation.navigate("NuevoAlumno")
@@ -27,6 +29,7 @@ const MenuAdmin = ({ route, navigation }) => {
 
             <Button style={styles.button}
                 title={<Text style={styles.text}>Nuevo Profesor</Text>}
+                color= '#fdffb6'
                 accessibilityLabel='Crear un nuevo usuario profesor'
                 onPress={() =>
                     navigation.navigate("NuevoProfesor")
@@ -36,18 +39,21 @@ const MenuAdmin = ({ route, navigation }) => {
 
             <Button style={styles.button}
                 title={<Text style={styles.text}>Asignar Tarea</Text>}
+                color= '#caffbf'
                 accessibilityLabel='Asignar una tarea existente a un alumno'
                 onPress={() => navigation.navigate("AsignarTarea")}
             />
 
             <Button style={styles.button}
                 title={<Text style={styles.text}>Inventario</Text>}
+                color= '#9bf6ff'
                 accessibilityLabel='Hacer el inventario de materiales del colegio'
                 onPress={() => navigation.navigate("Inventario")}
             />
 
             <Button style={styles.button}
                 title={<Text style={styles.text}>Menu</Text>}
+                color= '#a0c4ff'
                 accessibilityLabel='Seleccionar la clase para recuento de menú'
                 onPress={() => navigation.navigate("Clases")}
             />
@@ -65,6 +71,7 @@ const styles = StyleSheet.create({
         textTransform: 'uppercase',
         fontFamily: 'Escolar2',
         fontSize: 24,
+        color: 'black',
 
     },
     view: {

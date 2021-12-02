@@ -43,7 +43,7 @@ const router = Router()
   *     summary: obtener multimedia en función de una tarea
   *     tags: [Multimedia]
   */
-  router.post('/multimedia/:id_tarea',getMultimediaByTarea);
+  router.get('/multimedia/:id_tarea',getMultimediaByTarea);
 
  /**
  * @swagger

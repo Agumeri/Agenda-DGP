@@ -86,8 +86,12 @@ const Clases = ({ route, navigation }) => {
             <View style={styles.cambiarPaso}>
                 <Button
                     onPress={() => {
-                        setClaseActual((claseActual + 1) % clasesMax)
-                        update()
+                        if(claseActual == 0){
+                            setClaseActual(clasesMax-1)
+                        }
+                        else {
+                            setClaseActual((claseActual - 1) % clasesMax)
+                        }
                     }}
                     icon={<Icon
                         name="arrow-left"
@@ -107,7 +111,6 @@ const Clases = ({ route, navigation }) => {
                 <Button
                     onPress={() => {
                         setClaseActual((claseActual + 1) % clasesMax)
-                        update()
                     }}
                     icon={<Icon
                         name="arrow-right"

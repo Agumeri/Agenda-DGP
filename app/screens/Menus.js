@@ -128,7 +128,7 @@ const Menus = ({ route , navigation }) => {
                         size={40}
                     />}
                 />
-                <Text>{cantidad}</Text>
+                <Text style={styles.textCantidad}>{cantidad}</Text>
                 <Button
                     onPress={() => setCantidad(cantidad + 1)}
                     icon={<Icon
@@ -142,7 +142,6 @@ const Menus = ({ route , navigation }) => {
                 <Button
                     onPress={() => {
                         handleCantidad(menuActual+1, cantidad)
-                        update()
                     }}
                     icon={<Icon
                         name="check"
@@ -155,9 +154,14 @@ const Menus = ({ route , navigation }) => {
             <View style={styles.cambiarPaso}>
                 <Button
                     onPress={() => {
-                        setMenuActual((menuActual + 1) % menusMax)
+                        if(menuActual == 0){
+                            setMenuActual(menusMax-1)
+                        }
+                        else {
+                            setMenuActual((menuActual - 1) % menusMax)
+                        }
                         setCantidad(0)
-                        update() 
+                        setFirstTime(true) 
                     }}
                     icon={<Icon
                         name="arrow-left"
@@ -178,7 +182,7 @@ const Menus = ({ route , navigation }) => {
                     onPress={() => {
                         setMenuActual((menuActual + 1) % menusMax)
                         setCantidad(0)
-                        update()
+                        setFirstTime(true)
                         
                     }}
                     icon={<Icon
@@ -239,6 +243,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
         marginHorizontal: 40,
+        fontSize: 50,
+        fontFamily: 'Escolar2',
+        textTransform: 'uppercase',
+        textAlign: 'center',
+    },
+    textCantidad:{
         fontSize: 50,
         fontFamily: 'Escolar2',
         textTransform: 'uppercase',

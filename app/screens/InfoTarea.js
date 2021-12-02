@@ -1,150 +1,118 @@
-import React,{useEffect, useState, ListItem, createRef} from "react";
-import {View, Text, StyleSheet, Image} from "react-native";
+import React, { useEffect, useState, ListItem, createRef } from "react";
+import { View, Text, StyleSheet, Image } from "react-native";
 import Header from '../components/Header'
-import { getDetailsTask, getMultimediaTarea, getPasosTarea} from "../api";
+import { getDetailsTask, getMultimediaByTarea } from "../api";
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {Button} from "react-native-elements";
+import { Button } from "react-native-elements";
 
-const InfoTarea = ({route}) => {
-    const idTask = route.params['idTask']   //User Name
+const InfoTarea = ({ route }) => {
+    const id_tarea = route.params['idTask'] // id de la tarea
 
-    const result = getDetailsTask(idTask);
-
-    const [infoTask, setInfoTask] = useState([])
-    const [multimediaTask, setMultimediaTask] = useState([])
+    const [pasos, setPasos] = useState([])
     const [pasosMax, setPasosMax] = useState(0)
     const [pasoActual, setPasoActual] = useState(0)
-    
-    
-    const handleInfo = async () =>{
-        const result = getDetailsTask(idTask)        
+    const [firstTime, setFirstTime] = useState(true);
 
-        result.then( response =>  response.json().then( data => ({
-                data: data,
-                status: response.status
-        })))
-        .then( res => {
-            //console.log(res)
-            if(res.status == 200) {
-                console.log(res.data)
-                setInfoTask(res.data)
-            } else {
-                console.log("No hay información")
-            }
-        })
 
-        handleMultimedia()
-        handleMaxPasos()
+    useEffect(() => {
+        console.log("useEffect")
+        if (firstTime) {
+            update()
+            console.log("Entro al update")
+        }
+        setFirstTime(false);
+
+    })
+
+    const update = async () => {
+        // Cogemos todas las pasos
+        handlePasos()
+
+        // Ponemos el valor de la cantidad de pasos que hay 
+        setPasosMax(pasos.length)
+
     }
 
-    const handleMultimedia = async () =>{
-        const result = getMultimediaTarea(idTask, pasoActual)
+    const handlePasos = async () => {
+        const result = getMultimediaByTarea(id_tarea)
 
-        result.then( response =>  response.json().then( data => ({
+        result.then(response => response.json().then(data => ({
             data: data,
             status: response.status
         })))
-        .then( res => {
-            //console.log(res)
-            if(res.status == 200) {
-                //console.log(res.data)
-                setMultimediaTask(res.data)
-            } else {
-                console.log("No hay información")
-            }
-        })
-    }
+            .then(res => {
+                //console.log(res)
+                if (res.status == 200) {
+                    console.log(res.data)
+                    setPasos(res.data)
+                } else {
+                    console.log("No hay información de las pasos")
+                }
+            })
 
-    const handleMaxPasos = () => {
-        console.log("Entro a ver los pasos max")
-        const result = getPasosTarea(idTask)
-
-        result.then( response =>  response.json().then( data => ({
-            data: data,
-            status: response.status
-        })))
-        .then( res => {
-            //console.log(res)
-            if(res.status == 200) {
-                //console.log(res.data)
-                setPasosMax(res.data)
-            } else {
-                console.log("No hay información")
-            }
-        })
-    }    
-
-    const pasoSiguiente = () => {
-        if (pasoActual < pasosMax) {
-            setPasoActual(pasoActual+1)
-        } else {
-            setPasoActual(1)
-        }
-            
-        handleMultimedia()
-    }
-
-    const pasoAnterior = () => {
-        if (pasoActual > 1) {
-            setPasoActual(pasoActual-1)
-        } else {
-            setPasoActual(1)
-        }
-        handleMultimedia()
     }
 
     return (
         <View style={styles.container}>
-            {/* Tareas de Hoy*/}
-            <View style={styles.taskWrapper}>
-                <View style={styles.item}>
-                </View>
-                <View style={styles.item}>
+            <View style={styles.item}>
                 {
-                    multimediaTask.map((multimedia) => {
-                        return( 
-                            <View style={styles.taskContainer}>
-                                <Text style={styles.item}> Paso {pasoActual} </Text>
-                                <View>
-                                <Image 
-                                            style={styles.pictograma} 
-                                            source = {require("../images/tareas/" + multimedia.url_foto)}
-                                            
-                                        />
+                    pasos.map((p) => {
+                        if (p.paso == pasoActual + 1) {
+                            return (
+                                <View style={styles.taskContainer}>
+                                    <Text style={styles.text}> {"Paso "+p.paso} </Text>
+                                    <View>
+                                        <Image style={styles.pictograma} source={require("../images/tareas/" + p.url_foto)} />
+                                    </View>
+                                    <Text style={styles.text}> {p.descripcion} </Text>
                                 </View>
-                                <Text style={styles.item}> {multimedia.descripcion} </Text>
-                            </View>
-                        )})
+                            )
+                        }
+
+                    })
+
                 }
-                </View> 
-                <View style={styles.cambiarPaso}>
-                    <Button 
-                        onPress={() => pasoAnterior()}
-                        icon = {<Icon
-			                name="arrow-left"
-			                color = "white"
-			                size={40}
-		                />}
-                    />
-                    <Button 
-                        icon = {<Icon
-			                name="refresh"
-			                color = "white"
-			                size={30}
-		                />}
-                        title=" Refrescar tareas" 
-                        onPress={() => handleInfo()}
-                    />
-                    <Button 
-                        onPress={() => pasoSiguiente()}
-                        icon = {<Icon
-			                name="arrow-right"
-			                color = "white"
-			                size={40}
-		                />}
-                    />
-                </View>
+
             </View>
+
+
+            <View style={styles.cambiarPaso}>
+                <Button
+                    onPress={() => {
+                        if(pasoActual == 0){
+                            setPasoActual(pasosMax-1)
+                        }
+                        else {
+                            setPasoActual((pasoActual - 1) % pasosMax)
+                        }
+                    }}
+                    icon={<Icon
+                        name="arrow-left"
+                        color="white"
+                        size={40}
+                    />}
+                />
+                <Button
+                    icon={<Icon
+                        name="refresh"
+                        color="white"
+                        size={30}
+                    />}
+                    title=" Refrescar tareas"
+                    onPress={() => update()}
+                />
+                <Button
+                    onPress={() => {
+                        setPasoActual((pasoActual + 1) % pasosMax)
+                    }}
+                    icon={<Icon
+                        name="arrow-right"
+                        color="white"
+                        size={40}
+                    />}
+                />
+            </View>
+
         </View>
     )
 }
@@ -156,11 +124,8 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         alignItems: 'center',
     },
-    taskWrapper:{
-        paddingTop: 80,
-        paddingHorizontal: 20,
-    },
-    sectionTitle:{
+
+    sectionTitle: {
         fontSize: 30,
         fontWeight: 'bold',
         fontFamily: 'Escolar2',
@@ -173,32 +138,34 @@ const styles = StyleSheet.create({
         textTransform: 'uppercase',
 
     },
-    pictograma : {
-		width: 300,
-		height: 300,
-        backgroundColor :'#FFFFFF',
+    text: {
+        fontSize: 24,
+        fontFamily: 'Escolar2',
+        textTransform: 'uppercase',
+    },
+    pictograma: {
+        width: 300,
+        height: 300,
+        backgroundColor: '#FFFFFF',
         marginTop: 30,
         marginBottom: 30,
 
-	},
-    taskContainer : {
+    },
+    taskContainer: {
         flex: 1,
         backgroundColor: '#E8EAED',
         textAlign: 'center',
         alignItems: 'center'
     },
-    cambiarPaso : {
+    cambiarPaso: {
         flexDirection: 'row',
         width: '100%',
         alignItems: 'center',
-		justifyContent: 'space-between',
-		marginHorizontal: 40
+        justifyContent: 'space-between',
+        marginHorizontal: 40
     }
 })
 
 
 export default InfoTarea
 
-/**
- * <Image style={styles.pictograma} source={{uri: multimedia.url_foto}}/>
- */

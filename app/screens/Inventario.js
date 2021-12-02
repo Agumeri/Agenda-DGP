@@ -120,7 +120,7 @@ const Inventario = ({ route }) => {
                         size={40}
                     />}
                 />
-                <Text>{cantidad}</Text>
+                <Text style={styles.textCantidad}>{cantidad}</Text>
                 <Button
                     onPress={() => setCantidad(cantidad + 1)}
                     icon={<Icon
@@ -134,7 +134,6 @@ const Inventario = ({ route }) => {
                 <Button
                     onPress={() => {
                         handleCantidad(objetoActual+1, cantidad)
-                        update()
                     }}
                     icon={<Icon
                         name="check"
@@ -147,8 +146,13 @@ const Inventario = ({ route }) => {
             <View style={styles.cambiarPaso}>
                 <Button
                     onPress={() => {
-                        setObjetoActual((objetoActual + 1) % objetosMax)
-                        update()
+                        if(objetoActual == 0){
+                            setObjetoActual(objetosMax-1)
+                        }
+                        else {
+                            setObjetoActual((objetoActual - 1) % objetosMax)
+                        }
+                        setFirstTime(true)
                     }}
                     icon={<Icon
                         name="arrow-left"
@@ -168,7 +172,7 @@ const Inventario = ({ route }) => {
                 <Button
                     onPress={() => {
                         setObjetoActual((objetoActual + 1) % objetosMax)
-                        update()
+                        setFirstTime(true)
                     }}
                     icon={<Icon
                         name="arrow-right"
@@ -228,6 +232,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
         marginHorizontal: 40,
+        fontSize: 50,
+        fontFamily: 'Escolar2',
+        textTransform: 'uppercase',
+        textAlign: 'center',
+    },
+    textCantidad:{
         fontSize: 50,
         fontFamily: 'Escolar2',
         textTransform: 'uppercase',

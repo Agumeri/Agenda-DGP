@@ -126,6 +126,7 @@ const LoginScreen = () => {
 
 const styles = StyleSheet.create({
     input: {
+        textTransform: 'uppercase',
         backgroundColor: "#ffff",
         marginBottom: 35,
         fontFamily: 'Escolar2', 

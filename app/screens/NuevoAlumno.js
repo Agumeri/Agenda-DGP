@@ -71,7 +71,7 @@ const NuevoAlumno = () => {
 
 
             <Button 
-              title={<Text styles={styles.text}>Registrar </Text>}
+              title={<Text style={styles.text}>Registrar </Text>}
               onPress={() =>
                 createAlum()
             }

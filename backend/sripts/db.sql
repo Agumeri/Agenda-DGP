@@ -1,8 +1,9 @@
 CREATE DATABASE IF NOT EXISTS dgp;
 
 USE dgp;
------------------
+
 -- Usuario table --
+
 CREATE TABLE IF NOT EXISTS usuario(
     id INT NOT NULL AUTO_INCREMENT,
     nombre_usuario VARCHAR(100) NOT NULL,
@@ -16,8 +17,10 @@ INSERT INTO usuario (nombre_usuario, contraseña, permisos, correo_electronico, 
     ('prueba_admin', 'prueba_admin', '0','admin@gmail.com', 'default.jpg'),
     ('prueba_prof','prueba_prof','1','prof@gmail.com', 'juanjavier.png'),
     ('prueba_alumno', 'prueba_alumno', '2','alumno@gmail.com','maripili.png');
-------------------
+
+
 -- Profesor Table --
+
 CREATE TABLE IF NOT EXISTS profesor(
     id_usuario INT NOT NULL,
     id_profesor VARCHAR(100) NOT NULL UNIQUE,
@@ -27,8 +30,9 @@ CREATE TABLE IF NOT EXISTS profesor(
 
 INSERT INTO profesor(id_usuario, id_profesor) VALUES 
     ('2', '1');
-------------------------
+
 -- Alumno_autoriza table --
+
 CREATE TABLE IF NOT EXISTS alumno_tutoriza( 
     id_usuario INT NOT NULL REFERENCES usuario(id_usuario),
     id_alumno VARCHAR(100) NOT NULL,
@@ -38,8 +42,9 @@ CREATE TABLE IF NOT EXISTS alumno_tutoriza(
 
 INSERT INTO alumno_tutoriza (id_usuario, id_alumno, id_profesor) VALUES 
     ('3', '1', '1');
---------------
---Admin Table --
+
+-- Admin Table --
+
 CREATE TABLE IF NOT EXISTS administrador(
     id_admin VARCHAR(100) NOT NULL,
     id_usuario_inAdmin INT NOT NULL,
@@ -64,7 +69,7 @@ CREATE TABLE IF NOT EXISTS tarea(
 );
 
 INSERT INTO tarea(id_tarea, id_alumno, tipo, tiempo_requerido, fecha, hora, estado, tipo_multimedia)
-VALUES ('task_1','1','imagen','02:02:02','02-02-2002', '02:02:02', 'no iniciada', 'imagen');
+VALUES ('task_1','1','imagen','02:02:02','2002-02-02', '02:02:02', 'no iniciada', 'imagen');
 
 -- Objeto Multimedia --
 
@@ -94,6 +99,7 @@ INSERT INTO multimedia(id_multimedia, paso, id_tarea, url_foto, descripcion)
 VALUES ('multimedia_5','5','task_1','llevar.png','Sacarlo y llevarselo a la mesa');
 
 -- autorizacion Table --
+
 CREATE TABLE IF NOT EXISTS autorizacion(
     id_usuario INT NOT NULL REFERENCES alumno_tutoriza(id_usuario),
     id_alumno VARCHAR(100) NOT NULL REFERENCES alumno_tutoriza(id_alumno),
@@ -105,7 +111,7 @@ CREATE TABLE IF NOT EXISTS autorizacion(
 );
 
 INSERT INTO autorizacion(id_usuario, id_alumno, id_autorizacion, titulo, fecha, hora)
-VALUES ('2', '2', '1', 'titulo1', '02-02-2002','02:02:02');
+VALUES ('2', '2', '1', 'titulo1', '2002-02-02','02:02:02');
 
 CREATE TABLE IF NOT EXISTS realiza(
     id_usuario INT NOT NULL REFERENCES alumno_tutoriza(id_usuario),

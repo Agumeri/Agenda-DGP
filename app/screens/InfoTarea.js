@@ -5,8 +5,10 @@ import { getDetailsTask, getMultimediaByTarea } from "../api";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Button } from "react-native-elements";
 
+
 const InfoTarea = ({ route }) => {
     const id_tarea = route.params['idTask'] // id de la tarea
+    const nombreUser = route.params['nombreUser'] 
 
     const [pasos, setPasos] = useState([])
     const [pasosMax, setPasosMax] = useState(0)
@@ -54,6 +56,10 @@ const InfoTarea = ({ route }) => {
 
     return (
         <View style={styles.container}>
+            <View style = {styles.header}>
+                <Header nombreUser = {nombreUser}></Header>
+            </View>
+            
             <View style={styles.item}>
                 {
                     pasos.map((p) => {
@@ -144,8 +150,8 @@ const styles = StyleSheet.create({
         textTransform: 'uppercase',
     },
     pictograma: {
-        width: 300,
-        height: 300,
+        width: 200,
+        height: 200,
         backgroundColor: '#FFFFFF',
         marginTop: 30,
         marginBottom: 30,
@@ -163,6 +169,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
         marginHorizontal: 40
+    },
+    header: {
+        width: '100%'
     }
 })
 

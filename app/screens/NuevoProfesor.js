@@ -64,6 +64,7 @@ const NuevoProfesor = () => {
 
             <Button
                 title={<Text style={styles.text}>Registrar</Text>}
+                color= '#9bf6ff'
                 onPress={() =>
                     createProf()
                 }
@@ -83,7 +84,7 @@ const styles = StyleSheet.create({
         textTransform: 'uppercase',
         fontFamily: 'Escolar2', 
         fontSize: 24,
-        
+        color: 'black',
     },
     view: {
         paddingLeft: 20,

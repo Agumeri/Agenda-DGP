@@ -48,12 +48,13 @@ const  MenuTareas = ({ route, navigation }) => {
                 <View style={styles.item}>
                     {
                         listaTareas.map((item, index) => {
-                            return <Button key={index} title={item.tipo} onPress={() => goToTask(item.id_tarea)} />
+                            return <Button key={index}  title={<Text style={styles.text}>{item.tipo} </Text>} onPress={() => goToTask(item.id_tarea)} />
                         })
                     }
                 </View>
                 <Button 
                     style={refreshButton.container}
+                    color= '#AC33FF'
                     icon = {<Icon
 			                name="refresh"
 			                color = "white"

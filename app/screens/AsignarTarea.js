@@ -13,6 +13,10 @@ const AsignarTarea = ({ route, navigation}) => {
     const [tareaSeleccionada, setTareaSeleccionada] = useState([])
     const [alumnoSeleccionado, setAlumnoSeleccionado] = useState([])
 
+    useEffect(() => {
+        handleGetTareas();
+        handleGetAlumnos();
+    },[])
 
     const handleGetTareas = async () =>{
         const result = getTask()
@@ -55,9 +59,10 @@ const AsignarTarea = ({ route, navigation}) => {
             <View style={styles.taskWrapper}>
                 {/* Aqui es donde va cada Tarea */}
                 <View style={styles.item}>
-                    <Button 
+                    <Button  
+                            disabled={true}
                             style={refreshButton.container}
-                            title={<Text style={styles.text}>Refrescar Tarea</Text>}
+                            title={<Text style={styles.text}>Tareas</Text>}
                             color= '#caffbf'
                             onPress={() => handleGetTareas()}
                         />
@@ -70,8 +75,9 @@ const AsignarTarea = ({ route, navigation}) => {
                 {/* Aqui es donde va cada Alumno */}
                 <View style={styles.item}>
                     <Button 
+                        disabled={true}
                         style={refreshButton.container}
-                        title={<Text style={styles.text}>Refrescar Alumnos</Text>}
+                        title={<Text style={styles.text}>Alumnos</Text>}
                         color= '#caffbf'   
                         onPress={() => handleGetAlumnos()}
                     />

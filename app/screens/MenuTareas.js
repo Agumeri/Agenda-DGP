@@ -19,8 +19,8 @@ const  MenuTareas = ({ route, navigation }) => {
         })
     }
 
-    const handleGetTareas = async () =>{
-        console.log("Entro a hacer cositis")
+    // Obtenemos la lista de alumnos
+    useEffect(() => {
         const result = getInfoTask(nombreUser)        
 
         result.then( response =>  response.json().then( data => ({
@@ -36,7 +36,7 @@ const  MenuTareas = ({ route, navigation }) => {
                 //setListaTareas({tipo: "Ninguno"})
             }
         })
-    }
+    },[])
 
     return (
         <View style={styles.container}>
@@ -52,17 +52,6 @@ const  MenuTareas = ({ route, navigation }) => {
                         })
                     }
                 </View>
-                <Button 
-                    style={refreshButton.container}
-                    color= '#AC33FF'
-                    icon = {<Icon
-			                name="refresh"
-			                color = "white"
-			                size={30}
-		                />}
-                    title={<Text style={styles.text}> Refrescar tareas</Text>}
-                    onPress={() => handleGetTareas()}
-                />
             </View>
         </View>
     )

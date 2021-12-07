@@ -1,5 +1,4 @@
 import { json } from 'express'
-import { applyRetryableWrites } from 'mongodb/lib/utils';
 import {connect} from '../databases'
 
 

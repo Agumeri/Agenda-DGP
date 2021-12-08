@@ -5,8 +5,10 @@ import { getDetailsTask, getMultimediaByTarea } from "../api";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Button } from "react-native-elements";
 
+
 const InfoTarea = ({ route }) => {
     const id_tarea = route.params['idTask'] // id de la tarea
+    const nombreUser = route.params['nombreUser'] 
 
     const [pasos, setPasos] = useState([])
     const [pasosMax, setPasosMax] = useState(0)
@@ -20,6 +22,8 @@ const InfoTarea = ({ route }) => {
             update()
             console.log("Entro al update")
         }
+        // document.getElementById("patata").style.visibility = "hidden"
+        // document.getElementById("patata").click();
         setFirstTime(false);
 
     })
@@ -54,12 +58,16 @@ const InfoTarea = ({ route }) => {
 
     return (
         <View style={styles.container}>
+            <View style = {styles.header}>
+                <Header nombreUser = {nombreUser}></Header>
+            </View>
+            
             <View style={styles.item}>
                 {
                     pasos.map((p) => {
                         if (p.paso == pasoActual + 1) {
                             return (
-                                <View style={styles.taskContainer}>
+                                <View key={p.id_multimedia} style={styles.taskContainer}>
                                     <Text style={styles.text}> {"Paso "+p.paso} </Text>
                                     <View>
                                         <Image style={styles.pictograma} source={require("../images/tareas/" + p.url_foto)} />
@@ -144,8 +152,8 @@ const styles = StyleSheet.create({
         textTransform: 'uppercase',
     },
     pictograma: {
-        width: 300,
-        height: 300,
+        width: 200,
+        height: 200,
         backgroundColor: '#FFFFFF',
         marginTop: 30,
         marginBottom: 30,
@@ -163,6 +171,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
         marginHorizontal: 40
+    },
+    header: {
+        width: '100%'
     }
 })
 

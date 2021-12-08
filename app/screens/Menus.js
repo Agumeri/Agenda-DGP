@@ -222,6 +222,7 @@ const styles = StyleSheet.create({
         fontSize: 24,
         fontFamily: 'Escolar2',
         textTransform: 'uppercase',
+        color: 'black'
     },
     pictograma: {
         width: 300,

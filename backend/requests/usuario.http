@@ -2,11 +2,11 @@
 
 
 ### Check si el usuario existe
-POST {{api}}/usuario/check/prueba2
+POST {{api}}/usuario/check/admin@gmail.com
 Content-Type: application/json
 
 {
-    "contraseña": "prueba2"
+    "contraseña": "prueba_admin"
 }
 
 
@@ -22,14 +22,14 @@ Content-Type: application/json
 
 {
     "nombre_usuario": "prueba111",
-    "contraseña": "prueba7",
+    "contraseña": "prueba",
     "permisos": "2",
-    "correo_electronico": "prueba7"
-
+    "correo_electronico": "prueba3@gmail",
+    "imagen": "maripili.png"
 }
 
 ###
-DELETE {{api}}/usuario/2
+DELETE {{api}}/usuario/8
 ###
 PUT {{api}}/usuario/1
 Content-Type: application/json
@@ -38,8 +38,8 @@ Content-Type: application/json
     "nombre_usuario": "prueba7",
     "contraseña": "prueba7",
     "permisos": "0",
-    "correo_electronico": "prueba7"
+    "correo_electronico": "prueba3@gmail"
 }
 
 ###
-GET {{api}}/usuario/prof@gmail.com/permisos
+GET {{api}}/usuario/profe@gmail.com/permisos

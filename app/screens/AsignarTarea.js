@@ -13,6 +13,10 @@ const AsignarTarea = ({ route, navigation}) => {
     const [tareaSeleccionada, setTareaSeleccionada] = useState([])
     const [alumnoSeleccionado, setAlumnoSeleccionado] = useState([])
 
+    useEffect(() => {
+        handleGetTareas();
+        handleGetAlumnos();
+    },[])
 
     const handleGetTareas = async () =>{
         const result = getTask()
@@ -55,33 +59,41 @@ const AsignarTarea = ({ route, navigation}) => {
             <View style={styles.taskWrapper}>
                 {/* Aqui es donde va cada Tarea */}
                 <View style={styles.item}>
-                    <Button 
+                    <Button  
+                            disabled={true}
                             style={refreshButton.container}
-                            title={<Text style={styles.text}>Refrescar Tarea</Text>}
+                            title={<Text style={styles.text}>Tareas</Text>}
+                            color= '#caffbf'
                             onPress={() => handleGetTareas()}
                         />
                     {
                         listaTareas.map((item, index) => {
-                            return (<Button key={index} title={item.tipo} onPress={() => setTareaSeleccionada(item)} />)
+                            return (<Button key={index} title={<Text style={styles.text}>{item.tipo} </Text>} color='#fdffb6' onPress={() => setTareaSeleccionada(item)} />)
                         })
                     }
                 </View>
                 {/* Aqui es donde va cada Alumno */}
                 <View style={styles.item}>
                     <Button 
+                        disabled={true}
                         style={refreshButton.container}
-                        title={<Text style={styles.text}>Refrescar Alumnos</Text>}   
+                        title={<Text style={styles.text}>Alumnos</Text>}
+                        color= '#caffbf'   
                         onPress={() => handleGetAlumnos()}
                     />
                     {
                         listaAlumnos.map((item, index) => {
-                            return (<Button key={index} title={item.nombre_usuario} onPress={() => setAlumnoSeleccionado(item.nombre_usuario)} />)
+                            return (<Button key={index} title={<Text style={styles.text}>{item.nombre_usuario} </Text>} color='#fdffb6' onPress={() => setAlumnoSeleccionado(item.nombre_usuario)} />)
                         })
                     }
                 </View>
+
+                <View style ={styles.separador}> </View>
+
                 <Button 
                         style={refreshButton.container}
                         title={<Text style={styles.text}>Asignar Tarea</Text>}
+                        color= '#caffbf'
                         onPress={() => asignTaskAlum(tareaSeleccionada, alumnoSeleccionado)}
                     />     
             </View>
@@ -110,7 +122,11 @@ const styles = StyleSheet.create({
         textTransform: 'uppercase',
         fontFamily: 'Escolar2', 
         fontSize: 24,
+        color: 'black'
         
+    },
+    separador:{
+        paddingTop: 70
     }
 })
 

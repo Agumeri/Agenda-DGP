@@ -19,8 +19,8 @@ const  MenuTareas = ({ route, navigation }) => {
         })
     }
 
-    const handleGetTareas = async () =>{
-        console.log("Entro a hacer cositis")
+    // Obtenemos la lista de alumnos
+    useEffect(() => {
         const result = getInfoTask(nombreUser)        
 
         result.then( response =>  response.json().then( data => ({
@@ -36,7 +36,7 @@ const  MenuTareas = ({ route, navigation }) => {
                 //setListaTareas({tipo: "Ninguno"})
             }
         })
-    }
+    },[])
 
     return (
         <View style={styles.container}>
@@ -48,20 +48,10 @@ const  MenuTareas = ({ route, navigation }) => {
                 <View style={styles.item}>
                     {
                         listaTareas.map((item, index) => {
-                            return <Button key={index} title={item.tipo} onPress={() => goToTask(item.id_tarea)} />
+                            return <Button key={index}  title={<Text style={styles.text}>{item.tipo} </Text>} onPress={() => goToTask(item.id_tarea)} />
                         })
                     }
                 </View>
-                <Button 
-                    style={refreshButton.container}
-                    icon = {<Icon
-			                name="refresh"
-			                color = "white"
-			                size={30}
-		                />}
-                    title={<Text style={styles.text}> Refrescar tareas</Text>}
-                    onPress={() => handleGetTareas()}
-                />
             </View>
         </View>
     )

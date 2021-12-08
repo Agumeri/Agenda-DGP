@@ -20,9 +20,8 @@ export const checkUser = async (req, res) => {
     if(rows[0].length > 0){
         res.sendStatus(200);
     } else {
-        res.sendStatus(400).json({error: 'Error'})
+        res.sendStatus(400)
     }
-
 }
 
 // Metod: Obtiene los permisos de un usuario dado el correo
@@ -32,13 +31,12 @@ export const getUsuarioPermisos = async (req,res) => {
 
     if(user[0]) {
         const permisos = user[0].permisos;
-        res.sendStatus(200)
         res.json({
             "permisos": permisos
         })
     } else {
         console.log("Error correo electronico no valido")
-        res.sendStatus(400).json({error: 'Error correo no valido'})
+        res.sendStatus(400)
     }
 }
 
@@ -47,13 +45,11 @@ export const getUsuarios = async (req,res) => {
     const connection = await connect()
     const [rows] = await connection.query('SELECT * FROM usuario')
     if (rows [0]) {
-        res.sendStatus(200)
         res.json(rows)
     } else {
         console.log("No existen usuarios")
-        res.sendStatus(400).json({error: 'Error no se encuentran usuario'})
+        res.sendStatus(400)
     }
-    
 }
 
 // Metodo: Ontiene los datos de un usuario dado un id
@@ -61,13 +57,11 @@ export const getUsuario = async (req,res) => {
     const connection = await connect()
     const [rows] = await connection.query('SELECT * FROM usuario WHERE id = ?',[req.params.id])
     if (rows[0]) {
-        res.sendStatus(200)
         res.json(rows[0])
     } else {
         console.log("ID no valido")
-        res.sendStatus(400).json({error: 'Error id no valido'})
+        res.sendStatus(400)
     }
-    
 }
 
 // Metodo: Obtiene cantidad de usuarios
@@ -95,14 +89,14 @@ export const saveUsuario = async (req,res) => {
                     req.body.imagen
                 ])
                 if(result.insertId) {
-                    return res.status(200).json({success: 'Insert row success'})
+                    res.status(200)
                 } else {
                     console.log("Error al insertar")
-                    res.sendStatus(400).json({error: 'Error al insertar'})
+                    res.sendStatus(400)
                 }
             }
         } else {
-            res.sendStatus(400).json({error: 'Error permiso is NaN'})
+            res.sendStatus(400)
             console.log("Variable permisos debe ser un numero")
         }
     } else {
@@ -117,10 +111,8 @@ export const saveUsuario = async (req,res) => {
             console.log("correo no valido")
         if (!req.body.imagen)
             console.log("imagen no valida")
-            res.sendStatus(400).json({error: 'Error cparametros incorrectos'})
+            res.sendStatus(400)
     }
-
-    
 }
 
 // Metodo: Elimina usuario dado un id

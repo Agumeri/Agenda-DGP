@@ -9,15 +9,14 @@ POST {{api}}
 Content-Type: application/json
 
 {
-    "nombre_usuario": "profesor marvado",
+    "nombre_usuario": "profesor prueba 1",
     "contraseña": "jvnfuytesoiryxcf89",
-    "permisos": "1",
-    "correo_electronico": "jajasi@soyyo.com"
+    "correo_electronico": "prueba1@correo.com"
 }
 
 ## GET 
 ###1 Obtener un profesor por id
-GET {{api}}/prof_4
+GET {{api}}/prof_1
 
 ###COUNT numero de profesores
 GET {{api}}/count
@@ -37,4 +36,4 @@ Content-Type: application/json
 
 ##DELETE
 ###
-DELETE {{api}}/prof_1
+DELETE {{api}}/prof_6

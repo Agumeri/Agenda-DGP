@@ -22,6 +22,8 @@ const InfoTarea = ({ route }) => {
             update()
             console.log("Entro al update")
         }
+        // document.getElementById("patata").style.visibility = "hidden"
+        // document.getElementById("patata").click();
         setFirstTime(false);
 
     })
@@ -65,7 +67,7 @@ const InfoTarea = ({ route }) => {
                     pasos.map((p) => {
                         if (p.paso == pasoActual + 1) {
                             return (
-                                <View style={styles.taskContainer}>
+                                <View key={p.id_multimedia} style={styles.taskContainer}>
                                     <Text style={styles.text}> {"Paso "+p.paso} </Text>
                                     <View>
                                         <Image style={styles.pictograma} source={require("../images/tareas/" + p.url_foto)} />

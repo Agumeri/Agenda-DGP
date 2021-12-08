@@ -15,6 +15,7 @@ import AlumLoginScreen from './screens/AlumLoginScreen';
 import Clases from './screens/Clases';
 import Menus from './screens/Menus';
 import Inventario from './screens/Inventario';
+import CrearTarea from './screens/CrearTarea';
 import { View } from 'react-native';
 
 
@@ -147,6 +148,15 @@ const App = () => {
 
         <Stack.Screen name="Inventario" component={Inventario} options={{
           title: 'Recuento del inventario',
+          headerTitleStyle: {
+            fontFamily: 'Escolar2',
+            textTransform: 'uppercase'
+          }
+        }}
+        />
+
+        <Stack.Screen name="CrearTarea" component={CrearTarea} options={{
+          title: 'Crear nueva tarea',
           headerTitleStyle: {
             fontFamily: 'Escolar2',
             textTransform: 'uppercase'

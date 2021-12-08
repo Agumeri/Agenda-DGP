@@ -14,6 +14,9 @@ const MenuAdmin = ({ route, navigation }) => {
                 title={<Text style={styles.text}>Crear Tarea</Text>}
                 color= '#ffadad'
                 accessibilityLabel='Crear una nueva tarea'
+                onPress={() => navigation.navigate("CrearTarea", {
+                    nombreUser: nombreUser
+                })}
 
             />
 

@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS tarea(
     id_tarea varchar(100) NOT NULL,
     id_alumno varchar(100) REFERENCES alumno_tutoriza(id_alumno),
     id_tarea_multimedia varchar(100) REFERENCES multimedia(id_tarea),
-    nombre varchar(100)
+    nombre varchar(100),
     tipo INT NOT NULL,
     tiempo_requerido time,
     fecha date NOT NULL,
@@ -74,7 +74,7 @@ CREATE TABLE IF NOT EXISTS tarea(
     PRIMARY KEY (id_tarea)
 );
 
-INSERT INTO tarea(id_tarea,id_alumno, id_tarea_multimedia, nombre,  tipo, tiempo_requerido, fecha, hora)
+INSERT INTO tarea(id_tarea,id_alumno, id_tarea_multimedia, nombre,  tipo, tiempo_requerido, fecha, hora, estado)
 VALUES ('task_1','1','task_1','poner microondas', '1','02:02:02','2002-02-02', '02:02:02', '0');
 
 
@@ -90,7 +90,7 @@ CREATE TABLE IF NOT EXISTS multimedia(
 -- Pegar desde php my admin --
 
 INSERT INTO multimedia(id_multimedia, paso, id_tarea, url_foto, descripcion)
-VALUES ('multimedia_1','1','task_1','','ir a la cocina');
+VALUES ('multimedia_1','1','task_1','ir.png','ir a la cocina');
 
 INSERT INTO multimedia(id_multimedia, paso, id_tarea, url_foto, descripcion)
 VALUES ('multimedia_2','2','task_1','lavar.png','lavarse las manos');

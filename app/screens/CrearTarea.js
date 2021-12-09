@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, createRef } from 'react'
 import { Button, View, TextInput, Text, StyleSheet, Image } from 'react-native'
 import * as ImagePicker from 'expo-image-picker';
 
 const CrearTarea = ({ route, navigation }) => {
 
+    let refInput = createRef()
     const [paso, setPaso] = useState(1)
     const [descrip, setDescrip] = useState("")
-    const [image, setImage] = useState()
     const [height, setHeight] = useState(300)
     const [width, setWidth] = useState(300)
     const [uri, setUri] = useState('https://via.placeholder.com/300')
@@ -18,7 +18,6 @@ const CrearTarea = ({ route, navigation }) => {
         let result = await ImagePicker.launchImageLibraryAsync({
             mediaTypes: ImagePicker.MediaTypeOptions.Images,
             allowsEditing: false,
-            base64: true,
             quality: 1,
         });
 
@@ -26,7 +25,6 @@ const CrearTarea = ({ route, navigation }) => {
 
         if (!result.cancelled) {
             setUri(result.uri);
-            setImage(result.base64);
             setHeight(result.height);
             setWidth(result.width)
         }
@@ -35,20 +33,18 @@ const CrearTarea = ({ route, navigation }) => {
         }
     };
 
+    const outputButton = () => {
+        if (inicio) {
+            return(<Text style={styles.text}>Añadir pictogramas</Text>)
+        } else { 
+            return(<Text style={styles.text}>Siguiente</Text> )
+        }
+    };
     const output = () => {
         if (inicio) {
-            console.log('holi')
             return (
 
                 <View styles={styles.container}>
-                    <Text style={styles.text}>Código de la tarea: </Text>
-
-                    <TextInput
-                        style={styles.input}
-                        placeholder="inserte el código"
-                        multiline={true}
-                        onChangeText={(idTarea) => setIdTarea(idTarea)}
-                    />
                     <Text style={styles.text}>Nombre de la tarea:</Text>
 
                     <TextInput
@@ -71,7 +67,7 @@ const CrearTarea = ({ route, navigation }) => {
                         style={styles.descripInput}
                         placeholder="DESCRIPCIÓN DE LA TAREA"
                         multiline={true}
-                        //ref={(input) =>  {inputD = input} }
+                        ref={refInput}
                         onChangeText={(descrip) => setDescrip(descrip)}
                     />
 
@@ -91,7 +87,7 @@ const CrearTarea = ({ route, navigation }) => {
             )
         }
 
-    }
+    };
 
     return (
         <View style={styles.container}>
@@ -99,12 +95,12 @@ const CrearTarea = ({ route, navigation }) => {
             {output()}
 
             <Button
-                title={<Text style={styles.text}>Siguiente</Text>}
+                title={outputButton()}
                 onPress={() => {
                     {
                         if (inicio) { setInicio(false) }
                         else {
-
+                            refInput.current.clear()
                             setDescrip("")
                             setPaso(paso + 1)
                             setUri('https://via.placeholder.com/300')

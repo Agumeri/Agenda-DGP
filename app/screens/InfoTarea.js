@@ -70,7 +70,7 @@ const InfoTarea = ({ route }) => {
                                 <View key={p.id_multimedia} style={styles.taskContainer}>
                                     <Text style={styles.text}> {"Paso "+p.paso} </Text>
                                     <View>
-                                        <Image style={styles.pictograma} source={require("../images/tareas/" + p.url_foto)} />
+                                        <Image style={styles.pictograma} source={{uri:p.url_foto}} />
                                     </View>
                                     <Text style={styles.text}> {p.descripcion} </Text>
                                 </View>

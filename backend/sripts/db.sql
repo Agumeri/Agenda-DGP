@@ -78,6 +78,13 @@ INSERT INTO tarea(id_tarea,id_alumno, id_tarea_multimedia, nombre,  tipo, tiempo
 VALUES ('task_1','1','task_1','poner microondas', '1','02:02:02','2002-02-02', '02:02:02', '0');
 
 
+INSERT INTO tarea(id_tarea,id_alumno,  nombre,  estado)
+VALUES ('task_2','1','recuento de menús por clase', '2','0');
+
+INSERT INTO tarea(id_tarea,id_alumno,  nombre,  estado)
+VALUES ('task_2','1','recuento de inventario', '3','0');
+
+
 CREATE TABLE IF NOT EXISTS multimedia(
     id_multimedia VARCHAR(100) NOT NULL,
     paso INT,

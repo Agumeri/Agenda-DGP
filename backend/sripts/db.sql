@@ -55,36 +55,42 @@ INSERT INTO administrador(id_admin, id_usuario_inAdmin) VALUES ('admin01','1');
 
 
 -- Objeto tarea --
+-- tipo 1: tarea fija
+-- tipo 2: recuento de menu (ventana clases)
+-- tipo 3: recuento de inventario (ventana inventario)
+-- estado FALSE: no hecho 
+-- estado TRUE: hecho
 
 CREATE TABLE IF NOT EXISTS tarea(
     id_tarea varchar(100) NOT NULL,
     id_alumno varchar(100) REFERENCES alumno_tutoriza(id_alumno),
-    tipo varchar(50) NOT NULL,
+    id_tarea_multimedia varchar(100) REFERENCES multimedia(id_tarea),
+    nombre varchar(100)
+    tipo INT NOT NULL,
     tiempo_requerido time,
     fecha date NOT NULL,
     hora time,
-    estado varchar(100),
-    tipo_multimedia varchar(50),
+    estado BOOLEAN,
     PRIMARY KEY (id_tarea)
 );
 
-INSERT INTO tarea(id_tarea, id_alumno, tipo, tiempo_requerido, fecha, hora, estado, tipo_multimedia)
-VALUES ('task_1','1','imagen','02:02:02','2002-02-02', '02:02:02', 'no iniciada', 'imagen');
+INSERT INTO tarea(id_tarea,id_alumno, id_tarea_multimedia, nombre,  tipo, tiempo_requerido, fecha, hora)
+VALUES ('task_1','1','task_1','poner microondas', '1','02:02:02','2002-02-02', '02:02:02', '0');
 
--- Objeto Multimedia --
 
 CREATE TABLE IF NOT EXISTS multimedia(
     id_multimedia VARCHAR(100) NOT NULL,
     paso INT,
     id_tarea VARCHAR(100),
-    url_foto VARCHAR(100),
+    url_foto LONGTEXT,
     descripcion VARCHAR(100),
-    PRIMARY KEY (id_multimedia),
-    FOREIGN KEY (id_tarea) REFERENCES tarea(id_tarea)
+    PRIMARY KEY (id_multimedia)
 );
 
+-- Pegar desde php my admin --
+
 INSERT INTO multimedia(id_multimedia, paso, id_tarea, url_foto, descripcion)
-VALUES ('multimedia_1','1','task_1','ir.png','ir a la cocina');
+VALUES ('multimedia_1','1','task_1','','ir a la cocina');
 
 INSERT INTO multimedia(id_multimedia, paso, id_tarea, url_foto, descripcion)
 VALUES ('multimedia_2','2','task_1','lavar.png','lavarse las manos');

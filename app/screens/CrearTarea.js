@@ -1,6 +1,7 @@
 import React, { useState, createRef } from 'react'
 import { Button, View, TextInput, Text, StyleSheet, Image } from 'react-native'
 import * as ImagePicker from 'expo-image-picker';
+import { crearIdTarea, createPaso, createTareaFija } from "../api";
 
 const CrearTarea = ({ route, navigation }) => {
 
@@ -33,11 +34,37 @@ const CrearTarea = ({ route, navigation }) => {
         }
     };
 
+    const getIdTarea = async () => {
+        const result = crearIdTarea()
+
+        result.then(response => response.json().then(data => ({
+            data: data,
+            status: response.status
+        })))
+            .then(res => {
+                //console.log(res)
+                if (res.status == 200) {
+                    console.log(res.data)
+                    setIdTarea(res.data)
+                } else {
+                    console.log("No se ha podido crear el id")
+                }
+            })
+    };
+
+    const insertPaso = async () => {
+        const resp = createPaso(idTarea, paso, descrip, uri);
+    };
+
+    const insertTareaFija = async () => {
+        const resp = createTareaFija(idTarea, nombre, idTarea)
+    };
+
     const outputButton = () => {
         if (inicio) {
-            return(<Text style={styles.text}>Añadir pictogramas</Text>)
-        } else { 
-            return(<Text style={styles.text}>Siguiente</Text> )
+            return (<Text style={styles.text}>Añadir pictogramas</Text>)
+        } else {
+            return (<Text style={styles.text}>Siguiente</Text>)
         }
     };
     const output = () => {
@@ -89,6 +116,27 @@ const CrearTarea = ({ route, navigation }) => {
 
     };
 
+    const finalizar = () => {
+        if (!inicio) {
+            return(<Button
+                title={<Text style={styles.text}>finalizar tarea</Text>}
+                onPress={() => {
+                    {
+                        setDescrip("")
+                        setPaso(1)
+                        setUri('https://via.placeholder.com/300')
+
+                        navigation.navigate("MenuAdmin", {
+                            nombreUser: route.params['nombreUser']
+                        })
+                        }
+                    }
+                }
+                
+            />)
+        }
+    }
+
     return (
         <View style={styles.container}>
 
@@ -100,8 +148,8 @@ const CrearTarea = ({ route, navigation }) => {
                     {
                         if (inicio) { setInicio(false) }
                         else {
+                            insertPaso()
                             refInput.current.clear()
-                            setDescrip("")
                             setPaso(paso + 1)
                             setUri('https://via.placeholder.com/300')
                         }
@@ -110,24 +158,7 @@ const CrearTarea = ({ route, navigation }) => {
                 }
             />
 
-            <Button
-                title={<Text style={styles.text}>finalizar tarea</Text>}
-                onPress={() => {
-                    {
-                        if (inicio) { setInicio(false) }
-                        else {
-                            setDescrip("")
-                            setPaso(1)
-                            setUri('https://via.placeholder.com/300')
-
-                            navigation.navigate("MenuAdmin", {
-                                nombreUser: route.params['nombreUser']
-                            })
-                        }
-                    }
-                }
-                }
-            />
+            {finalizar()}
 
         </View>
     )
@@ -184,6 +215,7 @@ const styles = StyleSheet.create({
         marginBottom: 30,
 
     },
+    
 
 })
 

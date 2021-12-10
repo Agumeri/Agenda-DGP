@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS tarea(
     nombre varchar(100),
     tipo INT NOT NULL,
     tiempo_requerido time,
-    fecha date NOT NULL,
+    fecha date NULL,
     hora time,
     estado BOOLEAN,
     PRIMARY KEY (id_tarea)
@@ -86,30 +86,29 @@ VALUES ('task_3','1','recuento de inventario', '3','0');
 
 
 CREATE TABLE IF NOT EXISTS multimedia(
-    id_multimedia VARCHAR(100) NOT NULL,
     paso INT,
     id_tarea VARCHAR(100),
     url_foto LONGTEXT,
     descripcion VARCHAR(100),
-    PRIMARY KEY (id_multimedia)
+    PRIMARY KEY (paso,id_tarea)
 );
 
 -- Pegar desde php my admin --
 
-INSERT INTO multimedia(id_multimedia, paso, id_tarea, url_foto, descripcion)
-VALUES ('multimedia_1','1','task_1','ir.png','ir a la cocina');
+INSERT INTO multimedia( paso, id_tarea, url_foto, descripcion)
+VALUES ('1','task_1','ir.png','ir a la cocina');
 
 INSERT INTO multimedia(id_multimedia, paso, id_tarea, url_foto, descripcion)
-VALUES ('multimedia_2','2','task_1','lavar.png','lavarse las manos');
+VALUES ('2','task_1','lavar.png','lavarse las manos');
 
 INSERT INTO multimedia(id_multimedia, paso, id_tarea, url_foto, descripcion)
-VALUES ('multimedia_3','3','task_1','coger.png','Coger el plato con comida');
+VALUES ('3','task_1','coger.png','Coger el plato con comida');
 
 INSERT INTO multimedia(id_multimedia, paso, id_tarea, url_foto, descripcion)
-VALUES ('multimedia_4','4','task_1','microondas.png','Ponerlo dentro del microondas');
+VALUES ('4','task_1','microondas.png','Ponerlo dentro del microondas');
 
 INSERT INTO multimedia(id_multimedia, paso, id_tarea, url_foto, descripcion)
-VALUES ('multimedia_5','5','task_1','llevar.png','Sacarlo y llevarselo a la mesa');
+VALUES ('5','task_1','llevar.png','Sacarlo y llevarselo a la mesa');
 
 -- autorizacion Table --
 

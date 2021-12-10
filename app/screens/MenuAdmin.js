@@ -47,7 +47,7 @@ const MenuAdmin = ({ route, navigation }) => {
                 onPress={() => navigation.navigate("AsignarTarea")}
             />
 
-            <View style ={styles.separador}> </View>
+            {/*<View style ={styles.separador}> </View>
 
             <Button style={styles.button}
                 title={<Text style={styles.text}>Inventario</Text>}
@@ -61,7 +61,7 @@ const MenuAdmin = ({ route, navigation }) => {
                 color= '#ffc6ff'
                 accessibilityLabel='Seleccionar la clase para recuento de menú'
                 onPress={() => navigation.navigate("Clases")}
-            />
+            />*/}
 
 
         </View>

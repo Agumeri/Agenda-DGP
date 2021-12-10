@@ -47,28 +47,14 @@ const InfoTarea = ({ route }) => {
     const handleChange = async (selected) => {
         console.log("Entro al handleChange")
         console.log(isSelected)
-        let result = null;
         if (isSelected) {
-            result = setEstadoTarea(id_tarea, 1)
+            setEstadoTarea(id_tarea, 1)
             setTextoBox("Tarea realizada")
         }
         else {
-            result = setEstadoTarea(id_tarea, 0)
+            setEstadoTarea(id_tarea, 0)
             setTextoBox("Tarea no realizada")
         }
-
-        result.then(response => response.json().then(data => ({
-            data: data,
-            status: response.status
-        })))
-            .then(res => {
-                //console.log(res)
-                if (res.status == 200) {
-                    console.log(res.data)
-                } else {
-                    console.log("No se ha podido cambiar el estado")
-                }
-            })
 
 
 

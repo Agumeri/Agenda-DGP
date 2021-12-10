@@ -238,3 +238,18 @@ export const crearIdTarea = async() => {
     })
 }
 
+export const createPaso = async (tareaId, paso, descripcion, urlFoto) => {
+    return fetch(API + '/multimedia', {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            tareaId: tareaId,
+            paso: paso,
+            descripcion: descripcion,
+            urlFoto: urlFoto
+        })
+    });
+  }

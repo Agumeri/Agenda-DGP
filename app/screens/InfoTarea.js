@@ -18,12 +18,11 @@ const InfoTarea = ({ route }) => {
 
     useEffect(() => {
         console.log("useEffect")
+        setPasosMax(pasos.length)
         if (firstTime) {
             update()
             console.log("Entro al update")
         }
-        // document.getElementById("patata").style.visibility = "hidden"
-        // document.getElementById("patata").click();
         setFirstTime(false);
 
     })
@@ -33,7 +32,7 @@ const InfoTarea = ({ route }) => {
         handlePasos()
 
         // Ponemos el valor de la cantidad de pasos que hay 
-        setPasosMax(pasos.length)
+        
 
     }
 
@@ -100,7 +99,7 @@ const InfoTarea = ({ route }) => {
                         size={40}
                     />}
                 />
-                <Button
+                {/* <Button
                     icon={<Icon
                         name="refresh"
                         color="white"
@@ -108,7 +107,7 @@ const InfoTarea = ({ route }) => {
                     />}
                     title=" Refrescar tareas"
                     onPress={() => update()}
-                />
+                /> */}
                 <Button
                     onPress={() => {
                         setPasoActual((pasoActual + 1) % pasosMax)

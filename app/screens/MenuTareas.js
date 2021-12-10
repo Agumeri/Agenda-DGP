@@ -13,10 +13,20 @@ const  MenuTareas = ({ route, navigation }) => {
     const nombreUser = route.params['nombreUser']   //User Name
     const [listaTareas, setListaTareas] = useState([])
 
-    const goToTask = async (id_task) => {
-        navigation.navigate("InfoTarea", {
-            idTask: id_task
-        })
+    const goToTask = async (id_task, tipo) => {
+        if( tipo == 1){
+            navigation.navigate("InfoTarea", {
+                idTask: id_task
+            })
+        }else if(tipo == 2){
+            navigation.navigate("Clases",{
+                idTask: id_task
+            })
+        }else if(tipo == 3){
+            navigation.navigate("Inventario", {
+                idTask: id_task
+            })
+        }
     }
 
     // Obtenemos la lista de alumnos
@@ -48,7 +58,7 @@ const  MenuTareas = ({ route, navigation }) => {
                 <View style={styles.item}>
                     {
                         listaTareas.map((item, index) => {
-                            return <Button key={index}  title={<Text style={styles.text}>{item.tipo} </Text>} onPress={() => goToTask(item.id_tarea)} />
+                            return <Button key={index}  title={<Text style={styles.text}>{item.nombre} </Text>} onPress={() => goToTask(item.id_tarea,item.tipo)} />
                         })
                     }
                 </View>

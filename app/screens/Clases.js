@@ -17,6 +17,7 @@ const Clases = ({ route, navigation }) => {
 
     useEffect(() => {
         console.log("useEffect")
+        setClasesMax(clases.length)
         if (firstTime) {
             update()
             console.log("Entro al update")
@@ -30,7 +31,7 @@ const Clases = ({ route, navigation }) => {
         handleClases()
 
         // Ponemos el valor de la cantidad de clases que hay 
-        setClasesMax(clases.length)
+       
 
     }
 
@@ -99,7 +100,7 @@ const Clases = ({ route, navigation }) => {
                         size={40}
                     />}
                 />
-                <Button
+                {/* <Button
                     icon={<Icon
                         name="refresh"
                         color="white"
@@ -107,7 +108,7 @@ const Clases = ({ route, navigation }) => {
                     />}
                     title=" Refrescar tareas"
                     onPress={() => update()}
-                />
+                /> */}
                 <Button
                     onPress={() => {
                         setClaseActual((claseActual + 1) % clasesMax)

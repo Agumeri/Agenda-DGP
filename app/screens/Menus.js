@@ -20,6 +20,7 @@ const Menus = ({ route , navigation }) => {
 
     useEffect(() => {
         console.log("useEffect")
+        setMenusMax(menus.length)
         if(firstTime){
             update()
             console.log("Entro al update")
@@ -33,7 +34,7 @@ const Menus = ({ route , navigation }) => {
         handleMenus()
 
         // Ponemos el valor de la cantidad de menus que hay 
-        setMenusMax(menus.length)
+        
 
     }
 
@@ -169,7 +170,7 @@ const Menus = ({ route , navigation }) => {
                         size={40}
                     />}
                 />
-                <Button
+                {/* <Button
                     icon={<Icon
                         name="refresh"
                         color="white"
@@ -177,7 +178,7 @@ const Menus = ({ route , navigation }) => {
                     />}
                     title=" Refrescar tareas"
                     onPress={() => update()}
-                />
+                /> */}
                 <Button
                     onPress={() => {
                         setMenuActual((menuActual + 1) % menusMax)

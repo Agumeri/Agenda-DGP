@@ -1,19 +1,23 @@
 import React, { useEffect, useState, ListItem, createRef } from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image, CheckBox } from "react-native";
 import Header from '../components/Header'
-import { getDetailsTask, getMultimediaByTarea } from "../api";
+import { getMultimediaByTarea, setEstadoTarea } from "../api";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Button } from "react-native-elements";
 
 
 const InfoTarea = ({ route }) => {
     const id_tarea = route.params['idTask'] // id de la tarea
-    const nombreUser = route.params['nombreUser'] 
+    const id_multimedia = route.params['idMultimedia']
+    const nombreUser = route.params['nombreUser']
 
     const [pasos, setPasos] = useState([])
     const [pasosMax, setPasosMax] = useState(0)
     const [pasoActual, setPasoActual] = useState(0)
     const [firstTime, setFirstTime] = useState(true);
+    const [isSelected, setSelected] = useState(false);
+    const [oldSelected,setOldSelected] = useState(false);
+    const [textoBox, setTextoBox] = useState("Tarea no realizada")
 
 
     useEffect(() => {
@@ -25,6 +29,11 @@ const InfoTarea = ({ route }) => {
         }
         setFirstTime(false);
 
+        if(oldSelected!=isSelected){
+            handleChange()
+            setOldSelected(isSelected)
+        }
+
     })
 
     const update = async () => {
@@ -32,12 +41,61 @@ const InfoTarea = ({ route }) => {
         handlePasos()
 
         // Ponemos el valor de la cantidad de pasos que hay 
-        
+
+
+    }
+    const handleChange = async (selected) => {
+        console.log("Entro al handleChange")
+        console.log(isSelected)
+        let result = null;
+        if (isSelected) {
+            result = setEstadoTarea(id_tarea, 1)
+            setTextoBox("Tarea realizada")
+        }
+        else {
+            result = setEstadoTarea(id_tarea, 0)
+            setTextoBox("Tarea no realizada")
+        }
+
+        result.then(response => response.json().then(data => ({
+            data: data,
+            status: response.status
+        })))
+            .then(res => {
+                //console.log(res)
+                if (res.status == 200) {
+                    console.log(res.data)
+                } else {
+                    console.log("No se ha podido cambiar el estado")
+                }
+            })
+
+
 
     }
 
+    const checkbox = (paso) => {
+        if (paso == pasosMax) {
+            return (
+                <View>
+
+                    
+                    <CheckBox
+                        value={isSelected}
+                        onValueChange={setSelected}
+                        style={styles.checkbox}
+                    />
+                    <Text style={styles.text}> {textoBox}</Text>
+
+
+                </View>
+            )
+        }
+    }
+
+
     const handlePasos = async () => {
-        const result = getMultimediaByTarea(id_tarea)
+        const result = getMultimediaByTarea(id_multimedia)
 
         result.then(response => response.json().then(data => ({
             data: data,
@@ -57,22 +115,25 @@ const InfoTarea = ({ route }) => {
 
     return (
         <View style={styles.container}>
-            <View style = {styles.header}>
-                <Header nombreUser = {nombreUser}></Header>
+            <View style={styles.header}>
+                <Header nombreUser={nombreUser}></Header>
             </View>
-            
+
             <View style={styles.item}>
                 {
                     pasos.map((p) => {
                         if (p.paso == pasoActual + 1) {
                             return (
                                 <View key={p.id_multimedia} style={styles.taskContainer}>
-                                    <Text style={styles.text}> {"Paso "+p.paso} </Text>
+                                    <Text style={styles.text}> {"Paso " + p.paso} </Text>
                                     <View>
-                                        <Image style={styles.pictograma} source={{uri:p.url_foto}} />
+                                        <Image style={styles.pictograma} source={{ uri: p.url_foto }} />
                                     </View>
                                     <Text style={styles.text}> {p.descripcion} </Text>
+                                    {checkbox(p.paso)}
                                 </View>
+
+
                             )
                         }
 
@@ -86,8 +147,8 @@ const InfoTarea = ({ route }) => {
             <View style={styles.cambiarPaso}>
                 <Button
                     onPress={() => {
-                        if(pasoActual == 0){
-                            setPasoActual(pasosMax-1)
+                        if (pasoActual == 0) {
+                            setPasoActual(pasosMax - 1)
                         }
                         else {
                             setPasoActual((pasoActual - 1) % pasosMax)
@@ -173,6 +234,14 @@ const styles = StyleSheet.create({
     },
     header: {
         width: '100%'
+    },
+    checkbox: {
+        alignSelf: "center",
+        width: 50,
+        height: 50,
+        backgroundColor: '#EEEEEE',
+        marginTop: 30,
+        marginBottom: 30,
     }
 })
 

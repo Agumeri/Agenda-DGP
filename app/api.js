@@ -188,6 +188,7 @@ export const getClases = async() => {
     })
 }
 
+
 export const getMenus = async() => {
     const url = API+'/menus'
     return fetch(url,{
@@ -197,6 +198,7 @@ export const getMenus = async() => {
         }
     })
 }
+
 
 export const setCantidadMenuClase = async (id_clase, id_menu, cantidad) => {
     return fetch( API + '/menus_clase/' + id_clase , {
@@ -210,5 +212,19 @@ export const setCantidadMenuClase = async (id_clase, id_menu, cantidad) => {
             cantidad: cantidad
         })
     });
+}
+
+export const setEstadoTarea = async (id_tarea, estado) => {
+    return fetch( API + '/tarea/state/' + id_tarea , {
+        method: 'PUT',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            estado: estado
+        })
+    });
+
 }
 

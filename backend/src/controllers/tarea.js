@@ -72,9 +72,10 @@ export const updateTaskState = async (req, res) => {
     const connection = await connect()
     
     const idTask = req.params.id
+    const estado = req.body.estado
     
     const result = await connection.query("UPDATE tarea SET estado = (?) WHERE id_tarea = (?)",[
-        "Finalizada",
+        estado,
         idTask
     ])
     res.send("Estado de la tarea actualizado");

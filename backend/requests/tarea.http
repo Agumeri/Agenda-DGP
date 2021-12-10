@@ -56,3 +56,7 @@ Content-Type: application/json
 ### Finalizar una tarea (cambiar estado a finalizado)
 PUT {{api}}/state/task_2
 Content-Type: application/json 
+
+{
+    "estado": "0"
+}

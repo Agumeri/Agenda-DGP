@@ -133,3 +133,14 @@ export const asignarTareaAlumno = async (req, res) => {
         "id_tarea": taskId,
     })
 }
+
+export const createId = async (req, res) => {
+    const connection = await connect()
+    
+    const [rows] = await connection.query('SELECT COUNT(*) FROM tarea')
+    const taskId = "task_" + (rows[0]["COUNT(*)"] + 1)
+
+    res.json({
+        "id_tarea": taskId,
+    })
+}

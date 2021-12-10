@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { createTarea, updateTaskState, getTareas, getTarea, getTareaCount, updateTask, getTareaByAlum, getTareasPlantilla, asignarTareaAlumno} from '../controllers/tarea'
+import { createId, createTarea, updateTaskState, getTareas, getTarea, getTareaCount, updateTask, getTareaByAlum, getTareasPlantilla, asignarTareaAlumno} from '../controllers/tarea'
 
 const router = Router();
 
@@ -58,6 +58,16 @@ router.get('/tarea',getTareas)
  * 
  */
  router.get('/tarea/:id',getTarea)
+
+ /**
+ * @swagger
+ * /tarea/new:
+ *  get:
+ *      summary: crear un id
+ *      tags: [Tarea]
+ * 
+ */
+  router.get('/tarea/new/:id', createId)
 
 /**
  * @swagger

@@ -58,5 +58,8 @@ PUT {{api}}/state/task_2
 Content-Type: application/json 
 
 {
-    "estado": "0"
+    "estado": "1"
 }
+
+###GET crear id
+GET {{api}}/new/4

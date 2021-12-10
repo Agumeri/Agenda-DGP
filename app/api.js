@@ -228,3 +228,13 @@ export const setEstadoTarea = async (id_tarea, estado) => {
 
 }
 
+export const crearIdTarea = async() => {
+    const url = API+'/tarea/new/4'
+    return fetch(url,{
+        method: 'GET', 
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+}
+

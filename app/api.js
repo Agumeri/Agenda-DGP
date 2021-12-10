@@ -253,3 +253,17 @@ export const createPaso = async (tareaId, paso, descripcion, urlFoto) => {
         })
     });
   }
+
+  export const createTareaFija = async (id_tarea, nombre, id_tarea_multimedia) => {
+    return fetch(API + '/tarea/' + id_tarea, {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            nombre: nombre,
+            id_tarea_multimedia: id_tarea_multimedia
+        })
+    });
+  }

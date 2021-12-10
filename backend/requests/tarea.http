@@ -63,3 +63,13 @@ Content-Type: application/json
 
 ###GET crear id
 GET {{api}}/new/4
+
+##POST
+###Insertar 1 tarea nueva
+POST {{api}}/pepito3e3wer2
+Content-Type: application/json
+
+{
+    "nombre": "hola",
+    "id_tarea_multimedia": "task_3"
+}

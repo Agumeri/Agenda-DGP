@@ -31,6 +31,20 @@ export const createTarea = async (req, res) => {
     })
 }
 
+export const createNewTareaFija = async (req, res) => {
+    const connection = await connect()
+    
+    const taskId = req.params.id
+
+    const [task] = await connection.query("INSERT INTO tarea(id_tarea, nombre, tipo, estado, id_tarea_multimedia) VALUES (?,?,?,?,?)",[
+        taskId,
+        req.body.nombre,
+        "1",
+        "0",
+        req.body.id_tarea_multimedia
+    ])
+}
+
 export const getTareas = async (req, res) => {
     const connection = await connect()
     const [rows]  = await connection.query(

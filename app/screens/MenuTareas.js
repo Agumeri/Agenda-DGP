@@ -1,12 +1,12 @@
 import React, { useEffect, useState, createRef } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Button } from "react-native";
 import { useNavigation } from "@react-navigation/core";
 import { getInfoTask } from "../api";
 import Task from '../components/Task';
 import { BottomSheet } from "react-native-elements";
 import Header from '../components/Header';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { Button } from "react-native-elements";
+
 
 const MenuTareas = ({ route, navigation }) => {
     // Variable for data
@@ -60,7 +60,17 @@ const MenuTareas = ({ route, navigation }) => {
                     {
                         listaTareas.map((item, index) => {
                             if (!item.estado) {
-                                return <Button key={index} title={<Text style={styles.text}>{item.nombre} </Text>} onPress={() => goToTask(item.id_tarea, item.tipo, item.id_tarea_multimedia)} />
+                                return( 
+                                <View>
+                                <Button style={styles.button} 
+                                        color='#bdb2ff' 
+                                        key={index} 
+                                        title={<Text style={styles.text}>{item.nombre} </Text>} 
+                                        onPress={() => goToTask(item.id_tarea, item.tipo, item.id_tarea_multimedia)} 
+                                 />
+                                 <View style ={styles.separador}> </View>
+                                 </View>
+                                 )
                             }
                         })
                     }
@@ -91,10 +101,20 @@ const styles = StyleSheet.create({
         fontSize: 24,
         fontFamily: 'Escolar2',
         textTransform: 'uppercase',
+        color: 'black'
     },
     item: {
+        flexDirection: 'column',
+        justifyContent: 'space-between',
         marginTop: 30,
     },
+    button: {
+        marginTop: 10,  
+        marginBottom: 10,
+    },
+    separador:{
+        paddingTop: 10
+    }
 })
 
 const refreshButton = StyleSheet.create({

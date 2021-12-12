@@ -121,7 +121,7 @@ const Inventario = ({ route }) => {
                     onPress={() => disminuirCantidad()}>
                     <Icon
                         name="minus-square"
-                        color='#6C3483'
+                        color='#A5156E'
                         size={60}
                     />
                 </TouchableOpacity>
@@ -131,7 +131,7 @@ const Inventario = ({ route }) => {
                     onPress={() => setCantidad(cantidad + 1)}>
                     <Icon
                         name="plus-square"
-                        color='#6C3483'
+                        color='#A5156E'
                         size={60}
                     />
                 </TouchableOpacity>
@@ -153,7 +153,7 @@ const Inventario = ({ route }) => {
                     }}>
                     <Icon
                         name="arrow-circle-left"
-                        color='#6C3483'
+                        color='#A5156E'
                         size={60}
                     />
                 </TouchableOpacity>
@@ -163,7 +163,7 @@ const Inventario = ({ route }) => {
                     onPress={() => update()}>
                     <Icon
                         name="refresh"
-                        color='#6C3483'
+                        color='#A5156E'
                         size={30}
                     />
                 </TouchableOpacity>
@@ -186,7 +186,7 @@ const Inventario = ({ route }) => {
                     }}>
                     <Icon
                         name="arrow-circle-right"
-                        color='#6C3483'
+                        color='#A5156E'
                         size={60}
                     />
                 </TouchableOpacity>
@@ -224,14 +224,15 @@ const styles = StyleSheet.create({
         marginTop: 20,
     },
     pictograma: {
-        width: 300,
-        height: 300,
         backgroundColor: '#FFFFFF',
         marginTop: 10,
         marginBottom: 10,
         height: 250,
         width: 250,
-        borderRadius: 10
+        borderRadius: 10,
+        borderColor: '#83346D',
+        borderWidth: 3,
+        borderStyle: 'solid',
 
     },
     taskContainer: {

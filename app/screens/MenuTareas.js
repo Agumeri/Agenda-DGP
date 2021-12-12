@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     },
     button: {
         marginTop: 10,  
-        marginBottom: 10,
+        marginBottom: 10
     },
     separador:{
         paddingTop: 10

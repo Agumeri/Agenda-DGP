@@ -142,7 +142,10 @@ const styles = StyleSheet.create({
         backgroundColor :'#FFFFFF',
         marginTop: 30,
         marginBottom: 30,
-        borderRadius: '100%'
+        borderRadius: '100%',
+        borderColor: '#06d6a0',
+        borderWidth: 3,
+        borderStyle: 'solid',
 	},
     view: {
         paddingLeft: 20,

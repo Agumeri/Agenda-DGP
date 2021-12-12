@@ -1,5 +1,5 @@
 import React, { useEffect, useState, ListItem, createRef } from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import Header from '../components/Header'
 import { useNavigation } from "@react-navigation/core";
 import { getClases } from "../api";
@@ -13,7 +13,7 @@ const Clases = ({ route, navigation }) => {
     const [clasesMax, setClasesMax] = useState(0)
     const [claseActual, setClaseActual] = useState(0)
     const [firstTime, setFirstTime] = useState(true);
-
+    const nombreUser = route.params['nombreUser']
 
     useEffect(() => {
         console.log("useEffect")
@@ -56,6 +56,11 @@ const Clases = ({ route, navigation }) => {
 
     return (
         <View style={styles.container}>
+
+            <View style={styles.header}>
+                <Header nombreUser={nombreUser}></Header>
+            </View> 
+
             <View style={styles.item}>
                 {
                     clases.map((clase) => {
@@ -64,14 +69,12 @@ const Clases = ({ route, navigation }) => {
                                 <View style={styles.taskContainer}>
                                     <Text style={styles.text}> {clase.nombre} </Text>
                                     <View>
-                                        <Button style={styles.button}
-                                            title={<Image style={styles.pictograma} source={require("../images/clases/" + clase.imagen)}/>}
-                                            onPress={() => {navigation.navigate("Menus", {
-                                                idClase: clase.id_clase,
-                                                nombreClase: clase.nombre
-                                            })}}
-                                        />
-                                        
+                                        <TouchableOpacity onPress={() => {navigation.navigate("Menus", {
+                                                                            idClase: clase.id_clase,
+                                                                            nombreClase: clase.nombre
+                                            })}}>
+                                            <Image style={styles.pictograma} source={require("../images/clases/" + clase.imagen)}/>
+                                        </TouchableOpacity>
                                     </View>
                                 </View>
                             )
@@ -86,7 +89,7 @@ const Clases = ({ route, navigation }) => {
             <View style ={styles.separador}> </View>
 
             <View style={styles.cambiarPaso}>
-                <Button
+                <TouchableOpacity
                     onPress={() => {
                         if(claseActual == 0){
                             setClaseActual(clasesMax-1)
@@ -94,13 +97,13 @@ const Clases = ({ route, navigation }) => {
                         else {
                             setClaseActual((claseActual - 1) % clasesMax)
                         }
-                    }}
-                    icon={<Icon
-                        name="arrow-left"
-                        color="white"
-                        size={40}
-                    />}
-                />
+                    }}>
+                    <Icon
+                        name="arrow-circle-left"
+                        color='#922B21'
+                        size={60}
+                    />
+                </TouchableOpacity>
                 {/* <Button
                     icon={<Icon
                         name="refresh"
@@ -110,16 +113,17 @@ const Clases = ({ route, navigation }) => {
                     title=" Refrescar tareas"
                     onPress={() => update()}
                 /> */}
-                <Button
+                
+                <TouchableOpacity
                     onPress={() => {
                         setClaseActual((claseActual + 1) % clasesMax)
-                    }}
-                    icon={<Icon
-                        name="arrow-right"
-                        color="white"
-                        size={40}
-                    />}
-                />
+                    }}>
+                    <Icon
+                        name="arrow-circle-right"
+                        color='#922B21'
+                        size={60}
+                    />
+                </TouchableOpacity>
             </View>
 
         </View>
@@ -148,17 +152,22 @@ const styles = StyleSheet.create({
 
     },
     text: {
+        marginTop: 40,
+        marginBottom: 15,
         fontSize: 24,
         fontFamily: 'Escolar2',
         textTransform: 'uppercase',
     },
     pictograma: {
-        width: 200,
-        height: 200,
+        width: 250,
+        height: 250,
         backgroundColor: '#FFFFFF',
+        borderColor: '#922B21',
+        borderWidth: 3,
+        borderStyle: 'solid',
         marginTop: 10,
         marginBottom: 10,
-
+        borderRadius: 10
     },
     taskContainer: {
         flex: 1,
@@ -175,6 +184,10 @@ const styles = StyleSheet.create({
     },
     separador:{
         paddingTop: 20
+    },
+    header: {
+        width: '100%',
+        height: 40
     }
 })
 

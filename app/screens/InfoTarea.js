@@ -204,7 +204,10 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFFFFF',
         marginTop: 10,
         marginBottom: 10,
-        borderRadius: 10
+        borderRadius: 10,
+        borderColor: '#1F618D',
+        borderWidth: 3,
+        borderStyle: 'solid',
 
     },
     taskContainer: {

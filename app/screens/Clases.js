@@ -83,6 +83,7 @@ const Clases = ({ route, navigation }) => {
 
             </View>
 
+            <View style ={styles.separador}> </View>
 
             <View style={styles.cambiarPaso}>
                 <Button
@@ -152,11 +153,11 @@ const styles = StyleSheet.create({
         textTransform: 'uppercase',
     },
     pictograma: {
-        width: 300,
-        height: 300,
+        width: 200,
+        height: 200,
         backgroundColor: '#FFFFFF',
-        marginTop: 30,
-        marginBottom: 30,
+        marginTop: 10,
+        marginBottom: 10,
 
     },
     taskContainer: {
@@ -167,10 +168,13 @@ const styles = StyleSheet.create({
     },
     cambiarPaso: {
         flexDirection: 'row',
-        width: '100%',
+        width: '80%',
         alignItems: 'center',
         justifyContent: 'space-between',
         marginHorizontal: 40
+    },
+    separador:{
+        paddingTop: 20
     }
 })
 

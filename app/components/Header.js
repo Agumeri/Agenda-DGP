@@ -26,7 +26,7 @@ const Header = (props) => {
 		<Icon
 			name="home"
 			color = "black"
-			size={80}
+			size={60}
 		/>
 		</TouchableOpacity>
 		<Image style={styles.botonResumen} source={require('../images/resumen.png')}/>
@@ -34,7 +34,7 @@ const Header = (props) => {
 		<Icon1
 			name="help-outline"
 			color = "black"
-			size={80}
+			size={60}
 		/>
 		</TouchableOpacity>
 	</View>
@@ -44,14 +44,14 @@ const Header = (props) => {
 const styles = StyleSheet.create({
 	container : {
 		flexDirection: 'row',
-		height: 120,
+		height: 80,
 		alignItems: 'center',
 		justifyContent: 'space-between',
 		marginHorizontal: 15
 	},
 	botonResumen : {
-		width: 80,
-		height: 80
+		width: 60,
+		height: 60
 	}
 })
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, ListItem, createRef } from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import Header from '../components/Header'
 import { getInventario, setCantidadObjeto } from "../api";
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -12,11 +12,11 @@ const Inventario = ({ route }) => {
     const [objetosMax, setObjetosMax] = useState(0)
     const [objetoActual, setObjetoActual] = useState(0)
     const [firstTime, setFirstTime] = useState(true);
+    const nombreUser = route.params['nombreUser']
 
 
     useEffect(() => {
         console.log("useEffect")
-        setObjetosMax(inventario.length)
         if(firstTime){
             update()
             console.log("Entro al update")
@@ -30,7 +30,7 @@ const Inventario = ({ route }) => {
         handleInventario()
 
         // Ponemos el valor de la cantidad de objetos que hay 
-        
+        setObjetosMax(inventario.length)
 
         // Ponemos la Cantidad que vamos a mostrar como la cantidad del objeto actual
         inventario.map((objeto) => {
@@ -89,6 +89,11 @@ const Inventario = ({ route }) => {
 
     return (
         <View style={styles.container}>
+
+            <View style={styles.header}>
+                <Header nombreUser={nombreUser}></Header>
+            </View>    
+
             <View style={styles.item}>
                 {
                     inventario.map((objeto) => {
@@ -97,7 +102,6 @@ const Inventario = ({ route }) => {
                                 <View style={styles.taskContainer}>
                                     <Text style={styles.text}> {objeto.nombre} </Text>
                                     <View>
-
                                         <Image
                                             style={styles.pictograma}
                                             source={require("../images/inventario/" + objeto.imagen)}
@@ -113,39 +117,31 @@ const Inventario = ({ route }) => {
 
             </View>
             <View style={styles.cambiarCantidad}>
-                <Button
-                    onPress={() => disminuirCantidad()}
-                    icon={<Icon
-                        name="minus"
-                        color="white"
-                        size={40}
-                    />}
-                />
+                <TouchableOpacity
+                    onPress={() => disminuirCantidad()}>
+                    <Icon
+                        name="minus-square"
+                        color='#6C3483'
+                        size={60}
+                    />
+                </TouchableOpacity>
+                
                 <Text style={styles.textCantidad}>{cantidad}</Text>
-                <Button
-                    onPress={() => setCantidad(cantidad + 1)}
-                    icon={<Icon
-                        name="plus"
-                        color="white"
-                        size={40}
-                    />}
-                />
+                <TouchableOpacity
+                    onPress={() => setCantidad(cantidad + 1)}>
+                    <Icon
+                        name="plus-square"
+                        color='#6C3483'
+                        size={60}
+                    />
+                </TouchableOpacity>
             </View>
-            <View>
-                <Button
-                    onPress={() => {
-                        handleCantidad(objetoActual+1, cantidad)
-                    }}
-                    icon={<Icon
-                        name="check"
-                        color="white"
-                        size={40}
-                    />}
-                />
-            </View>
+            
+
+            <View style ={styles.separador}> </View>
 
             <View style={styles.cambiarPaso}>
-                <Button
+                <TouchableOpacity
                     onPress={() => {
                         if(objetoActual == 0){
                             setObjetoActual(objetosMax-1)
@@ -154,33 +150,46 @@ const Inventario = ({ route }) => {
                             setObjetoActual((objetoActual - 1) % objetosMax)
                         }
                         setFirstTime(true)
-                    }}
-                    icon={<Icon
-                        name="arrow-left"
-                        color="white"
-                        size={40}
-                    />}
-                />
-                {/* <Button
-                    icon={<Icon
+                    }}>
+                    <Icon
+                        name="arrow-circle-left"
+                        color='#6C3483'
+                        size={60}
+                    />
+                </TouchableOpacity>
+
+
+                <TouchableOpacity
+                    onPress={() => update()}>
+                    <Icon
                         name="refresh"
-                        color="white"
+                        color='#6C3483'
                         size={30}
-                    />}
-                    title=" Refrescar tareas"
-                    onPress={() => update()}
-                /> */}
-                <Button
+                    />
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    onPress={() => {
+                        handleCantidad(objetoActual+1, cantidad)
+                    }}>
+                    <Icon
+                        name="check-square"
+                        color="#1E8449"
+                        size={60}
+                    />
+                </TouchableOpacity>
+
+                <TouchableOpacity
                     onPress={() => {
                         setObjetoActual((objetoActual + 1) % objetosMax)
                         setFirstTime(true)
-                    }}
-                    icon={<Icon
-                        name="arrow-right"
-                        color="white"
-                        size={40}
-                    />}
-                />
+                    }}>
+                    <Icon
+                        name="arrow-circle-right"
+                        color='#6C3483'
+                        size={60}
+                    />
+                </TouchableOpacity>
             </View>
 
         </View>
@@ -205,20 +214,24 @@ const styles = StyleSheet.create({
         marginTop: 30,
         fontSize: 24,
         fontFamily: 'Escolar2',
-        textTransform: 'uppercase',
+        textTransform: 'uppercase'
 
     },
     text: {
         fontSize: 24,
         fontFamily: 'Escolar2',
         textTransform: 'uppercase',
+        marginTop: 20,
     },
     pictograma: {
         width: 300,
         height: 300,
         backgroundColor: '#FFFFFF',
-        marginTop: 30,
-        marginBottom: 30,
+        marginTop: 10,
+        marginBottom: 10,
+        height: 250,
+        width: 250,
+        borderRadius: 10
 
     },
     taskContainer: {
@@ -229,7 +242,7 @@ const styles = StyleSheet.create({
     },
     cambiarCantidad: {
         flexDirection: 'row',
-        width: '100%',
+        width: '60%',
         alignItems: 'center',
         justifyContent: 'space-between',
         marginHorizontal: 40,
@@ -246,10 +259,17 @@ const styles = StyleSheet.create({
     },
     cambiarPaso: {
         flexDirection: 'row',
-        width: '100%',
+        width: '80%',
         alignItems: 'center',
         justifyContent: 'space-between',
         marginHorizontal: 40
+    },
+    separador:{
+        paddingTop: 10
+    },
+    header: {
+        width: '100%',
+        height: 40
     }
 })
 

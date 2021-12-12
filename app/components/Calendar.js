@@ -76,35 +76,35 @@ const styles = StyleSheet.create({
 	lunes : {
 		width: '49%',
 		height: '90%',
-		backgroundColor: "#ffadad",
+		backgroundColor: "#ff99c8",
 		alignItems: 'center',
 		borderRadius: 10
 	},
 	martes : {
 		width: '49%',
 		height: '90%',
-		backgroundColor: '#fdffb6',
+		backgroundColor: '#fcf6bd',
 		alignItems: 'center',
 		borderRadius: 10
 	},
 	miercoles : {
 		width: '49%',
 		height: '90%',
-		backgroundColor: '#9bf6ff',
+		backgroundColor: '#a9def9',
 		alignItems: 'center',
 		borderRadius: 10
 	},
 	jueves : {
 		width: '49%',
 		height: '90%',
-		backgroundColor: '#caffbf',
+		backgroundColor: '#d0f4de',
 		alignItems: 'center',
 		borderRadius: 10
 	},
 	viernes : {
 		width: '49%',
 		height: '90%',
-		backgroundColor: '#ffc6ff',
+		backgroundColor: '#e4c1f9',
 		alignItems: 'center',
 		borderRadius: 10
 	},

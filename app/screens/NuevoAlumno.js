@@ -72,7 +72,7 @@ const NuevoAlumno = () => {
 
             <Button 
               title={<Text style={styles.text}>Registrar </Text>}
-              color= '#fdffb6'
+              color= '#fcf6bd'
               onPress={() =>
                 createAlum()
             }

@@ -60,11 +60,9 @@ const NuevoProfesor = () => {
                 onChangeText={(userPass2) => setUserPass2(userPass2)}
             />
 
-
-
             <Button
                 title={<Text style={styles.text}>Registrar</Text>}
-                color= '#9bf6ff'
+                color= '#a9def9'
                 onPress={() =>
                     createProf()
                 }

@@ -63,12 +63,12 @@ const AsignarTarea = ({ route, navigation}) => {
                             disabled={true}
                             style={refreshButton.container}
                             title={<Text style={styles.text}>Tareas</Text>}
-                            color= '#caffbf'
+                            color= '#e4c1f9'
                             onPress={() => handleGetTareas()}
                         />
                     {
                         listaTareas.map((item, index) => {
-                            return (<Button key={index} title={<Text style={styles.text}>{item.tipo} </Text>} color='#fdffb6' onPress={() => setTareaSeleccionada(item)} />)
+                            return (<Button key={index} title={<Text style={styles.text}>{item.tipo} </Text>} color='#d0f4de' onPress={() => setTareaSeleccionada(item)} />)
                         })
                     }
                 </View>
@@ -78,12 +78,12 @@ const AsignarTarea = ({ route, navigation}) => {
                         disabled={true}
                         style={refreshButton.container}
                         title={<Text style={styles.text}>Alumnos</Text>}
-                        color= '#caffbf'   
+                        color= '#e4c1f9'   
                         onPress={() => handleGetAlumnos()}
                     />
                     {
                         listaAlumnos.map((item, index) => {
-                            return (<Button key={index} title={<Text style={styles.text}>{item.nombre_usuario} </Text>} color='#fdffb6' onPress={() => setAlumnoSeleccionado(item.nombre_usuario)} />)
+                            return (<Button key={index} title={<Text style={styles.text}>{item.nombre_usuario} </Text>} color='#d0f4de' onPress={() => setAlumnoSeleccionado(item.nombre_usuario)} />)
                         })
                     }
                 </View>
@@ -93,7 +93,7 @@ const AsignarTarea = ({ route, navigation}) => {
                 <Button 
                         style={refreshButton.container}
                         title={<Text style={styles.text}>Asignar Tarea</Text>}
-                        color= '#caffbf'
+                        color= '#d0f4de'
                         onPress={() => asignTaskAlum(tareaSeleccionada, alumnoSeleccionado)}
                     />     
             </View>

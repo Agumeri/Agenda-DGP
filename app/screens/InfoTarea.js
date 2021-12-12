@@ -1,5 +1,5 @@
 import React, { useEffect, useState, ListItem, createRef } from "react";
-import { View, Text, StyleSheet, Image, CheckBox } from "react-native";
+import { View, Text, StyleSheet, Image, CheckBox,  TouchableOpacity } from "react-native";
 import Header from '../components/Header'
 import { getMultimediaByTarea, setEstadoTarea } from "../api";
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -63,7 +63,7 @@ const InfoTarea = ({ route }) => {
     const checkbox = (paso) => {
         if (paso == pasosMax) {
             return (
-                <View>
+                <View style= {styles.marcarRealizada}>
 
                     
                     <CheckBox
@@ -118,8 +118,7 @@ const InfoTarea = ({ route }) => {
                                     <Text style={styles.text}> {p.descripcion} </Text>
                                     {checkbox(p.paso)}
                                 </View>
-
-
+                           
                             )
                         }
 
@@ -131,7 +130,7 @@ const InfoTarea = ({ route }) => {
 
 
             <View style={styles.cambiarPaso}>
-                <Button
+                <TouchableOpacity
                     onPress={() => {
                         if (pasoActual == 0) {
                             setPasoActual(pasosMax - 1)
@@ -139,13 +138,13 @@ const InfoTarea = ({ route }) => {
                         else {
                             setPasoActual((pasoActual - 1) % pasosMax)
                         }
-                    }}
-                    icon={<Icon
-                        name="arrow-left"
-                        color="white"
-                        size={40}
-                    />}
-                />
+                    }}>
+                    <Icon
+                        name="arrow-circle-left"
+                        color='#1F618D'
+                        size={60}
+                    />
+                </TouchableOpacity>
                 {/* <Button
                     icon={<Icon
                         name="refresh"
@@ -155,16 +154,17 @@ const InfoTarea = ({ route }) => {
                     title=" Refrescar tareas"
                     onPress={() => update()}
                 /> */}
-                <Button
-                    onPress={() => {
+
+                <TouchableOpacity
+                     onPress={() => {
                         setPasoActual((pasoActual + 1) % pasosMax)
-                    }}
-                    icon={<Icon
-                        name="arrow-right"
-                        color="white"
-                        size={40}
-                    />}
-                />
+                    }}>
+                    <Icon
+                        name="arrow-circle-right"
+                        color='#1F618D'
+                        size={60}
+                    />
+                </TouchableOpacity>
             </View>
 
         </View>
@@ -196,13 +196,18 @@ const styles = StyleSheet.create({
         fontSize: 24,
         fontFamily: 'Escolar2',
         textTransform: 'uppercase',
+        marginBottom: 5,
     },
     pictograma: {
-        width: 200,
-        height: 200,
+        width: 250,
+        height: 250,
         backgroundColor: '#FFFFFF',
-        marginTop: 30,
-        marginBottom: 30,
+        marginTop: 10,
+        marginBottom: 10,
+        borderRadius: 10,
+        borderColor: '#1F618D',
+        borderWidth: 3,
+        borderStyle: 'solid',
 
     },
     taskContainer: {
@@ -213,7 +218,7 @@ const styles = StyleSheet.create({
     },
     cambiarPaso: {
         flexDirection: 'row',
-        width: '100%',
+        width: '80%',
         alignItems: 'center',
         justifyContent: 'space-between',
         marginHorizontal: 40
@@ -223,11 +228,20 @@ const styles = StyleSheet.create({
     },
     checkbox: {
         alignSelf: "center",
-        width: 50,
-        height: 50,
+        width: 40,
+        height: 40,
         backgroundColor: '#EEEEEE',
         marginTop: 30,
         marginBottom: 30,
+    },
+    marcarRealizada: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        width: '80%',
+        height: 40,
+        marginBottom: 10,
+        justifyContent: 'space-between',
+        marginHorizontal: 30
     }
 })
 

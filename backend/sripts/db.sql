@@ -98,16 +98,16 @@ CREATE TABLE IF NOT EXISTS multimedia(
 INSERT INTO multimedia( paso, id_tarea, url_foto, descripcion)
 VALUES ('1','task_1','ir.png','ir a la cocina');
 
-INSERT INTO multimedia(id_multimedia, paso, id_tarea, url_foto, descripcion)
+INSERT INTO multimedia(paso, id_tarea, url_foto, descripcion)
 VALUES ('2','task_1','lavar.png','lavarse las manos');
 
-INSERT INTO multimedia(id_multimedia, paso, id_tarea, url_foto, descripcion)
+INSERT INTO multimedia(paso, id_tarea, url_foto, descripcion)
 VALUES ('3','task_1','coger.png','Coger el plato con comida');
 
-INSERT INTO multimedia(id_multimedia, paso, id_tarea, url_foto, descripcion)
+INSERT INTO multimedia(paso, id_tarea, url_foto, descripcion)
 VALUES ('4','task_1','microondas.png','Ponerlo dentro del microondas');
 
-INSERT INTO multimedia(id_multimedia, paso, id_tarea, url_foto, descripcion)
+INSERT INTO multimedia(paso, id_tarea, url_foto, descripcion)
 VALUES ('5','task_1','llevar.png','Sacarlo y llevarselo a la mesa');
 
 -- autorizacion Table --

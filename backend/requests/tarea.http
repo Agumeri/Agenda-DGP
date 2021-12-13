@@ -18,17 +18,17 @@ Content-Type: application/json
 }
 
 ### Asignar tarea
-POST {{api}}/asignar
+POST {{api}}/asignar/task_1
 Content-Type: application/json
 
 {
-    "nombreUsuario": "alumnoPOST2",
-    "tipoTarea": "Poner Microondas"
+    "nombreUsuario": "prueba_alumno",
+    "fechaLim": "2020/12/20"
 }
 
 ## GET 
 ###1 Obtener una tarea por id
-GET {{api}}/task_1
+GET {{api}}/task_3
 
 ###COUNT numero de tareas del sistema
 GET {{api}}/count

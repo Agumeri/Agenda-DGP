@@ -35,7 +35,6 @@ export const createNewTareaFija = async (req, res) => {
     const connection = await connect()
     
     const taskId = req.params.id
-
     const [task] = await connection.query("INSERT INTO tarea(id_tarea, nombre, tipo, estado, id_tarea_multimedia) VALUES (?,?,?,?,?)",[
         taskId,
         req.body.nombre,
@@ -120,27 +119,29 @@ export const asignarTareaAlumno = async (req, res) => {
     const [rows] = await connection.query('SELECT COUNT(*) FROM tarea')
     const taskId = "task_" + (rows[0]["COUNT(*)"] + 1)
 
-    const [dataTask] = await connection.query('SELECT DISTINCT * FROM tarea WHERE tipo=?', [
-        req.body.tipoTarea
+    const [dataTask] = await connection.query('SELECT DISTINCT * FROM tarea WHERE id_tarea=?', [
+        req.params.idTarea
     ])
+    console.log(dataTask)
 
     const [usuario] = await connection.query('SELECT id FROM usuario WHERE nombre_usuario = ?', [
         req.body.nombreUsuario
     ])
+    console.log(usuario)
 
     const [nombreAlumno] = await connection.query('SELECT id_alumno FROM alumno_tutoriza WHERE id_usuario = ?', [
         usuario[0]["id"]
     ])
 
-    const [task] = await connection.query("INSERT INTO tarea(id_tarea, id_alumno, tipo, tiempo_requerido, fecha, hora, estado, tipo_multimedia) VALUES (?,?,?,?,?,?,?,?)",[
+    const [task] = await connection.query("INSERT INTO tarea(id_tarea, id_alumno, nombre, tipo, tiempo_requerido, fecha, hora, estado) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)",[
         taskId,
         nombreAlumno[0]["id_alumno"],
+        dataTask[0]['nombre'],
         dataTask[0]["tipo"],
         dataTask[0]["tiempo_requerido"],
-        dataTask[0]["fecha"],
+        req.body.fechaLim,
         dataTask[0]["hora"],
-        "En proceso",
-        dataTask[0]["tipo_multimedia"]
+        "0"
     ])
 
     res.json({

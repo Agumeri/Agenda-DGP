@@ -63,7 +63,7 @@ export const getTarea = async (req, res) => {
 export const getTareasPlantilla = async (req, res) => {
     const connection = await connect()
     const [rows]  = await connection.query(
-        'SELECT DISTINCT tipo FROM tarea'
+        'SELECT DISTINCT nombre FROM tarea'
         )
         res.json(rows)
 }
@@ -119,8 +119,8 @@ export const asignarTareaAlumno = async (req, res) => {
     const [rows] = await connection.query('SELECT COUNT(*) FROM tarea')
     const taskId = "task_" + (rows[0]["COUNT(*)"] + 1)
 
-    const [dataTask] = await connection.query('SELECT DISTINCT * FROM tarea WHERE id_tarea=?', [
-        req.params.idTarea
+    const [dataTask] = await connection.query('SELECT DISTINCT * FROM tarea WHERE nombre=?', [
+        req.params.nombre
     ])
     console.log(dataTask)
 
@@ -136,7 +136,7 @@ export const asignarTareaAlumno = async (req, res) => {
     const [task] = await connection.query("INSERT INTO tarea(id_tarea, id_alumno, nombre, tipo, tiempo_requerido, fecha, hora, estado) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)",[
         taskId,
         nombreAlumno[0]["id_alumno"],
-        dataTask[0]['nombre'],
+        req.params.nombre,
         dataTask[0]["tipo"],
         dataTask[0]["tiempo_requerido"],
         req.body.fechaLim,

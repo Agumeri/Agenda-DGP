@@ -34,8 +34,9 @@ export const getTask = async () => {
   })
 }
 
-export const asignTaskAlum = async (tipo_tarea, nombre_usuario) => {
-  const url = API+'/tarea/asignar'
+export const asignTaskAlum = async (tipo_tarea, nombre_usuario, fecha_limite) => {
+  console.log(tipo_tarea)
+  const url = API+'/tarea/asignar/'+tipo_tarea.nombre
   return fetch(url,{
       method: 'POST',
       headers: {
@@ -43,7 +44,7 @@ export const asignTaskAlum = async (tipo_tarea, nombre_usuario) => {
       },
       body: JSON.stringify({
         nombreUsuario: nombre_usuario,
-        tipoTarea: tipo_tarea
+        fechaLim: fecha_limite
       })
   })
 }

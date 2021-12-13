@@ -1,5 +1,5 @@
 import React,{useEffect, useState, createRef} from "react";
-import {Button, View, Text, StyleSheet, CheckBox } from "react-native";
+import {Button, View, Text, StyleSheet, CheckBox , TextInput} from "react-native";
 import { useNavigation } from "@react-navigation/core";
 import { getTask, getInfoAlumno, asignTaskAlum } from "../api";
 import Task from '../components/Task';
@@ -12,6 +12,7 @@ const AsignarTarea = ({ route, navigation}) => {
     const [listaAlumnos, setListaAlumnos] = useState([])
     const [tareaSeleccionada, setTareaSeleccionada] = useState([])
     const [alumnoSeleccionado, setAlumnoSeleccionado] = useState([])
+    const [fechaLim, setfechaLim] = useState('')
 
     useEffect(() => {
         handleGetTareas();
@@ -57,6 +58,14 @@ const AsignarTarea = ({ route, navigation}) => {
         <View style={styles.container}>
             {/*Asignar tarea a alumno*/}
             <View style={styles.taskWrapper}>
+                {/* Aqui es donde va la fecha limite */}
+                <Text style={styles.text}>Nombre de la tarea:</Text>
+                <TextInput
+                    style={styles.input}
+                    placeholder="INSERTE FECHA TAREA EN FORMATO AÑO/MES/DIA"
+                    onChangeText={(fecha) => setfechaLim(fecha)}
+                />
+
                 {/* Aqui es donde va cada Tarea */}
                 <View style={styles.item}>
                     <Button  
@@ -68,7 +77,7 @@ const AsignarTarea = ({ route, navigation}) => {
                         />
                     {
                         listaTareas.map((item, index) => {
-                            return (<Button key={index} title={<Text style={styles.text}>{item.tipo} </Text>} color='#d0f4de' onPress={() => setTareaSeleccionada(item)} />)
+                            return (<Button key={index} title={<Text style={styles.text}>{item.nombre} </Text>} color='#d0f4de' onPress={() => setTareaSeleccionada(item)} />)
                         })
                     }
                 </View>
@@ -94,7 +103,7 @@ const AsignarTarea = ({ route, navigation}) => {
                         style={refreshButton.container}
                         title={<Text style={styles.text}>Asignar Tarea</Text>}
                         color= '#d0f4de'
-                        onPress={() => asignTaskAlum(tareaSeleccionada, alumnoSeleccionado)}
+                        onPress={() => asignTaskAlum(tareaSeleccionada, alumnoSeleccionado, fechaLim)}
                     />     
             </View>
         </View>

@@ -18,7 +18,7 @@ Content-Type: application/json
 }
 
 ### Asignar tarea
-POST {{api}}/asignar/task_1
+POST {{api}}/asignar/poner microondas
 Content-Type: application/json
 
 {
@@ -28,7 +28,7 @@ Content-Type: application/json
 
 ## GET 
 ###1 Obtener una tarea por id
-GET {{api}}/task_3
+GET {{api}}/task_4
 
 ###COUNT numero de tareas del sistema
 GET {{api}}/count

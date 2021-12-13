@@ -118,7 +118,7 @@ router.put('/tarea/state/:id',updateTaskState)
  *      tags: [Tarea]
  * 
  */
- router.post('/tarea/asignar/:idTarea',asignarTareaAlumno)
+ router.post('/tarea/asignar/:nombre',asignarTareaAlumno)
  
 
 export default router

@@ -7,7 +7,7 @@ import { BottomSheet } from "react-native-elements";
 
 const AsignarTarea = ({ route, navigation}) => {
     // Variable for data
-    //const nombreUser = route.params['nombreUser']   //User Name
+    const nombreUser = route.params['nombreUser']   //User Name
     const [listaTareas, setListaTareas] = useState([])
     const [listaAlumnos, setListaAlumnos] = useState([])
     const [tareaSeleccionada, setTareaSeleccionada] = useState([])
@@ -54,17 +54,27 @@ const AsignarTarea = ({ route, navigation}) => {
         })
     }
 
+    const asignarTareaRecargando = async () =>{
+        asignTaskAlum(tareaSeleccionada, alumnoSeleccionado, fechaLim)
+        navigation.navigate("MenuAdmin", {
+            nombreUser: nombreUser
+        })
+
+    }
+
     return (
         <View style={styles.container}>
             {/*Asignar tarea a alumno*/}
             <View style={styles.taskWrapper}>
                 {/* Aqui es donde va la fecha limite */}
-                <Text style={styles.text}>Nombre de la tarea:</Text>
-                <TextInput
-                    style={styles.input}
-                    placeholder="INSERTE FECHA TAREA EN FORMATO AÑO/MES/DIA"
-                    onChangeText={(fecha) => setfechaLim(fecha)}
-                />
+                <View style={styles.item}>
+                    <Text style={styles.text}>Nombre de la tarea:</Text>
+                    <TextInput
+                        style={styles.input}
+                        placeholder="INSERTE FECHA TAREA EN FORMATO AÑO/MES/DIA"
+                        onChangeText={(fecha) => setfechaLim(fecha)}
+                    />
+                </View>
 
                 {/* Aqui es donde va cada Tarea */}
                 <View style={styles.item}>
@@ -103,7 +113,7 @@ const AsignarTarea = ({ route, navigation}) => {
                         style={refreshButton.container}
                         title={<Text style={styles.text}>Asignar Tarea</Text>}
                         color= '#d0f4de'
-                        onPress={() => asignTaskAlum(tareaSeleccionada, alumnoSeleccionado, fechaLim)}
+                        onPress={() => asignarTareaRecargando()}
                     />     
             </View>
         </View>

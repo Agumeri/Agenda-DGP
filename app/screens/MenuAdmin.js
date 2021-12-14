@@ -44,7 +44,9 @@ const MenuAdmin = ({ route, navigation }) => {
                 title={<Text style={styles.text}>Asignar Tarea</Text>}
                 color= '#d0f4de'
                 accessibilityLabel='Asignar una tarea existente a un alumno'
-                onPress={() => navigation.navigate("AsignarTarea")}
+                onPress={() => navigation.navigate("AsignarTarea",{
+                    nombreUser: nombreUser
+                })}
             />
 
             {/*<View style ={styles.separador}> </View>

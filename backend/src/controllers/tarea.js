@@ -133,9 +133,10 @@ export const asignarTareaAlumno = async (req, res) => {
         usuario[0]["id"]
     ])
 
-    const [task] = await connection.query("INSERT INTO tarea(id_tarea, id_alumno, nombre, tipo, tiempo_requerido, fecha, hora, estado) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)",[
+    const [task] = await connection.query("INSERT INTO tarea(id_tarea, id_alumno, id_tarea_multimedia, nombre, tipo, tiempo_requerido, fecha, hora, estado) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?)",[
         taskId,
         nombreAlumno[0]["id_alumno"],
+        dataTask[0]["id_tarea_multimedia"],
         req.params.nombre,
         dataTask[0]["tipo"],
         dataTask[0]["tiempo_requerido"],

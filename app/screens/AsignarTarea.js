@@ -4,6 +4,7 @@ import { useNavigation } from "@react-navigation/core";
 import { getTask, getInfoAlumno, asignTaskAlum } from "../api";
 import Task from '../components/Task';
 import { BottomSheet } from "react-native-elements";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const AsignarTarea = ({ route, navigation}) => {
     // Variable for data
@@ -78,6 +79,7 @@ const AsignarTarea = ({ route, navigation}) => {
 
                 {/* Aqui es donde va cada Tarea */}
                 <View style={styles.item}>
+                    
                     <Button  
                             disabled={true}
                             style={refreshButton.container}
@@ -87,9 +89,10 @@ const AsignarTarea = ({ route, navigation}) => {
                         />
                     {
                         listaTareas.map((item, index) => {
-                            return (<Button key={index} title={<Text style={styles.text}>{item.nombre} </Text>} color='#d0f4de' onPress={() => setTareaSeleccionada(item)} />)
+                            return (<TouchableOpacity > <Button key={index} title={<Text style={styles.text}>{item.nombre} </Text>} color='#d0f4de' onPress={() => setTareaSeleccionada(item)} />  </TouchableOpacity>)
                         })
                     }
+                    
                 </View>
                 {/* Aqui es donde va cada Alumno */}
                 <View style={styles.item}>

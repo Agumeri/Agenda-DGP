@@ -105,7 +105,7 @@ const AsignarTarea = ({ route, navigation}) => {
                     />
                     {
                         listaAlumnos.map((item, index) => {
-                            return (<Button key={index} title={<Text style={styles.text}>{item.nombre_usuario} </Text>} color='#d0f4de' onPress={() => setAlumnoSeleccionado(item.nombre_usuario)} />)
+                            return (<TouchableOpacity ><Button key={index} title={<Text style={styles.text}>{item.nombre_usuario} </Text>} color='#d0f4de' onPress={() => setAlumnoSeleccionado(item.nombre_usuario)} />  </TouchableOpacity>)
                         })
                     }
                 </View>

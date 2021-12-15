@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         fontFamily: 'Escolar2',
         textTransform: 'uppercase',
-        fontSize: 24,
+        fontSize: 22,
         height: 60
     }
 })

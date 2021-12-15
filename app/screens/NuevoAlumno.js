@@ -33,14 +33,14 @@ const NuevoAlumno = () => {
         <View style={styles.view}>
             <Text style={styles.text}>Nombre de usuario:</Text>
             <TextInput style={styles.input}
-                placeholder="INTRODUZCA NOMBRE DE USUARIO "
+                placeholder="INTRODUZCA NOMBRE USUARIO "
                 onChangeText={(userName) => setUsername(userName)}
             />
             <Text style={styles.text}>Correo electrónico:</Text>
 
             <TextInput 
                 style={styles.input}
-                placeholder="INTRODUZCA EL CORREO ELECTRÓNICO"
+                placeholder="INTRODUZCA CORREO ELECTRÓNICO"
                 onChangeText={(userEmail) => setUserEmail(userEmail)}
             />
 
@@ -48,7 +48,7 @@ const NuevoAlumno = () => {
 
             <TextInput 
                 style={styles.input}
-                placeholder="INTRODUZCA EL CORREO ELECTRÓNICO DEL PROFESOR"
+                placeholder="INTRODUZCA CORREO ELECTRÓNICO DEL PROFESOR"
                 onChangeText={(teacherEmail) => setTeacherEmail(teacherEmail)}
             />
 
@@ -73,6 +73,7 @@ const NuevoAlumno = () => {
             <Button 
               title={<Text style={styles.text}>Registrar </Text>}
               color= '#fcf6bd'
+              accessibilityLabel='Registrar alumno'
               onPress={() =>
                 createAlum()
             }
@@ -86,7 +87,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#ffff",
         marginBottom: 35,
         fontFamily: 'Escolar2', 
-        fontSize: 24
+        fontSize: 22
     },
     text: {
         textTransform: 'uppercase',

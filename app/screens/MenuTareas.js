@@ -66,6 +66,7 @@ const MenuTareas = ({ route, navigation }) => {
                                         color='#bdb2ff' 
                                         key={index} 
                                         title={<Text style={styles.text}>{item.nombre} </Text>} 
+                                        accessibilityLabel='Seleccionar la tarea'
                                         onPress={() => goToTask(item.id_tarea, item.tipo, item.id_tarea_multimedia)} 
                                  />
                                  <View style ={styles.separador}> </View>

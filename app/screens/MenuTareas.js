@@ -10,8 +10,10 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 const MenuTareas = ({ route, navigation }) => {
     // Variable for data
+    var names = ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"];
     const nombreUser = route.params['nombreUser']   //User Name
-    const [listaTareas, setListaTareas] = useState([])
+    const [listaTareas, setListaTareas] = useState([]);
+    const [fechaActual, setFechaActual] = useState("");
 
     const goToTask = async (id_task, tipo, id_tarea_multimedia) => {
         if (tipo == 1) {
@@ -47,6 +49,11 @@ const MenuTareas = ({ route, navigation }) => {
                     //setListaTareas({tipo: "Ninguno"})
                 }
             })
+
+        // Establecemos fecha actual
+        let today = new Date(Date.now());
+        console.log(today);
+        setFechaActual(today.getDay()); 
     }, [])
 
     return (
@@ -54,12 +61,12 @@ const MenuTareas = ({ route, navigation }) => {
             <Header nombreUser={nombreUser}></Header>
             {/* Tareas de Hoy*/}
             <View style={styles.taskWrapper}>
-                <Text style={styles.sectionTitle}> Tareas de Hoy </Text>
+                <Text style={styles.sectionTitle}> Tareas del { names[fechaActual-1] } </Text>
                 {/* Aqui es donde va cada Tarea */}
                 <View style={styles.item}>
                     {
                         listaTareas.map((item, index) => {
-                            if (!item.estado) {
+                            if (item.estado == 0) {
                                 return( 
                                 <View>
                                 <Button style={styles.button} 

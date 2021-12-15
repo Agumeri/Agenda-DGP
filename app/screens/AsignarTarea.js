@@ -69,7 +69,7 @@ const AsignarTarea = ({ route, navigation}) => {
             <View style={styles.taskWrapper}>
                 {/* Aqui es donde va la fecha limite */}
                 <View style={styles.item}>
-                    <Text style={styles.text}>Nombre de la tarea:</Text>
+                    <Text style={styles.text}>Fecha límite de la tarea:</Text>
                     <TextInput
                         style={styles.input}
                         placeholder="INSERTE FECHA TAREA EN FORMATO AÑO/MES/DIA"

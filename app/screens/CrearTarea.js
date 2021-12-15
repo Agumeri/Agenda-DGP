@@ -8,9 +8,9 @@ const CrearTarea = ({ route, navigation }) => {
     let refInput = createRef()
     const [paso, setPaso] = useState(1)
     const [descrip, setDescrip] = useState("")
-    const [height, setHeight] = useState(300)
-    const [width, setWidth] = useState(300)
-    const [uri, setUri] = useState('https://via.placeholder.com/300')
+    const [height, setHeight] = useState(250)
+    const [width, setWidth] = useState(250)
+    const [uri, setUri] = useState('https://via.placeholder.com/250')
     const [inicio, setInicio] = useState(true)
     const [idTarea, setIdTarea] = useState('')
     const [nombre, setNombre] = useState('')
@@ -42,10 +42,10 @@ const CrearTarea = ({ route, navigation }) => {
             status: response.status
         })))
             .then(res => {
-                //console.log(res)
+                console.log(res)
                 if (res.status == 200) {
                     console.log(res.data)
-                    setIdTarea(res.data)
+                    setIdTarea(res.data.id_tarea)
                 } else {
                     console.log("No se ha podido crear el id")
                 }
@@ -72,11 +72,13 @@ const CrearTarea = ({ route, navigation }) => {
             return (
 
                 <View styles={styles.container}>
+                    <View style ={styles.separador}> </View>
                     <Text style={styles.text}>Nombre de la tarea:</Text>
 
                     <TextInput
                         style={styles.input}
                         placeholder="inserte nombre de la tarea"
+                        multiline={true}
                         onChangeText={(nombre) => setNombre(nombre)}
                     />
 
@@ -87,6 +89,7 @@ const CrearTarea = ({ route, navigation }) => {
         else {
             return (
                 <View style={styles.container}>
+                    <View style ={styles.separador}> </View>
                     <Text style={styles.sectionTitle}>Paso: {paso}</Text>
                     <Text style={styles.text}>Descripción del paso:</Text>
 
@@ -101,6 +104,7 @@ const CrearTarea = ({ route, navigation }) => {
                     <Button
                         title={<Text style={styles.text}>Seleccionar imagen</Text>}
                         color= '#ffadad'
+                        accessibilityLabel='Seleccionar imagen'
                         onPress={selectImage}
                     />
 
@@ -125,8 +129,11 @@ const CrearTarea = ({ route, navigation }) => {
             return(<Button
                 title={<Text style={styles.text}>Finalizar tarea</Text>}
                 color= '#ffadad'
+                accessibilityLabel='Finalizar la tarea'
                 onPress={() => {
                     {
+                        insertTareaFija()
+                        alert("Tarea guardada correctamente")
                         setDescrip("")
                         setPaso(1)
                         setUri('https://via.placeholder.com/300')
@@ -152,20 +159,23 @@ const CrearTarea = ({ route, navigation }) => {
                 color= '#ffadad'
                 onPress={() => {
                     {
-                        if (inicio) { setInicio(false) }
+                        if (inicio) { 
+                            setInicio(false) 
+                            getIdTarea()
+                        }
                         else {
                             insertPaso()
                             refInput.current.clear()
                             setPaso(paso + 1)
-                            setUri('https://via.placeholder.com/300')
+                            setUri('https://via.placeholder.com/250')
                         }
                     }
                 }
                 }
             />
-
+            <View style ={styles.separador}> </View>
             {finalizar()}
-
+            <View style ={styles.separador}> </View>
         </View>
     )
 }
@@ -190,9 +200,9 @@ const styles = StyleSheet.create({
         marginBottom: 15,
         fontFamily: 'Escolar2',
         textTransform: 'uppercase',
-        fontSize: 24,
+        fontSize: 22,
         width: '80%',
-        height: '20%',
+        height: '30%',
         textAlignVertical: "top",
     },
     input: {
@@ -200,7 +210,8 @@ const styles = StyleSheet.create({
         marginBottom: 35,
         fontFamily: 'Escolar2',
         textTransform: 'uppercase',
-        fontSize: 24,
+        fontSize: 22,
+        height: 60
     },
     item: {
         marginTop: 30,
@@ -217,15 +228,15 @@ const styles = StyleSheet.create({
         color: 'black',
     },
     pictograma: {
-        width: 300,
-        height: 300,
+        width: 250,
+        height: 250,
         backgroundColor: '#FFFFFF',
-        marginTop: 30,
-        marginBottom: 30,
+        marginTop: 10,
+        marginBottom: 10,
 
     },
-    boton: {
-        marginTop: 10,
+    separador:{
+        paddingTop: 10
     }
     
 

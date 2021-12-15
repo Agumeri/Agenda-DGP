@@ -91,7 +91,7 @@ const LoginScreen = () => {
                 <Text style={styles.text}>Correo electrónico:</Text>
             </View>
             <TextInput style={styles.input}
-                placeholder="INTRODUZCA SU CORREO ELECTRÓNICO"
+                placeholder="INTRODUZCA CORREO ELECTRÓNICO"
                 onChangeText={(user) => setUser(user)}
             />
 
@@ -116,6 +116,7 @@ const LoginScreen = () => {
 			                color = "white"
 			                size={30}
 		                />}
+                accessibilityLabel='Acceder a la cuenta de usuario'
                 onPress={() =>
                     checkUser("usuario y contraseña")
                 }
@@ -130,7 +131,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#ffff",
         marginBottom: 35,
         fontFamily: 'Escolar2', 
-        fontSize: 24,
+        fontSize: 22,
     },
     text: {
         textTransform: 'uppercase',

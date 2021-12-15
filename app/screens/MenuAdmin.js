@@ -12,7 +12,7 @@ const MenuAdmin = ({ route, navigation }) => {
 
             <Button style={styles.button}
                 title={<Text style={styles.text}>Crear Tarea</Text>}
-                color= '#ffadad'
+                color= '#ff99c8'
                 accessibilityLabel='Crear una nueva tarea'
                 onPress={() => navigation.navigate("CrearTarea", {
                     nombreUser: nombreUser
@@ -22,7 +22,7 @@ const MenuAdmin = ({ route, navigation }) => {
 
             <Button style={styles.button}
                 title={<Text style={styles.text}>Nuevo Alumno</Text>}
-                color= '#fdffb6'
+                color= '#fcf6bd'
                 accessibilityLabel='Crear un nuevo usuario alumno'
                 onPress={() =>
                     navigation.navigate("NuevoAlumno")
@@ -32,7 +32,7 @@ const MenuAdmin = ({ route, navigation }) => {
 
             <Button style={styles.button}
                 title={<Text style={styles.text}>Nuevo Profesor</Text>}
-                color= '#9bf6ff'
+                color= '#a9def9'
                 accessibilityLabel='Crear un nuevo usuario profesor'
                 onPress={() =>
                     navigation.navigate("NuevoProfesor")
@@ -42,9 +42,11 @@ const MenuAdmin = ({ route, navigation }) => {
 
             <Button style={styles.button}
                 title={<Text style={styles.text}>Asignar Tarea</Text>}
-                color= '#caffbf'
+                color= '#d0f4de'
                 accessibilityLabel='Asignar una tarea existente a un alumno'
-                onPress={() => navigation.navigate("AsignarTarea")}
+                onPress={() => navigation.navigate("AsignarTarea",{
+                    nombreUser: nombreUser
+                })}
             />
 
             {/*<View style ={styles.separador}> </View>

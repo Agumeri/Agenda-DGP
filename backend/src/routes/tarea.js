@@ -112,13 +112,13 @@ router.put('/tarea/state/:id',updateTaskState)
 
 /**
  * @swagger
- * /tarea/state/id:
+ * /tarea/asignar:
  *  post:
  *      summary: crear una tarea nueva con un alumno asignado
  *      tags: [Tarea]
  * 
  */
- router.post('/tarea/asignar',asignarTareaAlumno)
+ router.post('/tarea/asignar/:nombre',asignarTareaAlumno)
  
 
 export default router

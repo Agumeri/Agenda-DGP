@@ -1,17 +1,19 @@
 import React,{useEffect, useState, createRef} from "react";
-import {Button, View, Text, StyleSheet, CheckBox } from "react-native";
+import {Button, View, Text, StyleSheet, CheckBox , TextInput} from "react-native";
 import { useNavigation } from "@react-navigation/core";
 import { getTask, getInfoAlumno, asignTaskAlum } from "../api";
 import Task from '../components/Task';
 import { BottomSheet } from "react-native-elements";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const AsignarTarea = ({ route, navigation}) => {
     // Variable for data
-    //const nombreUser = route.params['nombreUser']   //User Name
+    const nombreUser = route.params['nombreUser']   //User Name
     const [listaTareas, setListaTareas] = useState([])
     const [listaAlumnos, setListaAlumnos] = useState([])
     const [tareaSeleccionada, setTareaSeleccionada] = useState([])
     const [alumnoSeleccionado, setAlumnoSeleccionado] = useState([])
+    const [fechaLim, setfechaLim] = useState('')
 
     useEffect(() => {
         handleGetTareas();
@@ -53,24 +55,45 @@ const AsignarTarea = ({ route, navigation}) => {
         })
     }
 
+    const asignarTareaRecargando = async () =>{
+        asignTaskAlum(tareaSeleccionada, alumnoSeleccionado, fechaLim)
+        navigation.navigate("MenuAdmin", {
+            nombreUser: nombreUser
+        })
+
+    }
+
     return (
         <View style={styles.container}>
             {/*Asignar tarea a alumno*/}
             <View style={styles.taskWrapper}>
+                {/* Aqui es donde va la fecha limite */}
+                <View style={styles.item}>
+                    <Text style={styles.text}>Fecha límite de la tarea:</Text>
+                    <TextInput
+                        style={styles.input}
+                        placeholder="INSERTE FECHA TAREA EN FORMATO AÑO/MES/DIA"
+                        multiline={true}
+                        onChangeText={(fecha) => setfechaLim(fecha)}
+                    />
+                </View>
+
                 {/* Aqui es donde va cada Tarea */}
                 <View style={styles.item}>
+                    
                     <Button  
                             disabled={true}
                             style={refreshButton.container}
                             title={<Text style={styles.text}>Tareas</Text>}
-                            color= '#caffbf'
+                            color= '#e4c1f9'
                             onPress={() => handleGetTareas()}
                         />
                     {
                         listaTareas.map((item, index) => {
-                            return (<Button key={index} title={<Text style={styles.text}>{item.tipo} </Text>} color='#fdffb6' onPress={() => setTareaSeleccionada(item)} />)
+                            return (<TouchableOpacity > <Button key={index} title={<Text style={styles.text}>{item.nombre} </Text>} color='#d0f4de' onPress={() => setTareaSeleccionada(item)} />  </TouchableOpacity>)
                         })
                     }
+                    
                 </View>
                 {/* Aqui es donde va cada Alumno */}
                 <View style={styles.item}>
@@ -78,12 +101,12 @@ const AsignarTarea = ({ route, navigation}) => {
                         disabled={true}
                         style={refreshButton.container}
                         title={<Text style={styles.text}>Alumnos</Text>}
-                        color= '#caffbf'   
+                        color= '#e4c1f9'   
                         onPress={() => handleGetAlumnos()}
                     />
                     {
                         listaAlumnos.map((item, index) => {
-                            return (<Button key={index} title={<Text style={styles.text}>{item.nombre_usuario} </Text>} color='#fdffb6' onPress={() => setAlumnoSeleccionado(item.nombre_usuario)} />)
+                            return (<TouchableOpacity ><Button key={index} title={<Text style={styles.text}>{item.nombre_usuario} </Text>} color='#d0f4de' onPress={() => setAlumnoSeleccionado(item.nombre_usuario)} />  </TouchableOpacity>)
                         })
                     }
                 </View>
@@ -93,8 +116,8 @@ const AsignarTarea = ({ route, navigation}) => {
                 <Button 
                         style={refreshButton.container}
                         title={<Text style={styles.text}>Asignar Tarea</Text>}
-                        color= '#caffbf'
-                        onPress={() => asignTaskAlum(tareaSeleccionada, alumnoSeleccionado)}
+                        color= '#d0f4de'
+                        onPress={() => asignarTareaRecargando()}
                     />     
             </View>
         </View>
@@ -108,7 +131,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#E8EAED'
     },
     taskWrapper:{
-        paddingTop: 80,
+        paddingTop: 5,
         paddingHorizontal: 20,
     },
     sectionTitle:{
@@ -116,7 +139,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
     item: {
-        marginTop: 30,
+        marginTop: 10,
     },
     text: {
         textTransform: 'uppercase',
@@ -126,7 +149,15 @@ const styles = StyleSheet.create({
         
     },
     separador:{
-        paddingTop: 70
+        paddingTop: 25
+    },
+    input: {
+        backgroundColor: "#ffff",
+        marginBottom: 20,
+        fontFamily: 'Escolar2',
+        textTransform: 'uppercase',
+        fontSize: 22,
+        height: 60
     }
 })
 

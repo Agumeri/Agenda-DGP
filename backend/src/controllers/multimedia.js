@@ -4,7 +4,7 @@ import {connect} from '../databases'
 export const createMultimedia = async (req, res) =>{
     const connection = await connect()
 
-    const [result] = await connection.query("INSERT INTO multimedia(id_tarea, paso, descripcion, url_foto) VALUES (?, ?, ?, ?, ?)", [
+    const [result] = await connection.query("INSERT INTO multimedia(id_tarea, paso, descripcion, url_foto) VALUES (?,?,?,?)", [
         req.body.tareaId,
         req.body.paso,
         req.body.descripcion,

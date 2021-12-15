@@ -10,7 +10,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 const MenuTareas = ({ route, navigation }) => {
     // Variable for data
-    var names = ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"];
+    var names = ["lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo"];
     const nombreUser = route.params['nombreUser']   //User Name
     const [listaTareas, setListaTareas] = useState([]);
     const [fechaActual, setFechaActual] = useState("");

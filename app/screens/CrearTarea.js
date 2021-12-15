@@ -130,6 +130,7 @@ const CrearTarea = ({ route, navigation }) => {
                 onPress={() => {
                     {
                         insertTareaFija()
+                        alert("Tarea guardada correctamente")
                         setDescrip("")
                         setPaso(1)
                         setUri('https://via.placeholder.com/300')

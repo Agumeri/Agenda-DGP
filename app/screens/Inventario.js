@@ -17,6 +17,7 @@ const Inventario = ({ route }) => {
 
     useEffect(() => {
         console.log("useEffect")
+        setObjetosMax(inventario.length)
         if(firstTime){
             update()
             console.log("Entro al update")
@@ -30,7 +31,7 @@ const Inventario = ({ route }) => {
         handleInventario()
 
         // Ponemos el valor de la cantidad de objetos que hay 
-        setObjetosMax(inventario.length)
+        
 
         // Ponemos la Cantidad que vamos a mostrar como la cantidad del objeto actual
         inventario.map((objeto) => {
@@ -159,14 +160,14 @@ const Inventario = ({ route }) => {
                 </TouchableOpacity>
 
 
-                <TouchableOpacity
+                {/* <TouchableOpacity
                     onPress={() => update()}>
                     <Icon
                         name="refresh"
                         color='#A5156E'
                         size={30}
                     />
-                </TouchableOpacity>
+                </TouchableOpacity> */}
 
                 <TouchableOpacity
                     onPress={() => {

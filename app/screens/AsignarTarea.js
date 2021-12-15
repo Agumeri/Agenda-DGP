@@ -73,6 +73,7 @@ const AsignarTarea = ({ route, navigation}) => {
                     <TextInput
                         style={styles.input}
                         placeholder="INSERTE FECHA TAREA EN FORMATO AÑO/MES/DIA"
+                        multiline={true}
                         onChangeText={(fecha) => setfechaLim(fecha)}
                     />
                 </View>
@@ -130,7 +131,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#E8EAED'
     },
     taskWrapper:{
-        paddingTop: 80,
+        paddingTop: 5,
         paddingHorizontal: 20,
     },
     sectionTitle:{
@@ -138,7 +139,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
     item: {
-        marginTop: 30,
+        marginTop: 10,
     },
     text: {
         textTransform: 'uppercase',
@@ -148,7 +149,15 @@ const styles = StyleSheet.create({
         
     },
     separador:{
-        paddingTop: 70
+        paddingTop: 25
+    },
+    input: {
+        backgroundColor: "#ffff",
+        marginBottom: 20,
+        fontFamily: 'Escolar2',
+        textTransform: 'uppercase',
+        fontSize: 24,
+        height: 60
     }
 })
 

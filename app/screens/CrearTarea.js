@@ -78,6 +78,7 @@ const CrearTarea = ({ route, navigation }) => {
                     <TextInput
                         style={styles.input}
                         placeholder="inserte nombre de la tarea"
+                        multiline={true}
                         onChangeText={(nombre) => setNombre(nombre)}
                     />
 
@@ -199,6 +200,7 @@ const styles = StyleSheet.create({
         fontFamily: 'Escolar2',
         textTransform: 'uppercase',
         fontSize: 24,
+        height: 60
     },
     item: {
         marginTop: 30,

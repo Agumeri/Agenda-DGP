@@ -8,9 +8,9 @@ const CrearTarea = ({ route, navigation }) => {
     let refInput = createRef()
     const [paso, setPaso] = useState(1)
     const [descrip, setDescrip] = useState("")
-    const [height, setHeight] = useState(300)
-    const [width, setWidth] = useState(300)
-    const [uri, setUri] = useState('https://via.placeholder.com/300')
+    const [height, setHeight] = useState(250)
+    const [width, setWidth] = useState(250)
+    const [uri, setUri] = useState('https://via.placeholder.com/250')
     const [inicio, setInicio] = useState(true)
     const [idTarea, setIdTarea] = useState('')
     const [nombre, setNombre] = useState('')
@@ -72,6 +72,7 @@ const CrearTarea = ({ route, navigation }) => {
             return (
 
                 <View styles={styles.container}>
+                    <View style ={styles.separador}> </View>
                     <Text style={styles.text}>Nombre de la tarea:</Text>
 
                     <TextInput
@@ -87,6 +88,7 @@ const CrearTarea = ({ route, navigation }) => {
         else {
             return (
                 <View style={styles.container}>
+                    <View style ={styles.separador}> </View>
                     <Text style={styles.sectionTitle}>Paso: {paso}</Text>
                     <Text style={styles.text}>Descripción del paso:</Text>
 
@@ -100,13 +102,14 @@ const CrearTarea = ({ route, navigation }) => {
 
                     <Button
                         title={<Text style={styles.text}>Seleccionar imagen</Text>}
+                        color= '#ff99c8'
                         onPress={selectImage}
                     />
 
                     <Image
                         style={{
-                            height: 300, width: (300 * width) / height, backgroundColor: '#FFFFFF', marginTop: 30,
-                            marginBottom: 30
+                            height: 250, width: (250 * width) / height, backgroundColor: '#FFFFFF', marginTop: 15,
+                            marginBottom: 15
                         }}
                         source={{ uri: uri }}
                     />
@@ -120,6 +123,7 @@ const CrearTarea = ({ route, navigation }) => {
         if (!inicio) {
             return(<Button
                 title={<Text style={styles.text}>finalizar tarea</Text>}
+                color= '#ff99c8'
                 onPress={() => {
                     {
                         setDescrip("")
@@ -144,6 +148,7 @@ const CrearTarea = ({ route, navigation }) => {
 
             <Button
                 title={outputButton()}
+                color= '#ff99c8'
                 onPress={() => {
                     {
                         if (inicio) { setInicio(false) }
@@ -151,15 +156,15 @@ const CrearTarea = ({ route, navigation }) => {
                             insertPaso()
                             refInput.current.clear()
                             setPaso(paso + 1)
-                            setUri('https://via.placeholder.com/300')
+                            setUri('https://via.placeholder.com/250')
                         }
                     }
                 }
                 }
             />
-
+            <View style ={styles.separador}> </View>
             {finalizar()}
-
+            <View style ={styles.separador}> </View>
         </View>
     )
 }
@@ -180,7 +185,7 @@ const styles = StyleSheet.create({
     },
     descripInput: {
         backgroundColor: "#ffff",
-        marginBottom: 35,
+        marginBottom: 10,
         fontFamily: 'Escolar2',
         textTransform: 'uppercase',
         fontSize: 24,
@@ -206,15 +211,19 @@ const styles = StyleSheet.create({
         fontSize: 24,
         fontFamily: 'Escolar2',
         textTransform: 'uppercase',
+        color: 'black'
     },
     pictograma: {
-        width: 300,
-        height: 300,
+        width: 250,
+        height: 250,
         backgroundColor: '#FFFFFF',
-        marginTop: 30,
-        marginBottom: 30,
+        marginTop: 10,
+        marginBottom: 10,
 
     },
+    separador:{
+        paddingTop: 10
+    }
     
 
 })

@@ -132,6 +132,7 @@ const CrearTarea = ({ route, navigation }) => {
                 accessibilityLabel='Finalizar la tarea'
                 onPress={() => {
                     {
+                        insertPaso()
                         insertTareaFija()
                         alert("Tarea guardada correctamente")
                         setDescrip("")

@@ -103,15 +103,18 @@ const CrearTarea = ({ route, navigation }) => {
 
                     <Button
                         title={<Text style={styles.text}>Seleccionar imagen</Text>}
-                        color= '#ff99c8'
+                        color= '#ffadad'
                         accessibilityLabel='Seleccionar imagen'
                         onPress={selectImage}
                     />
 
                     <Image
                         style={{
-                            height: 250, width: (250 * width) / height, backgroundColor: '#FFFFFF', marginTop: 15,
-                            marginBottom: 15
+                            height: 250, width: (250 * width) / height, backgroundColor: '#FFFFFF', marginTop: 10,
+                            marginBottom: 10,
+                            borderColor: '#ffadad',
+                            borderWidth: 3,
+                            borderStyle: 'solid',
                         }}
                         source={{ uri: uri }}
                     />
@@ -124,8 +127,8 @@ const CrearTarea = ({ route, navigation }) => {
     const finalizar = () => {
         if (!inicio) {
             return(<Button
-                title={<Text style={styles.text}>finalizar tarea</Text>}
-                color= '#ff99c8'
+                title={<Text style={styles.text}>Finalizar tarea</Text>}
+                color= '#ffadad'
                 accessibilityLabel='Finalizar la tarea'
                 onPress={() => {
                     {
@@ -153,7 +156,7 @@ const CrearTarea = ({ route, navigation }) => {
 
             <Button
                 title={outputButton()}
-                color= '#ff99c8'
+                color= '#ffadad'
                 onPress={() => {
                     {
                         if (inicio) { 
@@ -183,6 +186,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#E8EAED',
         textAlign: 'center',
         alignItems: 'center',
+        marginBottom: 2,
     },
 
     sectionTitle: {
@@ -193,7 +197,7 @@ const styles = StyleSheet.create({
     },
     descripInput: {
         backgroundColor: "#ffff",
-        marginBottom: 10,
+        marginBottom: 15,
         fontFamily: 'Escolar2',
         textTransform: 'uppercase',
         fontSize: 22,
@@ -220,7 +224,8 @@ const styles = StyleSheet.create({
         fontSize: 24,
         fontFamily: 'Escolar2',
         textTransform: 'uppercase',
-        color: 'black'
+        marginTop: 10,
+        color: 'black',
     },
     pictograma: {
         width: 250,

@@ -42,10 +42,10 @@ const CrearTarea = ({ route, navigation }) => {
             status: response.status
         })))
             .then(res => {
-                //console.log(res)
+                console.log(res)
                 if (res.status == 200) {
                     console.log(res.data)
-                    setIdTarea(res.data)
+                    setIdTarea(res.data.id_tarea)
                 } else {
                     console.log("No se ha podido crear el id")
                 }
@@ -129,6 +129,7 @@ const CrearTarea = ({ route, navigation }) => {
                 accessibilityLabel='Finalizar la tarea'
                 onPress={() => {
                     {
+                        insertTareaFija()
                         setDescrip("")
                         setPaso(1)
                         setUri('https://via.placeholder.com/300')
@@ -154,7 +155,10 @@ const CrearTarea = ({ route, navigation }) => {
                 color= '#ff99c8'
                 onPress={() => {
                     {
-                        if (inicio) { setInicio(false) }
+                        if (inicio) { 
+                            setInicio(false) 
+                            getIdTarea()
+                        }
                         else {
                             insertPaso()
                             refInput.current.clear()

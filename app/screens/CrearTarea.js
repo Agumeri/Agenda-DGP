@@ -103,7 +103,7 @@ const CrearTarea = ({ route, navigation }) => {
 
                     <Button
                         title={<Text style={styles.text}>Seleccionar imagen</Text>}
-                        color= '#ffadad'
+                        color= '#ff99c8'
                         accessibilityLabel='Seleccionar imagen'
                         onPress={selectImage}
                     />
@@ -112,7 +112,7 @@ const CrearTarea = ({ route, navigation }) => {
                         style={{
                             height: 250, width: (250 * width) / height, backgroundColor: '#FFFFFF', marginTop: 10,
                             marginBottom: 10,
-                            borderColor: '#ffadad',
+                            borderColor: '#ff99c8',
                             borderWidth: 3,
                             borderStyle: 'solid',
                         }}
@@ -128,7 +128,7 @@ const CrearTarea = ({ route, navigation }) => {
         if (!inicio) {
             return(<Button
                 title={<Text style={styles.text}>Finalizar tarea</Text>}
-                color= '#ffadad'
+                color= '#ff99c8'
                 accessibilityLabel='Finalizar la tarea'
                 onPress={() => {
                     {
@@ -156,7 +156,7 @@ const CrearTarea = ({ route, navigation }) => {
 
             <Button
                 title={outputButton()}
-                color= '#ffadad'
+                color= '#ff99c8'
                 onPress={() => {
                     {
                         if (inicio) { 
@@ -197,12 +197,12 @@ const styles = StyleSheet.create({
     },
     descripInput: {
         backgroundColor: "#ffff",
-        marginBottom: 15,
+        marginBottom: 10,
         fontFamily: 'Escolar2',
         textTransform: 'uppercase',
         fontSize: 22,
-        width: '80%',
-        height: '30%',
+        //width: '80%',
+        height: 55,
         textAlignVertical: "top",
     },
     input: {
@@ -224,7 +224,7 @@ const styles = StyleSheet.create({
         fontSize: 24,
         fontFamily: 'Escolar2',
         textTransform: 'uppercase',
-        marginTop: 10,
+        marginTop: 7,
         color: 'black',
     },
     pictograma: {

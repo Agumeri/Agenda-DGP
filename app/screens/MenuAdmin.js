@@ -35,7 +35,9 @@ const MenuAdmin = ({ route, navigation }) => {
                 color= '#a9def9'
                 accessibilityLabel='Crear un nuevo usuario profesor'
                 onPress={() =>
-                    navigation.navigate("NuevoProfesor")
+                    navigation.navigate("NuevoProfesor",{
+                        nombreUser: nombreUser
+                    })
                 }
             />
 

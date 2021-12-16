@@ -3,7 +3,7 @@ import { Button, TextInput, View, Text, Alert, StyleSheet } from "react-native"
 import { useNavigation } from "@react-navigation/core";
 import { createProfesor } from "../api";
 
-const NuevoProfesor = () => {
+const NuevoProfesor = ({ route, navigation }) => {
     // Variables to control data value
     const [userName, setUserName] = useState('') // User Data
     const [userEmail, setUserEmail] = useState('') // Email Data
@@ -26,6 +26,11 @@ const NuevoProfesor = () => {
    
         let dataToSend = { usuario: userName, contraseña: userPass, email: userEmail }
         const result = createProfesor(dataToSend['usuario'], dataToSend['contraseña'], dataToSend['email'])
+        
+        alert("El profesor se ha registrado correctamente")
+        navigation.navigate("MenuAdmin", {
+            nombreUser: route.params['nombreUser']
+        })
  
     }
 

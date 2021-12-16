@@ -27,6 +27,11 @@ const NuevoAlumno = () => {
    
         let dataToSend = { usuario: userName, contraseña: userPass, email: userEmail, email_profesor: teacherEmail }
         const result = createAlumno(dataToSend['usuario'], dataToSend['contraseña'], dataToSend['email'], dataToSend['email_profesor'])
+
+        alert("El alumno se ha registrado correctamente")
+        navigation.navigate("MenuAdmin", {
+            nombreUser: route.params['nombreUser']
+        })
     }
 
     return (
